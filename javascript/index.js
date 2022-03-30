@@ -5,11 +5,6 @@ multi line comment
 */
 
 
-
-
-
-
-
 //outputting to console
 console.log("hello world")
 console.log(`1 + 2 is ${1+2}`)
