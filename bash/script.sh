@@ -29,7 +29,6 @@ echo "sum of 1 and 2 is $((1+2))"
 #assigning variables
 TEXT="string"
 NUMBER=5
-ARRAY=(10 "needle" $TEXT)
 
 #printing variables
 echo $TEXT $NUMBER         # works without quotes
@@ -62,6 +61,16 @@ echo "
 
 #unsetting variables
 unset -v TEXT NUMBER
+
+
+
+
+### arrays
+
+LIST=(10  "green" $TEXT)    # creating
+LIST[4]="cookie"            # adding item
+echo ${LIST[4]}             # accessing item
+unset -v LIST[4]            # removing item
 
 
 

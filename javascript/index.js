@@ -1,102 +1,124 @@
-//single line comment
+// single line comment
 
 /*
-multi line comment
-write anything here
-exit*/
+* multi line comment
+* write anything here
+* exit
+*/
 
 
 
 
-////printing something to console
+//// printing something to console ////
 
 console.log("hello world");
-console.log(`i'm printing
+console.log(`i am printing
 multiple lines`);
 console.log(`sum of 1 and 2 is ${1+2}`);
 
 
 
 
-////variables and objects
+//// variables and objects ////
 //
 //    var      changeable, global scope
 //    let      changeable, local scope
 //    const    unchangeable, local scope
 
-//defining variables
+// defining variables
 let text = "example";
 let number = 5;
 let bool = true;
 let undef;
 let nothing = null;
 
-//changeable & unchangeable variables
+// changeable & unchangeable variables
 let value1 = "some value";
-value1 = "other value";         //we can change the value again
-const value2 = "some value";    //changing the value gives error
+value1 = "other value";         // we can change the value again
+const value2 = "some value";    // changing the value gives error
 
-//some predefined variables
+// some predefined variables
 console.log(process.platform);
 console.log(process.env.USER);
 
-//deleting variables
+// deleting variables
 var useless = "nothing";
 delete useless;
 
 
 
 
-//nothing importaint here
-let index;
-let name;
-let country;
-let age;
+//// array object ////
+
+// creating an array
+const animals = [ 'dog', 'cat', 'horse' ];
+
+// adds item to the end => [ 'dog', 'cat', 'horse', 'monkey', 'fish' ]
+animals.push('monkey');
+animals.push('fish');
+
+// removes last item in array and returns it => 'fish'
+animals.pop();
+
+// removes item at an index => [ 'dog', 'cat', 'horse' ]
+delete animals[3];
+
+// adds item at the beginning => [ 'frog', 'dog', 'cat', 'horse' ]
+animals.shift('frog');
+
+// removes the first item => [ 'dog', 'cat', 'horse' ]
+animals.unshift();
+
+// making copy of an array => [ 'dog', 'cat', 'horse' ]
+let animalsCopy = [...animals];
+
+// accessing items from array - by indexing
+let first = animals[0];
+let	second = animals[1];
+
+// accessing items from array - by deconstruction
+[first, second, third] = animals;
+
+// checks whether it is an array => true/false
+Array.isArray(animals);
+
+// concatenating arrays => [ 'dog', 'cat', 'horse', 'bear', 'snake' ]
+animalsCopy = animals.concat(['bear', 'snake']);
+
+// finds the matching item and returns its index => 2
+animals.indexOf('horse');
+
+// checks for item in array => true/false
+animals.includes('monkey');
+
+// joins items seperated  by a string => dog, cat, horse,
+animals.join(', ');
+
+// joins items with ',' => dog,cat,horse
+animals.toString();
+
+// loops over each item => index - animalName
+animals.forEach(function (animal){
+		console.log(animals.indexOf(animal), '-', animal);
+    }
+);
 
 
 
 
-////array object
+//// dictionary object ////
 
-//creating an array
-const array = [ 10, "John Doe", "Canada" ];
-
-//adding item to array
-array.push(30);
-
-//removing item from array
-delete array[3];
-
-//making copy of an array
-const array2 = [...array];
-
-//accessing items from array
-//by indexing
-name = array[1];
-country = array[2];
-console.log(`i am ${name} from ${country}`);
-
-//accessing items from array
-//by deconstruction
-[index, name, country] = array;
-console.log(`i am ${name} from ${country}`);
-
-
-
-
-////dictionary object
-
-//creating object
+// creating object
 const obj = {
 	index: 10,
 	name: "John Doe",
 	country: "Canada",
 };
 
-//adding item to object
+// adding item to object
 obj.age = 30;
 
-//removing item from object
+// removing item from object
 delete obj.age;
 
 //accessing items
@@ -128,25 +150,23 @@ function add(num1,num2) {
 //calling function
 findLength("fish");
 add(5,7);
-
-
-
+/*
+const button = document.querySelector("button")
+button.onclick = () => {
+	alert("hello world!")
+}
+*/
 
 ////launching html pages on localhost
 const express = require("express");    //importing
 const app = express();
 
-app.get(
-  "/", 
-  function (req, res) {
-    res.sendFile(__dirname + "/index.html");
-  }
+app.get("/", (req, res) => {
+      res.sendFile(__dirname + "/index.html");
+    }
 );
 
-app.listen(
-  3000,
-  function () {
-    console.log("index.html is launched at port 3000");
-    console.log("go to http://127.0.0.1:3000");
-  }
-);
+app.listen(3000, () => {
+	console.log("index.html is launched at port 3000");
+	console.log("go to http://127.0.0.1:3000");
+}
