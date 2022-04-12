@@ -3,7 +3,6 @@
 /*
 * multi line comment
 * write anything here
-* exit
 */
 
 
@@ -41,9 +40,23 @@ const value2 = "some value";    // changing the value gives error
 console.log(process.platform);
 console.log(process.env.USER);
 
+// getting type of a variable
+console.log(typeof text)     // -> string
+console.log(typeof number)   // -> number
+console.log(typeof bool)     // -> boolean
+
 // deleting variables
 var useless = "nothing";
 delete useless;
+
+
+
+
+//// string manipulation ////
+let str = "this is a line of string";
+
+// length -> 24
+console.log(str.length);
 
 
 
@@ -53,23 +66,23 @@ delete useless;
 // creating an array
 const animals = [ 'dog', 'cat', 'horse' ];
 
-// adds item to the end => [ 'dog', 'cat', 'horse', 'monkey', 'fish' ]
+// adds item to the end -> [ 'dog', 'cat', 'horse', 'monkey', 'fish' ]
 animals.push('monkey');
 animals.push('fish');
 
-// removes last item in array and returns it => 'fish'
+// removes last item in array and returns it -> 'fish'
 animals.pop();
 
-// removes item at an index => [ 'dog', 'cat', 'horse' ]
+// removes item at an index -> [ 'dog', 'cat', 'horse' ]
 delete animals[3];
 
-// adds item at the beginning => [ 'frog', 'dog', 'cat', 'horse' ]
+// adds item at the beginning -> [ 'frog', 'dog', 'cat', 'horse' ]
 animals.shift('frog');
 
-// removes the first item => [ 'dog', 'cat', 'horse' ]
+// removes the first item -> [ 'dog', 'cat', 'horse' ]
 animals.unshift();
 
-// making copy of an array => [ 'dog', 'cat', 'horse' ]
+// making copy of an array -> [ 'dog', 'cat', 'horse' ]
 let animalsCopy = [...animals];
 
 // accessing items from array - by indexing
@@ -79,25 +92,25 @@ let	second = animals[1];
 // accessing items from array - by deconstruction
 [first, second, third] = animals;
 
-// checks whether it is an array => true/false
+// checks whether it is an array -> true/false
 Array.isArray(animals);
 
-// concatenating arrays => [ 'dog', 'cat', 'horse', 'bear', 'snake' ]
+// concatenating arrays -> [ 'dog', 'cat', 'horse', 'bear', 'snake' ]
 animalsCopy = animals.concat(['bear', 'snake']);
 
-// finds the matching item and returns its index => 2
+// finds the matching item and returns its index -> 2
 animals.indexOf('horse');
 
-// checks for item in array => true/false
+// checks for item in array -> true/false
 animals.includes('monkey');
 
-// joins items seperated  by a string => dog, cat, horse,
+// joins items seperated  by a string -> dog, cat, horse,
 animals.join(', ');
 
-// joins items with ',' => dog,cat,horse
+// joins items with ',' -> dog,cat,horse
 animals.toString();
 
-// loops over each item => index - animalName
+// loops over each item -> index - animalName
 animals.forEach(function (animal){
 		console.log(animals.indexOf(animal), '-', animal);
     }
@@ -121,8 +134,7 @@ obj.age = 30;
 // removing item from object
 delete obj.age;
 
-//accessing items
-//by dot and bracket notation
+// accessing items - dot and bracket notation
 name = obj.name;
 country = obj['country'];
 console.log(name, "is from", country);
@@ -134,7 +146,7 @@ console.log(name2, "is from", country2);
 
 
 
-////function
+//// function ////
 
 //defining function
 function findLength(data) {
@@ -150,13 +162,39 @@ function add(num1,num2) {
 //calling function
 findLength("fish");
 add(5,7);
-/*
-const button = document.querySelector("button")
-button.onclick = () => {
-	alert("hello world!")
-}
-*/
 
+// anonymous function
+
+anon = function () {
+	console.log("hello anon")
+}
+
+anon()
+
+
+//// if-else statements ////
+
+if (1>0) {
+    console.log("true");
+} else {
+	console.log("false");
+}
+
+// short syntax
+console.log( 1>0 ? "true" : "false" );
+
+
+
+//// cryptography ////
+
+// base64
+const {base64} = require("crypto");
+
+
+
+
+
+/*
 ////launching html pages on localhost
 const express = require("express");    //importing
 const app = express();
@@ -170,3 +208,4 @@ app.listen(3000, () => {
 	console.log("index.html is launched at port 3000");
 	console.log("go to http://127.0.0.1:3000");
 }
+*/

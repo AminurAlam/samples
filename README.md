@@ -1,3 +1,4 @@
+# description
 sample codes for different languages
 
 
@@ -7,7 +8,7 @@ sample codes for different languages
 - python
 
 
-# 
+# index
 - comments
 - printing
   - single lines
@@ -27,6 +28,7 @@ sample codes for different languages
   - adding item
   - removing item
   - accessing item
+  - splicing
   - creating a copy
 - loops
   - while
@@ -35,14 +37,21 @@ sample codes for different languages
   - if/else
   - try/catch
 - functions
-  - declaring
-  - calling
+  - creating function
+  - calling function
+  - anonymous function
 - file handlind
  - opening file
  - reading file
+- cryptography
+  - base64
+  - md5
+  - sha256
+
 
 # todo
-- fish
-- lua
-- php
-- ruby
+- fish (0%)
+- kotlin (5%)
+- lua (5%)
+- php (2%)
+- ruby (0%)

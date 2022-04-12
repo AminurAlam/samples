@@ -17,7 +17,6 @@ print(f"sum of 1 and 2 is {1+2}")
 
 
 
-
 ### variables and data ###
 
 # assigning variables
@@ -76,6 +75,21 @@ for n in range(1, 11):
 
 
 
+### statements ###
+
+# if-else
+if True:
+    print("true")
+elif False:
+    print("false")
+else:
+    print("none")
+
+var = "true string" if True else "false string"
+
+
+
+
 ### function ###
 
 # defining function
@@ -91,3 +105,26 @@ def add(num1, num2):
 # calling function
 findLength("river")
 add(5, 7)
+
+# anonymous function
+lambda: 5
+lambda num: num + 5
+func = lambda num: num + 5
+
+func(7)
+
+
+
+
+### cryptography ###
+
+# base64
+import base64
+
+msg = "super secret text"
+
+enc_msg = base64.b64encode(msg.encode())
+print("encoded message:", enc_msg.decode())
+
+dec_msg = base64.b64decode(enc_msg)
+print("decoded message:", dec_msg.decode())
