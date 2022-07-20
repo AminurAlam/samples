@@ -20,18 +20,14 @@ print(f"sum of 1 and 2 is {1+2}")
 ### variables and data ###
 
 # assigning variables
-text = "string"                     # string
-number = 5                          # integer
-decimal = 2.72                      # folating point
+text = "string"             # string
+number = 5                  # integer
+decimal = 2.72              # folating point
 
 # printing variables
-print("text, number")           # doesn't work with quotes
-print(f"{text}, {number}")      # works with function string
-print(text, number)             # works without quotes
-
-# concatenating variables
-try:    print(text + number)          # doesn't work
-except: print(text + str(number))     # works now
+print("text, number")       # doesn't work with quotes
+print(f"{text}, {number}")  # works with function string
+print(text, number)         # works without quotes
 
 # list and dictionary
 items = ["string", 5, 2.72, text]   # list
@@ -39,10 +35,10 @@ items3 = {                          # dictionary
     "text": "string",
     "number": 5,
     "decimal": 2.72,
-    "items": [1, "value"],
-    "items": {1:"a"},
+    "items1": [1, "value"],
+    "items2": {1: "a"},
     "variable": text
-        }
+}
 
 print(items[0], items[1], items[2])
 print(
@@ -56,6 +52,18 @@ print(f"""
     name : {__name__}
     dir  : {dir()}
     """)
+
+
+
+
+### string manipulation ###
+text = "hello world, this is a line"
+print(
+    len(text),                # length -> 27
+    text[6:17],               # splicing -> "world, this"
+    text + " ! " + str(2),    # concatenating
+    sep="\n"
+)
 
 
 
@@ -77,7 +85,7 @@ for n in range(1, 11):
 
 ### statements ###
 
-# if-else
+# if/else
 if True:
     print("true")
 elif False:
@@ -86,6 +94,12 @@ else:
     print("none")
 
 var = "true string" if True else "false string"
+
+# try/except
+try:
+    print()
+except Exception as error:
+    print(error)
 
 
 
@@ -112,6 +126,34 @@ lambda num: num + 5
 func = lambda num: num + 5
 
 func(7)
+
+# args/kwargs
+def foo(*args):
+    # prints a tuple with all argumets
+    print(args)
+
+foo(1, 2, "three")  # (1, 2, "three")
+
+
+def bar(**kwargs):
+    # prints dict with variables as key
+    print(kwargs)
+
+bar(a="one", b="two")  # {"a": "one", "b": "two"}
+
+
+def foo2(a, b):
+    return a + b
+
+tab = [5, 7]
+foo2(*tab)
+
+
+def bar2(a, b):
+    return a + b
+
+obj = {"a": 5, "b": 7}
+bar2(**obj)
 
 
 

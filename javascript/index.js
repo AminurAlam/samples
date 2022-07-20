@@ -25,11 +25,11 @@ console.log(`sum of 1 and 2 is ${1+2}`);
 //    const    unchangeable, local scope
 
 // defining variables
-let text = "example";
-let number = 5;
-let bool = true;
-let undef;
-let nothing = null;
+let text = "example",
+	number = 5,
+	bool = true,
+	undef,
+	nothing = null;
 
 // changeable & unchangeable variables
 let value1 = "some value";
@@ -41,9 +41,14 @@ console.log(process.platform);
 console.log(process.env.USER);
 
 // getting type of a variable
-console.log(typeof text)     // -> string
-console.log(typeof number)   // -> number
-console.log(typeof bool)     // -> boolean
+console.table([
+	// string
+	{value: "text", type: typeof "text"},
+	// number
+	{value: 256, type: typeof 256},
+	// boolean
+	{value: true, type: typeof true},
+]);
 
 // deleting variables
 var useless = "nothing";
@@ -53,18 +58,23 @@ delete useless;
 
 
 //// string manipulation ////
+
 let str = "this is a line of string";
 
-// length -> 24
-console.log(str.length);
+str.length;         // 24
+str.slice(0,14);    // "this is a line"
 
 
 
 
-//// array object ////
+//// array ////
 
 // creating an array
 const animals = [ 'dog', 'cat', 'horse' ];
+
+// logging array
+console.log(animals);
+console.table(animals);
 
 // adds item to the end -> [ 'dog', 'cat', 'horse', 'monkey', 'fish' ]
 animals.push('monkey');
@@ -86,8 +96,8 @@ animals.unshift();
 let animalsCopy = [...animals];
 
 // accessing items from array - by indexing
-let first = animals[0];
-let	second = animals[1];
+let first = animals[0],
+	second = animals[1];
 
 // accessing items from array - by deconstruction
 [first, second, third] = animals;
@@ -110,7 +120,12 @@ animals.join(', ');
 // joins items with ',' -> dog,cat,horse
 animals.toString();
 
+// creates an empty array and fills it -> [ "item", "item", "item" ]
+Array(3).fill("item")
+
 // loops over each item -> index - animalName
+animals.forEach(item => console.log(item));
+
 animals.forEach(function (animal){
 		console.log(animals.indexOf(animal), '-', animal);
     }
@@ -119,14 +134,18 @@ animals.forEach(function (animal){
 
 
 
-//// dictionary object ////
+//// object ////
 
 // creating object
 const obj = {
-	index: 10,
+	num: 10,
 	name: "John Doe",
 	country: "Canada",
 };
+
+// printing object
+console.log(obj);
+console.table(obj);
 
 // adding item to object
 obj.age = 30;
@@ -166,46 +185,70 @@ add(5,7);
 // anonymous function
 
 anon = function () {
-	console.log("hello anon")
+	console.log("hello anon");
 }
 
-anon()
+anon();
 
 
-//// if-else statements ////
 
+
+//// statements ////
+
+// if-else
 if (1>0) {
     console.log("true");
 } else {
 	console.log("false");
 }
 
-// short syntax
-console.log( 1>0 ? "true" : "false" );
+// if-else short syntax
+let age = 18;
+
+console.log( age > 50 ? "old" : "young" );
+age < 18 ? console.log("too young") : console.log("adult");
+
+// try-catch
+try {
+	unknownFunction();
+} catch (error) {
+	console.log("error occured!");
+}
+
 
 
 
 //// cryptography ////
 
 // base64
-const {base64} = require("crypto");
+let msg = "secret text",
+	msgEnc = "c2VjcmV0IHRleHQ=";
+
+console.log(
+	"\nencoded message:", btoa(msg),
+	"\ndecoded message:", atob(msgEnc),
+);
 
 
 
 
 
-/*
 ////launching html pages on localhost
 const express = require("express");    //importing
 const app = express();
 
 app.get("/", (req, res) => {
-      res.sendFile(__dirname + "/index.html");
+	res.sendFile(__dirname + "/index.html");
     }
 );
+
+app.get("/fish.png", (req, res) => {
+	res.sendFile(__dirname + "/res/fish.png");
+    }
+);
+
 
 app.listen(3000, () => {
 	console.log("index.html is launched at port 3000");
 	console.log("go to http://127.0.0.1:3000");
-}
-*/
+})

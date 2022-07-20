@@ -36,6 +36,7 @@ sample codes for different languages
 - statements
   - if/else
   - try/catch
+  - async/await
 - functions
   - creating function
   - calling function

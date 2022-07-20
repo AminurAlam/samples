@@ -2,12 +2,12 @@
 --[[
 multi line comment
 write anything here
---]]--
+--]]
 
 
 
 
----- printing something
+--[[ printing something ]]--
 
 print("hello world!")
 print([[i am printing
@@ -18,48 +18,71 @@ print(string.format("sum of 1 and 2 is %d",1+2))
 
 
 
----- variables
+--[[ variables ]]--
 
 -- declaring variables
-text = "example"
+text = "example text"
 local text2 = "another text"
 num = 21
 bool = true
+nothing = nil
 
 -- printing variables
 print(text, text2)
 
 
----- tables
-table = {"example", 10, text} -- creating table
--- adding item
--- removing item
--- accessing item
+--[[ tables ]]--
 
+-- simple table
+table = {"example", 10, text}
 
----- dictionary
+print(table[1])  --> "example"
+print(table[2])  --> 10
 
--- creating dictionary
-dict = {
-	['text'] = "hello",
-	['num'] = 10,
-	['var'] = table,
+-- table with key-value pair
+pair = {
+   ['text'] = "hello",
+   ['num'] = 10,
 }
+
+print(pair.text)  --> hello
+print(pair.num)   --> 10
+
 -- adding item
+pair.new_item = true
 -- removing item
 -- accessing item
 
 
 
 
----- functions
+--[[ functions ]]--
 
 -- creating
 function add(n1, n2)
-	print()
+	print(n1+n2)
 end
 
 -- calling functions
 add(5, 7)
 
-print(add)
+
+
+--[[ loops ]]--
+
+-- for loop
+for key, value in ipairs(pair) do
+	print(key, value)
+end
+
+print("#########")
+
+function cmpfile(name, src)
+	tab = {}
+
+	for n = 1, #src do
+		tab[n] = { name = src[n] }
+	end
+end
+
+cmpfile("hulu", {"julu","polo", "milo"})
