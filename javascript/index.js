@@ -234,7 +234,7 @@ console.log(
 
 
 ////launching html pages on localhost
-const express = require("express");    //importing
+/* const express = require("express");    //importing
 const app = express();
 
 app.get("/", (req, res) => {
@@ -242,13 +242,7 @@ app.get("/", (req, res) => {
     }
 );
 
-app.get("/fish.png", (req, res) => {
-	res.sendFile(__dirname + "/res/fish.png");
-    }
-);
-
-
 app.listen(3000, () => {
 	console.log("index.html is launched at port 3000");
 	console.log("go to http://127.0.0.1:3000");
-})
+}) */
