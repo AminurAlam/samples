@@ -38,7 +38,7 @@ echo "
     ${ARRAY[0]}
     ${ARRAY[1]}
     ${ARRAY[2]}
-	"
+    "
 
 #concatenating variables
 NUM1=5
@@ -57,7 +57,7 @@ echo "
     shell    : $SHELL
     bash ver : $BASH_VERSION
     home dir : $HOME
-	"
+    "
 
 #unsetting variables
 unset -v TEXT NUMBER
@@ -117,7 +117,7 @@ unset -v LIST[4]            # removing item
 
 NUM=1
 while [ $NUM -le 10 ] ; do
-	((++NUM))
+    ((++NUM))
 done
 
 
@@ -125,37 +125,37 @@ done
 
 NUM=1
 until [ $NUM -gt 10 ] ; do
-	((++NUM))
+    ((++NUM))
 done
 
 
 #for loop
 
 for NUM in {1..10} ; do
-	echo -n
+    echo -n
 done
 
 for (( NUM=1 ; NUM<10 ; ++NUM )) ; do
-	echo -n
+    echo -n
 done
 
 for name in a b c ; do
-	echo -n "$name, "
+    echo -n "$name, "
 done
 
 for file in * ; do
-	touch "$file"
+    touch "$file"
 done
 
 
 #if statement
 
 if [ $CONDITION=true ] ; then
-	echo -n
+    echo -n
 elif [ $CONDITION=false ] ; then
-	echo -n
+    echo -n
 else
-	echo -n
+    echo -n
 fi
 
 #select
@@ -163,8 +163,8 @@ fi
 echo -e "\n\nselect one of the following:"
 
 select name in red blue green ; do
-	echo -e "you selected $name \n"
-	break
+    echo -e "you selected $name \n"
+    break
 done
 
 
@@ -175,12 +175,12 @@ done
 #defining function
 
 function length() {
-	echo -e "'$1' is ${#1} characters long"
+    echo -e "'$1' is ${#1} characters long"
 }
 
 function add() {
-	let "RESULT=$1+$2"
-	echo -e "sum of $1 and $2 is $RESULT"
+    let "RESULT=$1+$2"
+    echo -e "sum of $1 and $2 is $RESULT"
 }
 
 #calling function

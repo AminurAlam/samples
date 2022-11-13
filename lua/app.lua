@@ -107,7 +107,7 @@ array.new_item = true
 
 -- creating
 function add(n1, n2)
-	print(n1+n2)
+    print(n1+n2)
 end
 function factorial(n)
     if n == 0 then

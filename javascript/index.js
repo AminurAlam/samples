@@ -26,10 +26,10 @@ console.log(`sum of 1 and 2 is ${1+2}`);
 
 // defining variables
 let text = "example",
-	number = 5,
-	bool = true,
-	undef,
-	nothing = null;
+    number = 5,
+    bool = true,
+    undef,
+    nothing = null;
 
 // changeable & unchangeable variables
 let value1 = "some value";
@@ -42,12 +42,12 @@ console.log(process.env.USER);
 
 // getting type of a variable
 console.table([
-	// string
-	{value: "text", type: typeof "text"},
-	// number
-	{value: 256, type: typeof 256},
-	// boolean
-	{value: true, type: typeof true},
+    // string
+    {value: "text", type: typeof "text"},
+    // number
+    {value: 256, type: typeof 256},
+    // boolean
+    {value: true, type: typeof true},
 ]);
 
 // deleting variables
@@ -97,7 +97,7 @@ let animalsCopy = [...animals];
 
 // accessing items from array - by indexing
 let first = animals[0],
-	second = animals[1];
+    second = animals[1];
 
 // accessing items from array - by deconstruction
 [first, second, third] = animals;
@@ -127,7 +127,7 @@ Array(3).fill("item")
 animals.forEach(item => console.log(item));
 
 animals.forEach(function (animal){
-		console.log(animals.indexOf(animal), '-', animal);
+        console.log(animals.indexOf(animal), '-', animal);
     }
 );
 
@@ -138,9 +138,9 @@ animals.forEach(function (animal){
 
 // creating object
 const obj = {
-	num: 10,
-	name: "John Doe",
-	country: "Canada",
+    num: 10,
+    name: "John Doe",
+    country: "Canada",
 };
 
 // printing object
@@ -169,7 +169,7 @@ console.log(name2, "is from", country2);
 
 //defining function
 function findLength(data) {
-	console.log(`${data} is ${data.length} characters long`);
+    console.log(`${data} is ${data.length} characters long`);
 }
 
 function add(num1,num2) {
@@ -185,7 +185,7 @@ add(5,7);
 // anonymous function
 
 anon = function () {
-	console.log("hello anon");
+    console.log("hello anon");
 }
 
 anon();
@@ -199,7 +199,7 @@ anon();
 if (1>0) {
     console.log("true");
 } else {
-	console.log("false");
+    console.log("false");
 }
 
 // if-else short syntax
@@ -210,9 +210,9 @@ age < 18 ? console.log("too young") : console.log("adult");
 
 // try-catch
 try {
-	unknownFunction();
+    unknownFunction();
 } catch (error) {
-	console.log("error occured!");
+    console.log("error occured!");
 }
 
 
@@ -222,11 +222,11 @@ try {
 
 // base64
 let msg = "secret text",
-	msgEnc = "c2VjcmV0IHRleHQ=";
+    msgEnc = "c2VjcmV0IHRleHQ=";
 
 console.log(
-	"\nencoded message:", btoa(msg),
-	"\ndecoded message:", atob(msgEnc),
+    "\nencoded message:", btoa(msg),
+    "\ndecoded message:", atob(msgEnc),
 );
 
 
@@ -238,11 +238,11 @@ console.log(
 const app = express();
 
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/index.html");
     }
 );
 
 app.listen(3000, () => {
-	console.log("index.html is launched at port 3000");
-	console.log("go to http://127.0.0.1:3000");
+    console.log("index.html is launched at port 3000");
+    console.log("go to http://127.0.0.1:3000");
 }) */

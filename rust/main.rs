@@ -26,7 +26,7 @@ fn main() {
     let default_float   = 3.0; // `f64`
     let default_integer = 7;   // `i32`
 
-    // A type can also be inferred from context 
+    // A type can also be inferred from context
     let mut inferred_type = 12; // Type i64 is inferred from another line
     inferred_type = 4294967296i64;
 
@@ -36,7 +36,7 @@ fn main() {
 
     // Error! The type of a variable can't be changed.
     mutable = true;
-    
+
     // Variables can be overwritten with shadowing.
     let mutable = true;
 }
