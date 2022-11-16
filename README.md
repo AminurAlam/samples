@@ -1,29 +1,28 @@
 # description
-sample codes for different languages
+samples of codes in different languages
 
 
 # languages
-- bash
-- javascript
-- python
+ - (80%) bash
+ - ( 5%) fennel
+ - (80%) fish
+ - (20%) html
+ - (90%) javascript
+ - (60%) lua
+ - (90%) python
+ - (10%) rust
 
 
 # index
 - comments
 - printing
-  - single lines
-  - multiple lines
-  - function strings
 - variables
   - declaring
-  - printing
   - concatenating
-  - predefined
 - string manipulation
   - length
-  - concatenating
   - splicing
-- objects/array/list/dictionary
+- objects
   - creating
   - adding item
   - removing item
@@ -36,6 +35,7 @@ sample codes for different languages
 - statements
   - if/else
   - try/catch
+  - match/case
   - async/await
 - functions
   - creating function
@@ -50,9 +50,4 @@ sample codes for different languages
   - sha256
 
 
-# todo
-- fish (0%)
-- kotlin (5%)
-- lua (5%)
-- php (2%)
-- ruby (0%)
+

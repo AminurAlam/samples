@@ -1,4 +1,8 @@
 chat.txt
+a.out
+*.out
+
+package*.json
 
 javascript/node_modules/
 javascript/node_modules/*
