@@ -11,7 +11,7 @@ write anything here
 echo "hello world!"
 echo "i'm printing
 multiple lines"
-echo "sum of 1 and 2 is $((1+2))"
+echo "sum of 1 and 2 is $(math 1 + 2)"
 
 
 ### variables
@@ -26,9 +26,9 @@ echo $TEXT $NUMBER         # works without quotes
 echo "$TEXT $NUMBER"       # works with double quotes
 echo '$TEXT $NUMBER'       # doesn't work with single quotes
 echo "
-    ${ARRAY[0]}
-    ${ARRAY[1]}
-    ${ARRAY[2]}
+    $ARRAY[1]
+    $ARRAY[2]
+    $ARRAY[3]
 "
 
 # concatenating variables
@@ -84,7 +84,6 @@ set -e LIST[4]                # removing item
 #    -ne    not equal
 #    -a     and operator
 #    -o     or operator
-#    {strting..ending..steps}
 
 
 # while loop
@@ -120,10 +119,14 @@ read COLOR -fP "select one of the following:
       red, blue, green"
 
 switch "$COLOR"
-    case red; echo "you picked red"
-    case blue; echo "you picked blue"
-    case green; echo "you picked green"
-    case '*'; echo "unrecognized"
+    case red
+        echo "you picked red"
+    case blue
+        echo "you picked blue"
+    case green
+        echo "you picked green"
+    case '*'
+        echo "unrecognized"
 end
 
 
@@ -131,11 +134,11 @@ end
 
 # defining function
 function length
-    echo "$argv is $(count $argv) characters long"
+    echo "$argv is $( string length "$argv" ) characters long"
 end
 
 function add
-    echo "sum of $1 and $2 is $(math 1 + 2)"
+    echo "sum of $argv[1] and $argv[2] is $(math 1 + 2)"
 end
 
 # calling function
