@@ -94,16 +94,15 @@ void palindrome() {
     scanf("%d", &num);
     num_copy = num;
 
-    do {
+    while (num) {
         num_reverse = (num_reverse * 10) + (num % 10);
         num /= 10;
-    } while (num != 0);
+    }
 
-    if (num_copy == num_reverse) 
+    if (num_copy == num_reverse)
         printf("%d is a palindrome\n", num_copy);
-    else 
+    else
         printf("%d is not a palindrome\n", num_copy);
-
 }
 
 // convert binary number to decimal number
@@ -112,7 +111,7 @@ void bin_to_dec() {
     printf("enter number: ");
     scanf("%ld", &num);
 
-    for (int i = 0; num != 0; i++) {
+    for (int i = 0; num; i++) {
         rem = num % 10;
         num /= 10;
         dec += rem * pow(2, i);
@@ -123,14 +122,8 @@ void bin_to_dec() {
 
 // find average of marks
 void avg() {
-    float avg, entry = 0, count = 0, sum = 0;
+    float avg, entry, count = 0, sum = 0;
     printf("enter score below (-ve to end)\n");
-
-    // while (0 <= entry) {
-    //     scanf("%f", &entry);
-    //     sum += entry;
-    //     count++;
-    // }
 
     for (entry = 0; 0 <= entry; count++) {
         scanf("%f", &entry);
@@ -151,8 +144,7 @@ int main() {
     // prime();
     // for (int i = 1; i <= 10; i++) { odd_even(i); }
     // swap(10, 12);
-    palindrome();
-    // palindrome_str();
+    // palindrome();
     // bin_to_dec();
     // avg();
     return 0;
