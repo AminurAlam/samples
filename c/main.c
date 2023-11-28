@@ -7,9 +7,14 @@ void simple_intrest() {
     printf("enter principal, rate, time: ");
     scanf("%lf %lf %lf", &p, &r, &t);
 
-    si = ((p * r * t) / 100) - p;
+    si = ((p * r * t) / 100);
 
     printf("%f is the simple intrest\n", si);
+}
+
+// calculate simple intrest using a function
+double get_simple_intrest(double p, double r, double t) {
+    return ((p * r * t) / 100);
 }
 
 // calculate compound intrest
@@ -99,10 +104,24 @@ void palindrome() {
         num /= 10;
     }
 
-    if (num_copy == num_reverse)
-        printf("%d is a palindrome\n", num_copy);
-    else
-        printf("%d is not a palindrome\n", num_copy);
+    if (num_copy == num_reverse) printf("%d is a palindrome\n", num_copy);
+    else printf("%d is not a palindrome\n", num_copy);
+}
+
+// generate fibonacci series
+void fib() {
+    int end, n1 = 0, n2 = 1, n3;
+    printf("enter end of sequence: ");
+    scanf("%d", &end);
+    printf("%d %d ", n1, n2);
+
+    while (end) {
+        n3 = n1 + n2;
+        printf("%d ", n3);
+        n1 = n2;
+        n2 = n3;
+        end--;
+    }
 }
 
 // convert binary number to decimal number
@@ -134,8 +153,17 @@ void avg() {
     printf("average is: %.2f\n", avg);
 }
 
+// find factorial of a number
+int factorial(int i) {
+    if (i < 2) {
+        return i;
+    }
+    return i * factorial(i - 1);
+}
+
 int main() {
     // simple_intrest();
+    // printf("%lf\n", get_simple_intrest(1000, 1, 1));
     // compound_intrest();
     // get_ascii();
     // get_rectangle_area();
@@ -145,7 +173,9 @@ int main() {
     // for (int i = 1; i <= 10; i++) { odd_even(i); }
     // swap(10, 12);
     // palindrome();
+    // fib();
     // bin_to_dec();
     // avg();
+    // printf("factorial is %d\n", factorial(5));
     return 0;
 }
