@@ -1,6 +1,6 @@
 chat.txt
 a.out
-*.out
+*out
 
 package*.json
 
