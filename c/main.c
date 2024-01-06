@@ -1,42 +1,6 @@
 #include <math.h>
 #include <stdio.h>
 
-// calculate simple intrest
-void simple_intrest() {
-    double p, r, t, si;
-    printf("enter principal, rate, time: ");
-    scanf("%lf %lf %lf", &p, &r, &t);
-
-    si = ((p * r * t) / 100);
-
-    printf("%f is the simple intrest\n", si);
-}
-
-// calculate simple intrest using a function
-double get_simple_intrest(double p, double r, double t) {
-    return ((p * r * t) / 100);
-}
-
-// calculate compound intrest
-void compound_intrest() {
-    double p, r, t, ammount, ci;
-    printf("enter principal, rate, time: ");
-    scanf("%lf %lf %lf", &p, &r, &t);
-
-    ammount = p * ((pow((1 + r / 100), t)));
-    ci = ammount - p;
-
-    printf("Compound Interest is : %f", ci);
-}
-
-// get ascii value of a character
-void get_ascii() {
-    char c;
-    printf("enter a char: ");
-    scanf("%c", &c);
-    printf("ascii val of %c is %d\n", c, c);
-}
-
 // find area of a rectangle
 void get_rectangle_area() {
     int l, b;
@@ -60,31 +24,102 @@ void get_circle_area(int radius) {
     printf("area is %f\n", 3.14 * radius * radius);
 }
 
+// calculate simple intrest
+double get_simple_intrest(double p, double r, double t) {
+    return (p * r * t) / 100;
+}
+
+void simple_intrest() {
+    double p, r, t, si;
+    printf("enter principal, rate, time: ");
+    scanf("%lf %lf %lf", &p, &r, &t);
+
+    si = get_simple_intrest(p, r, t);
+
+    printf("%f is the simple intrest\n", si);
+}
+
+// calculate compound intrest
+void compound_intrest() {
+    double p, r, t, ammount, ci;
+    printf("enter principal, rate, time: ");
+    scanf("%lf %lf %lf", &p, &r, &t);
+
+    ammount = p * pow(1 + r / 100, t);
+    ci = ammount - p;
+    printf("Compound Interest is : %f", ci);
+}
+
+// use getchar and putchar
+// use gets and puts
+
+// display two strings
+void distr() {
+    char str1[32], str2[32];
+    printf("enter first string: ");
+    scanf("%s", str1);
+    printf("enter second string: ");
+    scanf("%s", str2);
+
+    printf("%s\n%s\n", str1, str2);
+}
+
+// get ascii value of a character
+void get_ascii() {
+    printf("enter a char: ");
+    char c = getchar();
+    // scanf("%c", &c);
+    printf("ascii val of %c is %d\n", c, c);
+}
+
 // find sum of prime numbers between 100 and 500
 void prime() {
-    int start = 100, end = 500;
-    int i, j, check, collect = 0;
+    int num, check = 1;
+    printf("enter a number: ");
+    scanf("%d", &num);
 
-    for (i = start; i <= end; i++) {
-        for (j = 2; j < i; j++) {
-            check = 0;
+    for (int i = 2; i <= num / 2; i++) {
+        if (num % i == 0) { check = 0; }
+    }
+
+    if (check) printf("prime\n");
+    else printf("not prime\n");
+}
+
+// find sum of prime numbers between 100 and 500
+void prime_between() {
+    int check, collect = 0;
+
+    for (int i = 100; i <= 500; i++) {
+        for (int j = 2; j <= i / 2; j++) {
+            check = 1;
             if (i % j == 0) {
-                check = 1;
+                check = 0;
                 break;
             }
         }
-        if (!check) collect += i;
+        if (check) collect += i;
     }
-    printf("sum of primes between %d and %d is %d\n", start, end, collect);
+
+    printf("sum of primes is %d\n", collect);
 }
 
 // find if a number is odd or even
-void odd_even(int num) {
-    printf("%3d is %s\n", num, (num % 2 == 0 ? "even" : "odd"));
+void odd_even() {
+    int num;
+    printf("enter number: ");
+    scanf("%d\n", &num);
+
+    if (num % 2 == 0) printf("even\n");
+    else printf("even\n");
 }
 
 // swap values of two variables
-void swap(int a, int b) {
+void swap() {
+    int a, b;
+    printf("enter two numbers:\n");
+    scanf("%d %d", &a, &b);
+
     printf("a = %d, b = %d\n", a, b);
     int temp = a;
     a = b;
@@ -99,20 +134,21 @@ void palindrome() {
     scanf("%d", &num);
     num_copy = num;
 
-    while (num) {
+    do {
         num_reverse = (num_reverse * 10) + (num % 10);
         num /= 10;
-    }
+    } while (num);
 
-    if (num_copy == num_reverse) printf("%d is a palindrome\n", num_copy);
-    else printf("%d is not a palindrome\n", num_copy);
+    if (num_copy == num_reverse) {
+        printf("%d is a palindrome\n", num_copy);
+    } else {
+        printf("%d is not a palindrome\n", num_copy);
+    }
 }
 
 // generate fibonacci series
-void fib() {
-    int end, n1 = 0, n2 = 1, n3;
-    printf("enter end of sequence: ");
-    scanf("%d", &end);
+void fib(int end) {
+    int n1 = 0, n2 = 1, n3;
     printf("%d %d ", n1, n2);
 
     while (end) {
@@ -122,6 +158,13 @@ void fib() {
         n2 = n3;
         end--;
     }
+}
+
+void call_fib() {
+    int end;
+    printf("enter length: ");
+    scanf("%d", &end);
+    fib(end);
 }
 
 // convert binary number to decimal number
@@ -154,28 +197,43 @@ void avg() {
 }
 
 // find factorial of a number
-int factorial(int i) {
-    if (i < 2) {
-        return i;
+int fact(int i) {
+    if (i < 2) { return i; }
+    return i * fact(i - 1);
+}
+
+// find maximum of three numbers using a function
+int max(int a, int b) { return a > b ? a : b; }
+
+void max_of_3() {
+    int a, b, c;
+    printf("enter three numbers:\n");
+    scanf("%d %d %d", &a, &b, &c);
+
+    printf("max is %d\n", max(a, max(b, c)));
+}
+
+// 1D array
+void array1d() {
+    int table[3];
+    printf("enter 3 numbers:\n");
+    for (int i = 0; i < 3; i++) { scanf("%d", &table[i]); }
+
+    for (int i = 0; i < 3; i++) { printf("%d ", table[i]); }
+}
+
+// tree
+void tree() {
+    int pad;
+    for (int i = 1; i < 9; i += 2) {
+        pad = (10 - i) / 2;
+        for (int p = pad; pad; pad--) printf(" ");
+        for (int j = 0; j < i; j++) printf("*");
+        printf("\n");
     }
-    return i * factorial(i - 1);
 }
 
 int main() {
-    // simple_intrest();
-    // printf("%lf\n", get_simple_intrest(1000, 1, 1));
-    // compound_intrest();
-    // get_ascii();
-    // get_rectangle_area();
-    // get_square_area();
-    // get_circle_area();
-    // prime();
-    // for (int i = 1; i <= 10; i++) { odd_even(i); }
-    // swap(10, 12);
-    // palindrome();
-    // fib();
-    // bin_to_dec();
-    // avg();
-    // printf("factorial is %d\n", factorial(5));
+    tree();
     return 0;
 }
