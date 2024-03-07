@@ -224,16 +224,36 @@ void array1d() {
 
 // tree
 void tree() {
-    int pad;
     for (int i = 1; i < 9; i += 2) {
-        pad = (10 - i) / 2;
-        for (int p = pad; pad; pad--) printf(" ");
-        for (int j = 0; j < i; j++) printf("*");
+        for (int p = (10 - i) / 2; p; p--) printf(" ");
+        for (int l = 0; l < i; l++) printf("*");
         printf("\n");
     }
 }
 
+// read a line of text from the terminal using getchar()
+void get_s() {
+    int i = 0;
+    char str[32];
+
+    while (str[i - 1] != '\n') 
+        str[i++] = getchar();
+
+    printf("%s\n", str);
+}
+
+// copy one str into another and count the number of chars copied
+void copy_of_a() {
+    char orig[64], copy[64];
+    printf("enter a string: ");
+    scanf("%s", orig);
+
+    strcpy(copy, orig);
+    printf("copied '%s'\n", copy);
+    printf("length is %lu\n", strlen(copy));
+}
+
 int main() {
-    tree();
+    copy_of_a();
     return 0;
 }
