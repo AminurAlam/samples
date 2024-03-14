@@ -3,15 +3,17 @@ samples of codes in different languages
 
 
 # languages
+ - (40%) c
  - (80%) bash
- - ( 5%) fennel
- - (80%) fish
- - (20%) html
- - (90%) javascript
- - (60%) lua
- - (90%) python
- - (10%) rust
-
+ - [x] fish
+ - (10%) html
+ - (10%) java
+ - (05%) javascript
+ - (05%) lisp
+ - [x] lua
+ - (20%) Makefile
+ - [x] python
+ - (05%) rust
 
 # index
 - comments
