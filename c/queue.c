@@ -50,11 +50,8 @@ int main() {
         scanf("%d", &choice);
         switch (choice) {
         case 1: insert(); break;
-        case 2: delete (); break;
-        case 3:
-            f = -1;
-            r = -1;
-            break;
+        case 2: delete(); break;
+        case 3: f = -1; r = -1; break;
         case 4: printf("front: %d; back: %d\n", f, r); break;
         default: return 0; break;
         }

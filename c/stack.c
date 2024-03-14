@@ -6,13 +6,11 @@ int A[MAX], n;
 void insert(int item) {
     if (n == MAX) printf("overflow!\n");
     else A[n++] = item;
-
 }
 
 void delete() {
     if (n == 0) printf("underflow!\n");
     else n--;
-
 }
 
 int main() {
@@ -26,7 +24,8 @@ int main() {
         switch (choice) {
         case 1:
             scanf("%d", &item);
-            insert(item); break;
+            insert(item);
+            break;
         case 2: delete(); break;
         default: return 0; break;
         }
