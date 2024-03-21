@@ -8,7 +8,7 @@ void insert(int item) { stack[++n] = (char)item + 48; }
 char pop() { return stack[n--]; }
 
 void resolve_token(char token) {
-    if (TOKEN_IS_OP) { // resolve_token(pop());
+    if (TOKEN_IS_OP) {
         int b = c_i(pop()), a = c_i(pop());
 
         switch (token) {
@@ -26,9 +26,9 @@ int solve_postfix(char post[]) {
 }
 
 int main() {
-    printf("RESULT: %d\n", solve_postfix("12+3+")); // 6
-    printf("RESULT: %d\n", solve_postfix("12-3-")); // -4
-    printf("RESULT: %d\n", solve_postfix("12*3*")); // 6
-    printf("RESULT: %d\n", solve_postfix("62/")); // 3
-    printf("RESULT: %d\n", solve_postfix("231*+9-"));
+    printf("RESULT: %d\n", solve_postfix("12+3+"));   // 6
+    printf("RESULT: %d\n", solve_postfix("12-3-"));   // -4
+    printf("RESULT: %d\n", solve_postfix("12*3*"));   // 6
+    printf("RESULT: %d\n", solve_postfix("62/"));     // 3
+    printf("RESULT: %d\n", solve_postfix("231*+9-")); // -4
 }

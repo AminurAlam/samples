@@ -236,8 +236,7 @@ void get_s() {
     int i = 0;
     char str[32];
 
-    while (str[i - 1] != '\n') 
-        str[i++] = getchar();
+    while (str[i - 1] != '\n') str[i++] = getchar();
 
     printf("%s\n", str);
 }
