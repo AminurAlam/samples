@@ -1,7 +1,7 @@
 CC = cc
 OBJECT = out
 
-array main in2post postfix queue stack:
+array main in2post list postfix queue stack:
 	@${CC} -lm -o ${OBJECT} c/$@.c
 	@./${OBJECT}
 

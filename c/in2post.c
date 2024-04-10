@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define IS_OPERAND (t >= 'a' && t <= 'z') || (t >= '0' && t <= '9')
 
+// precedence
 int prec(char c) {
     if (c == '/' || c == '*') return 2;
     else if (c == '+' || c == '-') return 1;

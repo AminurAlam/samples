@@ -253,6 +253,9 @@ void copy_of_a() {
 }
 
 int main() {
-    copy_of_a();
+    int a = 0;
+    printf("a is at %x\n", &a);
+    int b = 0;
+    printf("b is at %x\n", &b);
     return 0;
 }
