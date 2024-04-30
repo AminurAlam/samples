@@ -9,9 +9,9 @@ class assignment_1 {
 
         Complex foo = new Complex(1, 2);
         Complex bar = new Complex(3, 1);
-        foo.add(bar); // foo + bar
-        foo.sub(bar); // foo - bar
-        foo.mul(bar); // foo * bar
+        foo.add(bar); // foo + bar = 4 + 3i
+        foo.sub(bar); // foo - bar = -2 + 1i
+        foo.mul(bar); // foo * bar = 3 + 2i
     }
 }
 
@@ -27,8 +27,7 @@ class CheckPrime {
 class Factorial {
     int loop(int num) {
         int sum = 1;
-        for (int i = 2; i <= num; i++) 
-            sum *= i;
+        for (int i = 2; i <= num; i++) sum *= i;
 
         return sum;
     }

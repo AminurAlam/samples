@@ -13,7 +13,8 @@ int n = 0;
 
 void add_row(char name[], int s1, int s2, int s3) {
     struct Row new;
-    table[n++] = ;
+    new.name = "lol";
+    table[n++] = new;
 }
 
 int main() {
