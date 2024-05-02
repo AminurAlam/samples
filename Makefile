@@ -5,6 +5,10 @@ array main in2post list postfix queue score stack:
 	@${CC} -lm -o ${OBJECT} c/$@.c
 	@./${OBJECT}
 
+sort:
+	@${CC} -lm -o ${OBJECT} ./c/sorting/insertion.c
+	@./${OBJECT}
+
 ja1: java/assignment_1.java
 	@echo $@
 	@java java/assignment_1.java
