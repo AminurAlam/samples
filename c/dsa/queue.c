@@ -19,7 +19,6 @@ void delete() {
         printf("removed: %d\n", A[f - 1]);
         f = -1; r = -1;
     } else printf("removed: %d\n", A[f - 1]);
-
 }
 
 void main() {

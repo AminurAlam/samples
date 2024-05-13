@@ -1,17 +1,17 @@
 class assignment_1 {
     public static void main(String[] args) {
-        CheckPrime prime = new CheckPrime();
-        System.out.println(prime.check(6) ? "prime" : "not prime");
+        // CheckPrime prime = new CheckPrime();
+        // System.out.println(prime.check(6) ? "prime" : "not prime");
 
-        Factorial factorial = new Factorial();
-        System.out.println("factorial is " + factorial.loop(5));
-        System.out.println("factorial is " + factorial.recurse(5));
+        // Factorial factorial = new Factorial();
+        // System.out.println(factorial.loop(5));
+        // System.out.println(factorial.recurse(4));
 
-        Complex foo = new Complex(1, 2);
-        Complex bar = new Complex(3, 1);
-        foo.add(bar); // foo + bar = 4 + 3i
-        foo.sub(bar); // foo - bar = -2 + 1i
-        foo.mul(bar); // foo * bar = 3 + 2i
+        // Complex foo = new Complex(12, 6);
+        // Complex bar = new Complex(4, 3);
+        // foo.add(bar).show(); // foo + bar = 16 + 9i
+        // foo.sub(bar).show(); // foo - bar = 8 + 3i
+        // foo.mul(bar).show(); // foo * bar = 30 + 60i
     }
 }
 
@@ -62,8 +62,12 @@ class Complex {
 
     Complex mul(Complex that) {
         return new Complex(
-            this.real * that.real,
-            this.imag * that.imag
+            this.real * that.real - this.imag * that.imag,
+            this.real * that.imag + this.imag * that.real
         );
+    }
+
+    void show() {
+        System.out.println(this.real + " + " + this.imag + "i");
     }
 }
