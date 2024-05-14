@@ -3,11 +3,11 @@ samples of codes in different languages
 
 
 # languages
- - (50%) c
+ - (60%) c
  - (80%) bash
  - [x] fish
  - (10%) html
- - (10%) java
+ - (20%) java
  - (05%) javascript
  - (05%) lisp
  - [x] lua
