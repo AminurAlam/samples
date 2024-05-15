@@ -24,18 +24,35 @@ def sub_search():
 
 def secure():
     passwd = input("enter password: ")
+    digit = False
     special = False
+
+    for num in range(10):
+        if str(num) in passwd:
+            digit = True
 
     for char in ["?", "!", "*"]:
         if char in passwd:
             special = True
 
     if len(passwd) < 6:
-        print("password is shorter than 6 characters")
+        print("password is too short")
+    if not digit:
+        print("password doesnt have any digits")
     if not special:
-        print("password does not contain any special characters")
+        print("password doesnt have any special characters")
+
+
+def palindrome():
+    string = input("enter a string: ")
+
+    if string == string[::-1]:
+        print(string, "is a palindrome")
+    else:
+        print(string, "is not a palindrome")
 
 
 # rev_str()
 # sub_search()
 # secure()
+# palindrome()
