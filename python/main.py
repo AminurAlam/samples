@@ -5,8 +5,6 @@ write anything here
 """
 
 
-
-
 ### printing something ###
 
 print("hello world!")
@@ -15,37 +13,31 @@ multiple lines""")
 print(f"sum of 1 and 2 is {1+2}")
 
 
-
-
 ### variables and data ###
 
 # assigning variables
-text = "string"             # string
-number = 5                  # integer
-decimal = 2.72              # folating point
+text = "string"  # string
+number = 5  # integer
+decimal = 2.72  # folating point
 
 # printing variables
-print("text, number")       # doesn't work with quotes
+print("text, number")  # doesn't work with quotes
 print(f"{text}, {number}")  # works with function string
-print(text, number)         # works without quotes
+print(text, number)  # works without quotes
 
 # list and dictionary
-items = ["string", 5, 2.72, text]   # list
-items3 = {                          # dictionary
+items = ["string", 5, 2.72, text]  # list
+items3 = {  # dictionary
     "text": "string",
     "number": 5,
     "decimal": 2.72,
     "items1": [1, "value"],
     "items2": {1: "a"},
-    "variable": text
+    "variable": text,
 }
 
 print(items[0], items[1], items[2])
-print(
-        items3['text'],
-        items3['number'],
-        items3['decimal']
-        )
+print(items3["text"], items3["number"], items3["decimal"])
 
 # some predefined variables/built-in scope
 print(f"""
@@ -54,18 +46,14 @@ print(f"""
     """)
 
 
-
-
 ### string manipulation ###
 text = "hello world, this is a line"
 print(
-    len(text),                # length -> 27
-    text[6:17],               # splicing -> "world, this"
-    text + " ! " + str(2),    # concatenating
-    sep="\n"
+    len(text),  # length -> 27
+    text[6:17],  # splicing -> "world, this"
+    text + " ! ",  # concatenating
+    sep="\n",
 )
-
-
 
 
 ### loops ###
@@ -79,8 +67,6 @@ while n < 10:
 # for loop
 for n in range(1, 11):
     print(n, end=", ")
-
-
 
 
 ### statements ###
@@ -102,19 +88,19 @@ except Exception as error:
     print(error)
 
 
-
-
 ### function ###
 
-# defining function
 
+# defining function
 def findLength(data):
     print(f"'{data}' is {len(data)} characters long")
+
 
 def add(num1, num2):
     result = num1 + num2
     print(f"sum of {num1} and {num2} is {result}")
     return result
+
 
 # calling function
 findLength("river")
@@ -127,23 +113,25 @@ func = lambda num: num + 5
 
 func(7)
 
+
 # args/kwargs
 def foo(*args):
-    # prints a tuple with all argumets
-    print(args)
+    print(args)  # prints a tuple with all argumets
+
 
 foo(1, 2, "three")  # (1, 2, "three")
 
 
 def bar(**kwargs):
-    # prints dict with variables as key
-    print(kwargs)
+    print(kwargs)  # prints dict with variables as key
+
 
 bar(a="one", b="two")  # {"a": "one", "b": "two"}
 
 
 def foo2(a, b):
     return a + b
+
 
 tab = [5, 7]
 foo2(*tab)
@@ -152,10 +140,9 @@ foo2(*tab)
 def bar2(a, b):
     return a + b
 
+
 obj = {"a": 5, "b": 7}
 bar2(**obj)
-
-
 
 
 ### cryptography ###

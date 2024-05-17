@@ -8,6 +8,7 @@ def check_max():
     else:
         print(b, "is bigger")
 
+
 def odd_or_even():
     print("\n### check if given number is odd or even")
     num = int(input("enter a number: "))
@@ -17,6 +18,7 @@ def odd_or_even():
     else:
         print(num, "is odd")
 
+
 def find_sum():
     print("\n### find sum of digits of a number")
     num = int(input("enter a number: "))
@@ -24,9 +26,10 @@ def find_sum():
 
     while num:
         sum += num % 10
-        num = num//10
+        num = num // 10
 
     print("sum is:", sum)
+
 
 def check_palindrome():
     print("\n### check if a number is palindrome or not")
@@ -43,11 +46,12 @@ def check_palindrome():
     else:
         print(cpy, "is a NOT palindrome")
 
+
 def star_tree():
     print("\n### print a star tree")
     num = int(input("enter a number: "))
 
-    for i in range(num+1):
+    for i in range(num + 1):
         print("*" * i)
 
 

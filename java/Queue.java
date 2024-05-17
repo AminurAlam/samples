@@ -1,40 +1,42 @@
 class Queue {
-    int n = 0; int[] array = new int[5];
+    int[] array = new int[5];
     int front = -1, rear = -1;
 
     void display() {
-        for (int i = 0; i < n; i++)
+        for (int i = front; i <= rear; i++)
             System.out.printf("%d ", array[i]);
     }
 
-    void push(int item) {
+    void enque(int item) {
         if (rear == 4) {
             System.out.println("overflow!");
             return;
         }
 
-        if (front == -1) front = 0;
-        array[n++] = item;
+        if (front == -1) front++;
+        array[++rear] = item;
     }
 
-    int remove() {
+    void remove() {
         if (front == -1) {
             System.out.println("underflow!");
-            return 0;
+            return;
         }
         if (front >= rear) {
             front = -1;
             rear = -1;
         } else front++;
-        return array[n--];
     }
 
     public static void main(String[] args) {
-        Stack stack = new Stack();
-        stack.push(2);
-        stack.push(3);
-        stack.pop();
-        stack.push(4);
-        stack.display();
+        Queue queue = new Queue();
+        queue.enque(2);
+        queue.enque(3);
+        queue.enque(4);
+        queue.enque(5);
+        queue.enque(6);
+        queue.enque(0);
+        //queue.remove();
+        queue.display();
     }
 }

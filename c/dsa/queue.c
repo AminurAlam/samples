@@ -8,8 +8,8 @@ void insert() {
     else {
         printf("insert: ");
         scanf("%d", &item);
-        A[++r] = item;
         if (f == -1) f++;
+        A[++r] = item;
     }
 }
 
