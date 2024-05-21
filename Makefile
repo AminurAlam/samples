@@ -1,27 +1,35 @@
 CC = cc
 OBJECT = out
 
-main in2post postfix_parser score:
-	@${CC} -lm -o ${OBJECT} c/$@.c
-	@./${OBJECT}
-
-list queue stack:
-	@${CC} -lm -o ${OBJECT} c/dsa/$@.c
-	@./${OBJECT}
-
-insertion:
-	@${CC} -lm -o ${OBJECT} c/sort/$@.c
-	@./${OBJECT}
-
-ja1: java/assignment_1.java
-	@echo $@
-	@java java/assignment_1.java
-
-ja2: java/assignment_2.java
-	@java java/assignment_2.java
-
 test:
 	@echo ${SHELL}
 
 clean:
-	rm c/${OBJECT}
+	@rm ${OBJECT} c/${OBJECT}
+
+### misc
+ja1 ja2 ja3 Stack Queue: java/
+	@java java/$@.java
+
+pya1 pya2 pya3 pya4 pya5 pya6: python/
+	@python python/$@.py
+
+rust: rust/main.rs
+	@rustc -o ${OBJECT} rust/main.rs
+
+### c
+main in2post postfix_parser score: c/
+	@${CC} -lm -o ${OBJECT} c/$@.c
+	@./${OBJECT}
+
+list queue stack: c/dsa/
+	@${CC} -lm -o ${OBJECT} c/dsa/$@.c
+	@./${OBJECT}
+
+binary linear sequential: c/search/
+	@${CC} -lm -o ${OBJECT} c/search/$@.c
+	@./${OBJECT}
+
+bubble insertion selection: c/sort/
+	@${CC} -lm -o ${OBJECT} c/sort/$@.c
+	@./${OBJECT}

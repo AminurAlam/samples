@@ -15,13 +15,10 @@ void insert() {
 
 void delete() {
     if (f == -1) printf("underflow!\n");
-    else if (r == f++) {
-        printf("removed: %d\n", A[f - 1]);
-        f = -1; r = -1;
-    } else printf("removed: %d\n", A[f - 1]);
+    else if (r == f++) { f = -1; r = -1; }
 }
 
-void main() {
+int main() {
     printf("1: insert; 2: delete; *: exit\n");
 
     while (1) {
@@ -29,8 +26,9 @@ void main() {
         scanf("%d", &choice);
         switch (choice) {
         case 1: insert(); break;
-        case 2: delete(); break;
-        default: return; break;
+        case 2: delete (); break;
+        default: return 0; break;
         }
+        for (int i = f; i <= r; i++) printf("%d, ", A[i]);
     }
 }
