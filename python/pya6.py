@@ -1,5 +1,6 @@
 class Queue:
-    items = []
+    def __init__(self, items = []):
+        self.items = items
 
     def insert(self, item):
         self.items.append(item)
