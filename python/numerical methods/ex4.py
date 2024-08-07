@@ -62,4 +62,4 @@ y = [1, 2, 5, 10]
 x_interp = 1.5
 
 y_interp = newton_fwd(x, y, x_interp)
-print(y_interp) # 4.75
+print(y_interp)  # 4.75

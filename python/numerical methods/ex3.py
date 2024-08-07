@@ -1,15 +1,12 @@
-import math
-
-
-def abs_error_add(x, dx, y, dy):
+def abs_err_add(dx, dy):
     return dx + dy
 
 
-def rel_error_mul(x, dx, y, dy):
+def rel_err_mul(x, dx, y, dy):
     return (dx / x) + (dy / y)
 
 
-def rel_error_pow(x, dx, n):
+def rel_err_pow(x, dx, n):
     return n * (dx / x)
 
 
@@ -22,15 +19,15 @@ n = 3
 
 # add
 z_add = x + y
-dz_add = abs_error_add(x, dx, y, dy)
+dz_add = abs_err_add(dx, dy)
 print(f"addition: z = {z_add} ± {dz_add}")
 
 # mul
 z_mul = x * y
-dz_mul = z_mul * rel_error_mul(x, dx, y, dy)
+dz_mul = z_mul * rel_err_mul(x, dx, y, dy)
 print(f"multiplication: z = {z_mul} ± {dz_mul}")
 
 # power
-z_pow = x ** y
-dz_pow = z_pow * rel_error_pow(x, dx, n)
+z_pow = x**y
+dz_pow = z_pow * rel_err_pow(x, dx, n)
 print(f"power: z = {z_pow} ± {dz_pow}")
