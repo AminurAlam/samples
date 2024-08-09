@@ -33,3 +33,7 @@ binary linear sequential: c/search/
 bubble insertion selection: c/sort/
 	@${CC} -lm -o ${OBJECT} c/sort/$@.c
 	@./${OBJECT}
+
+fifo:
+	@${CC} -lm -o ${OBJECT} c/scheduling/$@.c
+	@./${OBJECT}
