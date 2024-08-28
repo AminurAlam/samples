@@ -34,6 +34,6 @@ bubble insertion selection: c/sort/
 	@${CC} -lm -o ${OBJECT} c/sort/$@.c
 	@./${OBJECT}
 
-fifo:
+fifo sjf rr: c/scheduling/
 	@${CC} -lm -o ${OBJECT} c/scheduling/$@.c
 	@./${OBJECT}
