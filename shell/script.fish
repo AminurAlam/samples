@@ -17,18 +17,18 @@ echo "sum of 1 and 2 is $(math 1 + 2)"
 ### variables
 
 # assigning variables
-set -l TEXT "string"
+set -l TEXT string
 set -l NUMBER 5
 set -l ARRAY first 73 last
 
 # printing variables
-echo $TEXT $NUMBER         # works without quotes
-echo "$TEXT $NUMBER"       # works with double quotes
-echo '$TEXT $NUMBER'       # doesn't work with single quotes
+echo $TEXT $NUMBER # works without quotes
+echo "$TEXT $NUMBER" # works with double quotes
+echo '$TEXT $NUMBER' # doesn't work with single quotes
 echo "
-    $ARRAY[1]
-    $ARRAY[2]
-    $ARRAY[3]
+$ARRAY[1]
+$ARRAY[2]
+$ARRAY[3]
 "
 
 # concatenating variables
@@ -36,17 +36,17 @@ set -l NUM1 5
 set -l NUM2 7
 set -l STR "example text"
 
-echo $NUM1 + $NUM2         # adding two numbers doesn't work
-math $NUM1 + $NUM2         # adding two numbers works now
+echo $NUM1 + $NUM2 # adding two numbers doesn't work
+math $NUM1 + $NUM2 # adding two numbers works now
 
-math $STR + $NUM1          # joining str and num doesn't work
-echo "$STR$NUM1"           # joining str and num works now
+math $STR + $NUM1 # joining str and num doesn't work
+echo "$STR$NUM1" # joining str and num works now
 
 # some predefined variables in fish
 echo "
-    user  : $USER
-    shell : $SHELL
-    home  : $HOME
+user  : $USER
+shell : $SHELL
+home  : $HOME
 "
 
 # unsetting variables
@@ -55,13 +55,13 @@ set -e NUMBER
 
 
 ### arrays
-set -l LIST 10 "green" $TEXT  # creating
-set -l LIST[4] "cookie"       # adding item
-echo $LIST[4]                 # accessing item
-set -e LIST[4]                # removing item
+set -l LIST 10 green $TEXT # creating
+set -l LIST[4] cookie # adding item
+echo $LIST[4] # accessing item
+set -e LIST[4] # removing item
 
 
-### arithematic operations
+### arithematic operations using math command
 # +      for addition
 # -      for subtraction
 # * or x for multiplication. * is the glob character and needs to
@@ -75,7 +75,7 @@ set -e LIST[4]                # removing item
 # They are all used in an infix manner - 5 + 2, not + 5 2.
 
 
-###loops and stuff
+### test conditions inside [ ]
 #    -lt    less than
 #    -le    less than or equal
 #    -eq    equal
@@ -85,10 +85,11 @@ set -e LIST[4]                # removing item
 #    -a     and operator
 #    -o     or operator
 
+### loops and branching
 
 # while loop
-set -p NUM 1
-while [ $NUM -le 10 ]
+set NUM 1
+while [ "$NUM" -le 10 ]
     set NUM (math $NUM + 1)
 end
 
@@ -102,16 +103,16 @@ for name in a b c
 end
 
 for file in *
-    touch "$file"
+    echo "$file"
 end
 
 # if statement
 if [ $CONDITION ]
-    echo "true"
+    echo true
 else if [ ! $CONDITION ]
-    echo "false"
+    echo false
 else
-    echo "maybe"
+    echo maybe
 end
 
 # switch case
@@ -126,7 +127,7 @@ switch "$COLOR"
     case green
         echo "you picked green"
     case '*'
-        echo "unrecognized"
+        echo unrecognized
 end
 
 
@@ -134,15 +135,15 @@ end
 
 # defining function
 function length
-    echo "$argv is $( string length "$argv" ) characters long"
+    echo $argv is (string length "$argv") characters long
 end
 
 function add
-    echo "sum of $argv[1] and $argv[2] is $(math 1 + 2)"
+    echo sum of $argv[1] and $argv[2] is (math 1 + 2)
 end
 
 # calling function
-length "river"
+length river
 add 5 7
 
 # deleting function

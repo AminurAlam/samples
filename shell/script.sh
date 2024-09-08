@@ -1,82 +1,65 @@
 #!/usr/bin/env bash
 
-#single line comment
+# single line comment
 
-: << 'COMMENT'
+: <<EOF
     multiline comment
     write anything here
-COMMENT
+EOF
 
-
-
-
-###printing something to terminal
-#
-#    -n    do not output the trailing newline
-#    -e    enable interpretation of backslash escapes
-#    -E    disable interpretation of backslash escapes (default)
+### printing something to terminal
 
 echo "hello world!"
 echo "i'm printing
 multiple lines"
-echo "sum of 1 and 2 is $((1+2))"
+echo "sum of 1 and 2 is $((1 + 2))"
 
+### variables
 
-
-
-###variables
-
-#assigning variables
+# assigning variables
 TEXT="string"
 NUMBER=5
+ARRAY=(foo bar baz)
 
-#printing variables
-echo $TEXT $NUMBER         # works without quotes
-echo "$TEXT $NUMBER"       # works with double quotes
-echo '$TEXT $NUMBER'       # doesn't work with single quotes
+# printing variables
+echo $TEXT $NUMBER   # works without quotes
+echo "$TEXT $NUMBER" # works with double quotes
+echo '$TEXT $NUMBER' # doesn't work with single quotes
 echo "
-    ${ARRAY[0]}
-    ${ARRAY[1]}
-    ${ARRAY[2]}
-    "
+${ARRAY[0]}
+${ARRAY[1]}
+${ARRAY[2]}
+"
 
-#concatenating variables
+# concatenating variables
 NUM1=5
 NUM2=7
 STR="example text"
 
-echo $NUM1+$NUM2           # adding two numbers doesn't work
-echo $((NUM1+NUM2))        # adding two numbers works now
+echo $NUM1+$NUM2      # adding two numbers doesn't work
+echo $((NUM1 + NUM2)) # adding two numbers works now
+echo $((STR + NUM1))  # concatenating str doesn't work
+echo "$STR$NUM1"      # concatenating str works now
 
-echo $((STR+NUM1))         # joining str and num doesn't work
-echo "$STR$NUM1"           # joining str and num works now
-
-#some predefined variables in bash
+# some predefined variables in bash
 echo "
-    user     : $USER
-    shell    : $SHELL
-    bash ver : $BASH_VERSION
-    home dir : $HOME
-    "
+user     : $USER
+shell    : $SHELL
+bash ver : $BASH_VERSION
+home dir : $HOME
+"
 
-#unsetting variables
+# unsetting variables
 unset -v TEXT NUMBER
-
-
-
 
 ### arrays
 
-LIST=(10  "green" $TEXT)    # creating
-LIST[4]="cookie"            # adding item
-echo ${LIST[4]}             # accessing item
-unset -v LIST[4]            # removing item
+LIST=(10 "green" "$TEXT") # defining array
+LIST[4]="cookie"          # inserting item
+echo "${LIST[4]}"         #indexing array
+unset -v "LIST[4]"        # removing item
 
-
-
-
-###arithematic operations
-#
+### arithematic operations inside $(())
 #    id++, id--          variable post-increment, post-decrement
 #    ++id, --id          variable pre-increment, pre-decrement
 #    -, +                unary minus, plus
@@ -84,12 +67,8 @@ unset -v LIST[4]            # removing item
 #    **                  exponentiation
 #    *, /, %             multiplication, division, remainder
 #    +, -                addition, subtraction
-#    <<, >>              left and right bitwise shifts
 #    <=, >=, <, >        comparison
 #    ==, !=              equality, inequality
-#    &                   bitwise AND
-#    ^                   bitwise XOR
-#    |                   bitwise OR
 #    &&                  logical AND
 #    ||                  logical OR
 #    expr ? expr : expr  conditional operator
@@ -97,11 +76,7 @@ unset -v LIST[4]            # removing item
 #    +=, -=, <<=,
 #    >>=, &=, ^=, |=     assignment
 
-
-
-
-###loops and stuff
-#
+### test conditions inside [ ]
 #    -lt    less than
 #    -le    less than or equal
 #    -eq    equal
@@ -110,97 +85,90 @@ unset -v LIST[4]            # removing item
 #    -ne    not equal
 #    -a     and operator
 #    -o     or operator
-#    {strting..ending..steps}
 
+### loops and branching
 
-#while loop
+# while loop
 
 NUM=1
-while [ $NUM -le 10 ] ; do
+while [ $NUM -le 10 ]; do
     ((++NUM))
 done
 
-
-#until loop
+# until loop
 
 NUM=1
-until [ $NUM -gt 10 ] ; do
+until [ $NUM -gt 10 ]; do
     ((++NUM))
 done
 
+# for loop
 
-#for loop
-
-for NUM in {1..10} ; do
+for NUM in {1..10}; do
     echo -n
 done
 
-for (( NUM=1 ; NUM<10 ; ++NUM )) ; do
+for ((NUM = 1; NUM < 10; ++NUM)); do
     echo -n
 done
 
-for name in a b c ; do
+for name in a b c; do
     echo -n "$name, "
 done
 
-for file in * ; do
+for file in *; do
     touch "$file"
 done
 
+# if statement
 
-#if statement
-
-if [ $CONDITION=true ] ; then
+if [ "$CONDITION" = true ]; then
     echo -n
-elif [ $CONDITION=false ] ; then
+elif [ "$CONDITION" = false ]; then
     echo -n
 else
     echo -n
 fi
 
-#select
+# select
 
 echo -e "\n\nselect one of the following:"
 
-select name in red blue green ; do
+select name in red blue green; do
     echo -e "you selected $name \n"
     break
 done
 
+# match case is too complicated :(
 
+### function
 
-
-###function
-
-#defining function
+# defining function
 
 function length() {
     echo -e "'$1' is ${#1} characters long"
 }
 
 function add() {
-    let "RESULT=$1+$2"
+    ((RESULT = $1 + $2))
     echo -e "sum of $1 and $2 is $RESULT"
 }
 
-#calling function
+# calling function
 length "river"
 add 5 7
 
-#deleting function
+# deleting function
 unset -f length
 unset -f add
 
+### file handling
 
+touch chat.txt        #creating a file
+cp chat.txt chat2.txt #copying a file
+mv chat.txt chat2.txt #moving a file
+rm chat2.txt          #deleting a file
 
-
-###file handling
-
-touch chat.txt                    #creating a file
-cp chat.txt chat2.txt             #copying a file
-mv chat.txt chat2.txt             #moving a file
-rm chat2.txt                      #deleting a file
-
-echo "how are you?" > chat.txt    #inserting text
-echo "im good" >> chat.txt        #appending text
-cat chat.txt                      #printing file's content
+echo "how are you?" >chat.txt #inserting text
+echo "im good" >>chat.txt     #appending text
+cat chat.txt                  #printing file's content
