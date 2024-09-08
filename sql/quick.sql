@@ -1,7 +1,7 @@
--- sqlplus/nolog
--- connect bca24/bca24@172.16.36.101:1521/orcl
--- set lines 180
--- set pages 100
+/* vim:set ft=sqloracle cms=/*\ %s\ \*\/: */
+connect bca24/bca24@172.16.36.101:1521/orcl
+set lines 180
+set pages 100
 
 select table_name from user_tables order by table_name;
 create table stud (roll int, sname varchar(20));
