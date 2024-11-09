@@ -1,9 +1,10 @@
-# adds two fixed point numbers
+### Fixed and Floating Point Arithmetic
+
+
 def fixed_point_add(x, y):
     return (x + y) / scale
 
 
-# multiplies two fixed point numbers
 def fixed_point_mul(x, y):
     return (x * y) / (scale * scale)
 
