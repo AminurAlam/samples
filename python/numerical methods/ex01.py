@@ -16,3 +16,13 @@ y = round(x, 2)
 
 print("actual result:", x)
 print("approx result (truncated):", y)
+
+
+###
+
+
+print(f"given result: {0.1+0.2}")
+print(f"correct result: {round(0.1+0.2, 1)}")
+
+print(f"correct result: {0.123456}")
+print(f"given result: {round(0.123456)}")

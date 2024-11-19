@@ -26,3 +26,17 @@ result_mul = x * y
 
 print(result_add)  # 2.0
 print(result_mul)  # 0.9375
+
+###
+
+x = 1.25
+y = 0.75
+scale = 10**2
+
+# FIXED POINT
+print((x * scale + y * scale) / scale)  # 2.0
+print((x * scale * y * scale) / (scale * scale))  # 0.9375
+
+# FLOATING POINT
+print(x + y)  # 2.0
+print(x * y)  # 0.9375
