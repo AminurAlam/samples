@@ -12,6 +12,8 @@
   - (20%) html
   - (20%) java
   - (10%) javascript
+  - (05%) kotlin
+  - (10%) latex
   - (05%) lisp
   - [x] lua
   - (40%) make
