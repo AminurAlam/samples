@@ -67,17 +67,17 @@ def fwd(x, y, x_interp):
     delta[:, 0] = y
 
     # print(delta)
-    for j in range(1, n): # 1..2
-        for i in range(n-j): # 0..
-            print(i,j)
-            delta[i, j] = delta[i + 1, j-1] - delta[i, j-1]
+    for j in range(1, n):  # 1..2
+        for i in range(n - j):  # 0..
+            print(i, j)
+            delta[i, j] = delta[i + 1, j - 1] - delta[i, j - 1]
 
         print(delta)
 
     term = 1
     result = delta[0, 0]
 
-    for i in range(1,n):
+    for i in range(1, n):
         term *= p / i
         result += term * delta[0, i]
 

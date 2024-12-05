@@ -1,3 +1,5 @@
+### Gauss Elimination Method
+
 import numpy as np
 
 n = int(input("Enter number of unknowns: "))

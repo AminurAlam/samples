@@ -1,3 +1,5 @@
+### Runge Kutta Method
+
 import numpy as np
 
 
@@ -12,7 +14,7 @@ def runge_kutta_4th_order(t0, P0, h, n, r):
         k2 = h * (P[i] + k1 / 2) * r
         k3 = h * (P[i] + k2 / 2) * r
         k4 = h * (P[i] + k3) * r
-        P[i + 1] = P[i] + (1/6) * (k1 + 2*k2 + 2*k3 + k4)
+        P[i + 1] = P[i] + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4)
         t[i + 1] = t[i] + h
 
     return t, P
