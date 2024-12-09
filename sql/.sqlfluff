@@ -2,7 +2,7 @@
 dialect = snowflake
 max_line_length = 0
 large_file_skip_byte_limit = 0
-exclude_rules = AL05, AM04, LT02, CP01, RF04
+exclude_rules = AL05, AM04, LT02, CP01, RF04, LT09
 
 [sqlfluff:indentation]
 tab_space_size = 4

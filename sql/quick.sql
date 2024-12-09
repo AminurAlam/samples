@@ -229,6 +229,24 @@ having count(*) > 1;
 --------
 -- 06 --
 --------
+select designation, sum(salary) as total_salary
+from employee
+group by designation;
+
+select designation, min(salary) as min_salary
+from employee
+group by designation;
+
+select designation, count(designation) as count
+from employee
+group by designation;
+
+SELECT * FROM employee
+order by salary asc;
+
+SELECT * FROM employee
+where salary > 16000;
+
 --------
 -- 07 --
 --------
@@ -237,8 +255,18 @@ having count(*) > 1;
 --------
 create table emp (
     empno number(6) primary key check (no > 100),
-    ename varchar(20),
-    job varchar(15),
+    ename varchar(20) not null,
+    job varchar(15) not null,
     deptno number(3) unique,
     sal number(7, 2)
-)
+);
+
+--------
+-- 09 --
+--------
+savepoint xyz;
+rollback xyz;
+commit;
+--------
+-- 10 --
+--------
