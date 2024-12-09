@@ -1,8 +1,8 @@
 -- vim:set ft=sqloracle cms=--\ %s:
 
--- connect bca24/bca24@172.16.36.101:1521/orcl
--- set lines 180
--- set pages 100
+-- connect bca25/bca24@172.16.36.101:1521/orcl
+-- set lines 181
+-- set pages 101
 -- select table_name from user_tables order by table_name;
 
 -- e_no, e_name, e_address, e_ph_no, dept_no, dept_name, job_id, salary,
@@ -104,7 +104,7 @@ where dept_no = 10
 select * from employee
 where e_name like 'S%';
 
-select substr(e_name, 1, 5) from employee
+select e_name, substr(e_name, 1, 5) as substr from employee
 where e_name like 'H%';
 
 select * from employee
@@ -140,7 +140,6 @@ select dept_no from dept;
 select dept_no from employee
 minus
 select dept_no from dept;
-
 select dept_no from dept
 minus
 select dept_no from employee;
@@ -152,45 +151,80 @@ drop table sailors;
 drop table boats;
 drop table reserves;
 
-create table sailors (sid int primary key, sname varchar(5), rating int, age int);
-insert into sailors values (1, 'aria', 5, 20);
-insert into sailors values (2, 'bob', 4, 18);
-insert into sailors values (3, 'cat', 2, 16);
-insert into sailors values (4, 'dave', 5, 24);
+create table sailors (sid int primary key, sname varchar(20), rating int, age number);
+insert into sailors values (22, 'Dustin', 7, 45);
+insert into sailors values (29, 'Brutus', 1, 33);
+insert into sailors values (31, 'Lubber', 8, 55.5);
+insert into sailors values (32, 'Andy', 8, 25.5);
+insert into sailors values (58, 'Rusty', 10, 35);
+insert into sailors values (64, 'Horatio', 7, 35);
+insert into sailors values (71, 'Zorba', 10, 16);
+insert into sailors values (74, 'Horatio', 9, 40);
+insert into sailors values (85, 'Art', 3, 25.5);
+insert into sailors values (95, 'Bob', 3, 63.5);
 
 create table reserves (sid int, bid int, day date);
-insert into reserves values (1, 101, to_date('1-Jan-00'));
-insert into reserves values (1, 102, to_date('1-Jan-00'));
-insert into reserves values (2, 101, to_date('2-Jan-00'));
-insert into reserves values (3, 102, to_date('2-Jan-00'));
+insert into reserves values (22, 101, to_date('10-Oct-98'));
+insert into reserves values (22, 102, to_date('10-Oct-98'));
+insert into reserves values (22, 103, to_date('08-Oct-98'));
+insert into reserves values (22, 104, to_date('07-Oct-98'));
+insert into reserves values (31, 102, to_date('10-Nov-98'));
+insert into reserves values (31, 103, to_date('06-Nov-98'));
+insert into reserves values (31, 104, to_date('12-Nov-98'));
+insert into reserves values (64, 101, to_date('05-Sep-98'));
+insert into reserves values (64, 102, to_date('08-Sep-98'));
+insert into reserves values (74, 103, to_date('08-Sep-98'));
 
-create table boats (bid int primary key, bname varchar(5), color varchar(3));
-insert into boats values (101, 'ss a', 'wht');
-insert into boats values (102, 'ss b', 'red');
+create table boats (bid int primary key, bname varchar(19), color varchar(10));
+insert into boats values (101, 'Interlake', 'blue');
+insert into boats values (102, 'Interlake', 'red');
+insert into boats values (103, 'Clipper', 'green');
+insert into boats values (104, 'Marine', 'red');
 ---
-select s.* from sailors s, reserves r, boats b
+select s.* from sailors s, reserves r
 where s.sid = r.sid
   and r.bid = 101;
 
 select b.bname from sailors s, reserves r, boats b
 where s.sid = r.sid
   and b.bid = r.bid
-  and s.sname = 'bob';
+  and s.sname = 'Bob';
 
-select s.sname, s.age from sailors s, reserves r, boats b
+select s.sname, s.age
+from sailors s, reserves r, boats b
 where s.sid = r.sid
   and b.bid = r.bid
   and b.color = 'red'
 order by s.age asc;
 
-select s.sname from sailors s, reserves r
-where s.sid = r.sid
-group by r.bid;
+select distinct s.sname
+from sailors s, reserves r
+where s.sid = r.sid;
 
-select unique s.sname from sailors s, reserves r, boats b
+select distinct s.sid, s.sname
+from sailors s, reserves r1, reserves r2
+where s.sid = r1.sid
+  and s.sid = r2.sid
+  and r1.day = r2.day
+  and r1.bid != r2.bid;
+
+select distinct s.sname
+from sailors s, boats b, reserves r
 where s.sid = r.sid
-  and b.bid = r.bid
-  and r.day = r.day;
+  and r.bid = b.bid
+  and (b.color = 'red' or b.color = 'green');
+
+select sname, age from sailors
+where age = (select min(s.age) from sailors s);
+
+select count(sname) from sailors;
+
+select rating, avg(age) from sailors
+group by rating;
+
+select rating, avg(age) from sailors
+group by rating
+having count(*) > 1;
 
 --------
 -- 06 --
