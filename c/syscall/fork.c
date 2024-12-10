@@ -1,17 +1,14 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <sys/types.h>
 
-int main(void) {
+int main() {
     printf("before\n");
     pid_t p = fork();
 
     if (p == 0) {
-        printf("parent pid is %d\n", getpid());
+        printf("clild pid is %d\n", getpid());
+        printf("clild's parent pid is %d\n", getppid());
     } else {
-        printf("child pid is %d\n", getpid());
-        printf("child ppid is %d\n", getppid());
+        printf("parent pid is %d\n", getpid());
     }
-
-    return 0;
 }
