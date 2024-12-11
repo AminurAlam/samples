@@ -14,3 +14,12 @@ rust/target/
 rust/target/*
 rust/Cargo.lock
 rust/Cargo.toml
+
+latex/attachments/
+latex/*.aux
+latex/*.toc
+latex/*.fdb_latexmk
+latex/*.fls
+latex/*.log
+latex/*.pdf
+latex/*.synctex.gz
