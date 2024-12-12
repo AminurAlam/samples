@@ -1,11 +1,9 @@
 -- vim:set ft=sqloracle cms=--\ %s:
 
--- connect bca25/bca24@172.16.36.101:1521/orcl
+-- connect bca24/bca24@172.16.36.101:1521/orcl
 -- set lines 181
 -- set pages 101
 -- select table_name from user_tables order by table_name;
-
--- e_no, e_name, e_address, e_ph_no, dept_no, dept_name, job_id, salary,
 
 --------
 -- 01 --
@@ -260,12 +258,20 @@ create table emp (
     deptno number(3) unique,
     sal number(7, 2)
 );
+-- alter table emp modify empno number(6) check (no > 100);
+-- alter table emp modify deptno number(3) unique;
+-- alter table emp modify empno number(6) primary key;
 
 --------
 -- 09 --
 --------
-savepoint xyz;
-rollback xyz;
+SELECT 'hello' FROM dual;
+savepoint a;
+SELECT 'world' FROM dual;
+savepoint b;
+
+rollback b;
+
 commit;
 --------
 -- 10 --
