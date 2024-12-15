@@ -3,33 +3,10 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsthm,amssymb,scrextend}
 \usepackage{fancyhdr}
-
-% \pagestyle{fancy}
-% \renewcommand{\familydefault}{Sans Serif Font Family}
+\usepackage{./extracommands}
 
 \begin{document}
-\begin{titlepage}
-    \centering
-    \vspace*{2\baselineskip}
-    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
-    \rule{\textwidth}{0.4pt}\\[\baselineskip]
-        {\huge ENVIRONMENTAL STUDIES \\[0.6\baselineskip] ASSIGNMENT}\\[0.3\baselineskip]
-    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
-    \rule{\textwidth}{1.6pt}\\[\baselineskip]
-    \scshape
-    \vspace*{19\baselineskip}
-    \raggedright
-    Submitted by: {\Large AMINUR ALAM\par}
-    Roll No: {\Large roll\par}
-    Semester: {\Large $n^{th}$\par}
-    Department: {\Large dept\par}
-    Course: {\Large course\par}
-    \vfill
-    \centering
-    \rule{\textwidth}{0.4pt}\\[\baselineskip]
-    institution
-\end{titlepage}
-\restoregeometry
+\generatetitlepage{ENVIRONMENTAL STUDIES \\[0.6\baselineskip] ASSIGNMENT}{AMINUR ALAM}{123}{$n^{th}$}{}{}{}
 
 \lhead{}
 \chead{}
