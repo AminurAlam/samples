@@ -1,3 +1,5 @@
+\usepackage{graphicx}
+
 \newcommand{\generatetitlepage}[7]{
     \begin{titlepage}
         \centering
@@ -20,11 +22,19 @@
         #7 \the\year{}-\the\numexpr \the\year + 1 \relax
     \end{titlepage}
 }
+
 \newcommand{\codequest}[2]{
     {\Large \raggedleft #1}
     \texttt {\lstinputlisting{#2}}
 }
+
 \newcommand{\gloss}[3]{
     \textbf{#1}: #2 \\
     \indent\indent \verb*|#3 \\
+}
+
+\newcommand{\shot}[2]{
+    \begin{center}
+        \fbox{\includegraphics[totalheight=#2]{attachments/#1}}
+    \end{center}
 }
