@@ -1,7 +1,5 @@
 ### Truncation and Rounding error
 
-import numpy as np
-
 print(f"given result: {0.1+0.2}")
 print(f"correct result: {round(0.1+0.2, 1)}")
 

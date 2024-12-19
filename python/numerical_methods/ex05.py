@@ -1,50 +1,45 @@
 ### Lagranges and Newton’s Divided difference Interpolation
 import numpy as np
 
+matrix = list[int]
 
-def lagrange_interp(x_data, y_data, x_interp):
-    n = len(x_data)
-    y_interp = 0
+
+def lagrange(x: matrix, y: matrix, x_int: int | float):
+    n = len(x)
+    y_int: int | float = 0
 
     for i in range(n):
-        l_i = 1
+        l: float = 1
         for j in range(n):
             if i != j:
-                l_i *= (x_interp - x_data[j]) / (x_data[i] - x_data[j])
-        y_interp += y_data[i] * l_i
+                l *= (x_int - x[j]) / (x[i] - x[j])
+        y_int += y[i] * l
 
-    return y_interp
-
-
-def div_diff(x_data, y_data):
-    n = len(x_data)
-    dd = np.zeros((n, n))
-    dd[:, 0] = y_data
-
-    for i in range(1, n):
-        for j in range(n - i):
-            dd[j, i] = (dd[j + 1, i - 1] - dd[j, i - 1]) / (x_data[j + i] - x_data[j])
-
-    return dd
+    return y_int
 
 
-def newton_interp(x_data, y_data, x_interp):
-    n = len(x_data)
-    dd = div_diff(x_data, y_data)
-    y_interp = dd[0, 0]
-    product = 1
+def newton(x: matrix, y: matrix, x_int: int | float):
+    n = len(x)
+    delta = np.zeros((n, n))
+    delta[:, 0] = y
+
+    for j in range(1, n):
+        for i in range(n - j):
+            delta[i, j] = (delta[i + 1, j - 1] - delta[i, j - 1]) / (x[i + j] - x[i])
+
+    term: int | float = 1
+    y_int: int | float = delta[0, 0]
 
     for i in range(1, n):
-        product *= x_interp - x_data[i - 1]
-        y_interp += product * dd[0, i]
+        term *= x_int - x[i - 1]
+        y_int += term * delta[0, i]
 
-    return y_interp
+    return y_int
 
 
-x_data = np.array([1, 2, 3, 4])
-y_data = np.array([1, 4, 9, 16])
-x_interp = 2.5
-lagrange_result = lagrange_interp(x_data, y_data, x_interp)
-newton_result = newton_interp(x_data, y_data, x_interp)
-print("Lagrange interpolation result:", lagrange_result)
-print("Newton's divided difference interpolation result:", newton_result)
+x = [1, 2, 3, 4]
+y = [1, 4, 9, 16]
+x_int: float = 2.5
+
+print(f"lagrange {lagrange(x, y, x_int)}")
+print(f"Newton {newton(x, y, x_int)}")

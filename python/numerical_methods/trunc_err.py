@@ -6,8 +6,8 @@ x = 0
 X = []
 N = []
 
-for i in range(1, n+1):
-    x = x + (1/n)
+for i in range(1, n + 1):
+    x = x + (1 / n)
     item = float(x)
     item2 = float(n)
 
@@ -15,8 +15,8 @@ for i in range(1, n+1):
     N.append(item2)
 
 plot.figure()
-plot.plot(N, X, marker='.')
-plot.xlabel('N')
-plot.xlabel('X')
+plot.plot(N, X, marker=".")
+plot.xlabel("N")
+plot.xlabel("X")
 plot.grid()
 plot.show()

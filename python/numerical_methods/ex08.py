@@ -2,11 +2,6 @@
 
 import math
 
-x0 = 0
-x = 1
-approx = 1
-
-for n in range(1, 6):
-    approx += (math.exp(x0) / math.factorial(n)) * (x - x0) ** n
-
-print(f"e¹ = {approx}")
+print(f"e¹ = {sum([(1**n)/math.factorial(n) for n in range(100)])}")
+print(f"e² = {sum([(2**n)/math.factorial(n) for n in range(100)])}")
+print(f"e⁷ = {sum([(5**n)/math.factorial(n) for n in range(100)])}")
