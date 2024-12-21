@@ -1,8 +1,13 @@
 -- vim:set ft=sqloracle cms=--\ %s:
 
 -- connect bca24/bca24@172.16.36.101:1521/orcl
--- set lines 181
--- set pages 101
+-- set feedback off
+-- set lines 180
+-- set pages 100
+-- set sqlprompt ' > '
+-- define _editor = "nvim"
+-- host nvim test.sql
+-- start test.sql
 -- select table_name from user_tables order by table_name;
 
 --------
@@ -68,7 +73,7 @@ select
     e_name,
     salary
 from employee
-where designation = 'MANAGER';
+where designation = 'MGR';
 
 select * from employee
 where salary > (
@@ -215,7 +220,7 @@ where s.sid = r.sid
 select sname, age from sailors
 where age = (select min(s.age) from sailors s);
 
-select count(sname) from sailors;
+select count(distinct sname) from sailors;
 
 select rating, avg(age) from sailors
 group by rating;
@@ -265,9 +270,9 @@ create table emp (
 --------
 -- 09 --
 --------
-SELECT 'hello' FROM dual;
+select 'hello' from dual;
 savepoint a;
-SELECT 'world' FROM dual;
+select 'world' from dual;
 savepoint b;
 
 rollback b;
@@ -276,3 +281,18 @@ commit;
 --------
 -- 10 --
 --------
+
+
+--------
+--------
+select s.name from student s, enrollment e
+where s.rollno = e.rollno
+  and (e.course = 'Math' or e.course = 'Physics');
+
+select e.name, d.deptname from department d, employee e
+where d.deptid = e.deptid;
+
+-- Order(OrderID, CustomerName, ProductID, ProductName, Quantity)
+-- OrderID -> CustomerName
+-- ProductID -> ProductName
+-- OrderID, ProductID -> Quantity

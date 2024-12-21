@@ -1,13 +1,15 @@
 # what is this repository for?
 
 - samples of code in different languages for quick reference
+- some solutions for [advent of code](https://adventofcode.com/)
 - some of my homework
-  - dsa
-  - search, sort, scheduling algos
-  - data processing
+  - [dsa](c/dsa/)
+  - [search](c/search/), [sort](c/sort/), [scheduling](c/scheduling/) algos
+  - [data processing](python/numerical_methods/)
+  - [dbms](sql/quick.sql)
 - also for tracking how well i know a language
-  - (65%) c
   - (80%) bash
+  - (65%) c
   - [x] fish
   - (20%) html
   - (20%) java
@@ -19,4 +21,4 @@
   - (40%) make
   - [x] python
   - (05%) rust
-  - (20%) sql
+  - (25%) sql

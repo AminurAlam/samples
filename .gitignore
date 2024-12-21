@@ -23,3 +23,4 @@ latex/*.fls
 latex/*.log
 latex/*.pdf
 latex/*.synctex.gz
+latex/code/*
