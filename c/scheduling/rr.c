@@ -1,21 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    int n, tq, max_bt = 0, clock = 0;
-    double total_tat = 0;
-    printf("enter time quantum: ");
+    int n, tq, clock = 0, total_tat = 0, max_bt = 0;
+    printf("tq: ");
     scanf("%d", &tq);
-    printf("enter num of processes: ");
+    printf("ps: ");
     scanf("%d", &n);
-    int bt[n], tat[n];
+    int bt[n];
 
     for (int i = 0; i < n; i++) {
-        printf("enter burst time for %d: ", i);
+        printf("bt[%d]: ", i);
         scanf("%d", &bt[i]);
-    }
-
-    for (int i = 0; i < n; i++)
         if (bt[i] > max_bt) max_bt = bt[i];
+    }
 
     for (int j = 0; j < max_bt; j += tq) {
         for (int i = 0; i < n; i++) {
@@ -23,14 +20,13 @@ int main() {
             if (bt[i] > tq) clock += tq;
             else {
                 clock += bt[i];
-                tat[i] = clock;
                 total_tat += clock;
             }
             bt[i] -= tq;
         }
     }
 
-    printf("avg tat: %f\n", total_tat / n);
+    printf("avg tat: %f\n", (double)total_tat / n);
 
     return 0;
 }
