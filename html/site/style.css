@@ -1,0 +1,48 @@
+body {
+  align: center;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: lighter;
+  background: rgb(36, 39, 58);
+  color: rgb(202, 211, 245);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+input {
+  font-size: 18px;
+  text-align: center;
+  width: 30%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 7px;
+  border: 1px solid rgb(202, 211, 245);
+  background: rgb(110, 115, 141);
+  color: rgb(24, 25, 38);
+}
+
+button {
+  font-size: 20px;
+  border-radius: 100px;
+  padding: 12px;
+  margin: 40px;
+  min-width: 250px;
+  border: 1px solid rgb(145, 215, 227);
+  background: rgb(36, 39, 58);
+  color: rgb(202, 211, 245);
+}
+
+#login {
+  border: 1px solid rgb(145, 215, 227);
+  background: rgb(138, 173, 244);
+  color: rgb(202, 211, 245);
+}
+
+img {
+  max-width: 90px;
+  padding: 100px;
+  border-radius: 50%;
+}

@@ -1,5 +1,5 @@
-read -p "enter a, b: " a b
-read -p "enter operation: " op
+read -rp "enter a, b: " a b
+read -rp "enter operation: " op
 
 case "$op" in
 1) echo "a + b =" $((a + b)) ;;
