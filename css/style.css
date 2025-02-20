@@ -1,0 +1,35 @@
+/* vim:set sw=2: */
+tag {}
+#id {}
+.class {}
+
+.color {
+  color: #000fff;
+  color: rgb(100, 100, 100);
+  background-color: #fff000;
+  background-color: olive;
+}
+
+.size {
+  width: 50px;
+  font-size: 1.5em;
+  height: 20%;
+}
+
+.text {
+  font-family: sans-serif, helvetica, arial;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  line-height: 1.5;
+  text-align: center;
+  text-indent: 2em;
+}
+
+.space {
+
+}
