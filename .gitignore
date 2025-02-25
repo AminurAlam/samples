@@ -4,16 +4,13 @@ out.txt
 chat.txt
 a.out
 *out
-
+*.png
+*.jpg
+*.svg
 package*.json
 
 javascript/node_modules/
 javascript/node_modules/*
-
-rust/target/
-rust/target/*
-rust/Cargo.lock
-rust/Cargo.toml
 
 latex/attachments/
 latex/*.aux
@@ -24,3 +21,8 @@ latex/*.log
 latex/*.pdf
 latex/*.synctex.gz
 latex/code/*
+
+rust/target/
+rust/target/*
+rust/Cargo.lock
+rust/Cargo.toml
