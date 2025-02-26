@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <link href="style.css" rel="stylesheet" />
+    <script src="script.js"></script>
   </head>
   <body>
     <div id="info" class="info">
@@ -9,13 +10,16 @@
       <p>Facebook helps you connect and share with the people in your life.</p>
     </div>
 
-    <div class="login-box">
+    <div id="login_box" class="login_box">
       <form>
         <input
-          type="email"
-          id="email"
-          name="email"
+          type="text"
+          id="username"
+          name="username"
           placeholder="Username"
+          maxlength="32"
+          minlength="1"
+          pattern="[a-zA-Z0-9_]+"
           required
         />
         <input
@@ -25,13 +29,13 @@
           placeholder="Password"
           required
         />
-        <div class="login">
-          <button class="login" type="submit">Log In</button>
-        </div>
       </form>
+      <div class="login">
+        <button class="login" onclick="login()">Log In</button>
+      </div>
       <hr />
       <div class="signup">
-        <a href="signup.html">Create New Account</a>
+        <a href="/signup.html">Create New Account</a>
       </div>
     </div>
   </body>
