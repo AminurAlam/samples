@@ -6,40 +6,46 @@
   </head>
   <body>
     <div id="info" class="info">
-      <img src="facebook.svg" alt="Facebook Logo" />
+      <img src="assets/facebook.svg" alt="Facebook Logo" />
       <p>Facebook helps you connect and share with the people in your life.</p>
     </div>
 
     <div class="login_box">
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Username"
-          maxlength="32"
-          minlength="1"
-          pattern="[a-zA-Z0-9_]+"
-          value="uname"
-          required
-        />
-        <input type="email" id="email" name="email" placeholder="Email ID" />
-        <input
-          type="date"
-          id="dob"
-          name="dob"
-          min="1900-01-01"
-          placeholder="Date of Birth"
-        />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          value="pass"
-          required
-        />
-        <br />
-        <br />
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+        maxlength="32"
+        minlength="1"
+        pattern="\w+"
+        value="uname"
+        required
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email ID (optional)"
+        required
+      />
+      <input
+        type="date"
+        id="dob"
+        name="dob"
+        min="1900-01-01"
+        placeholder="Date of Birth"
+      />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        value="pass"
+        required
+      />
+      <br />
+      <br />
       <button class="signup" onclick="signup()">Sign Up</button>
     </div>
   </body>

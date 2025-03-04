@@ -6,10 +6,27 @@ const passwords = {
 };
 
 function signup() {
-  var un = username.value;
-  var pass = password.value;
-  var dob = dob.value;
-  var email = email.value;
+  // var un = username.value;
+  // var pass = password.value;
+  // var dob = dob.value;
+  // var email = email.value;
+  if (!username.value.match(/^\w+$/)) {
+    console.log("un nahh");
+    return;
+  }
+  if (password.value.length < 8) {
+    console.log("pass is too short");
+    return;
+  }
+  // if (!dob.value.match(/^\w+$/)) {
+  //   console.log("un nahh");
+  //   return;
+  // }
+  if (!username.value.match(/^\w+$/)) {
+    console.log("un nahh");
+    return;
+  }
+  console.log("step right up");
 }
 
 function login() {

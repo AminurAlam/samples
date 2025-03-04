@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <img id="anim" src="" style="height: 540px; width: 960px" />
+    <script>
+      var frame = 0;
+      setInterval(() => {
+        frame = frame == 111 ? 1 : frame + 1;
+        anim.setAttribute("src", `bounce/${frame}.jpg`);
+      }, 50);
+    </script>
+  </body>
+</html>
