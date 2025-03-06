@@ -11,22 +11,14 @@ function signup() {
   // var dob = dob.value;
   // var email = email.value;
   if (!username.value.match(/^\w+$/)) {
-    console.log("un nahh");
+    window.alert("username can only contain alphanumeric charecters");
     return;
   }
-  if (password.value.length < 8) {
-    console.log("pass is too short");
+  if (password.value.length < 4) {
+    window.alert("pass is too short");
     return;
   }
-  // if (!dob.value.match(/^\w+$/)) {
-  //   console.log("un nahh");
-  //   return;
-  // }
-  if (!username.value.match(/^\w+$/)) {
-    console.log("un nahh");
-    return;
-  }
-  console.log("step right up");
+  window.location = `user?user=${username.value}.html`;
 }
 
 function login() {
@@ -35,7 +27,7 @@ function login() {
 
   if (un in passwords) {
     if (passwords[un] == pass) {
-      window.location = `/user/${un}`;
+      window.location = `user0?user={un}.html`;
     } else {
       window.alert("wrong password!!");
     }

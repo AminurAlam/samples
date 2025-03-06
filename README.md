@@ -1,7 +1,6 @@
 # what is this repository for?
 
 - samples of code in different languages for quick reference
-- some solutions for [advent of code](https://adventofcode.com/)
 - some of my homework
   - [dsa](c/dsa/)
   - [search](c/search/), [sort](c/sort/), [scheduling](c/scheduling/) algos
@@ -11,14 +10,14 @@
   - (80%) bash
   - (65%) c
   - [x] fish
-  - (20%) html
+  - (30%) html
   - (20%) java
   - (10%) javascript
   - (05%) kotlin
-  - (10%) latex
+  - (15%) latex
   - (05%) lisp
   - [x] lua
   - (40%) make
   - [x] python
   - (05%) rust
-  - (25%) sql
+  - (30%) sql
