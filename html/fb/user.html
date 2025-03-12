@@ -1,8 +1,17 @@
-<html>
-    <body>
-        USERNAME: <p id="username"></p>
-        <script>
-            
-        </script>
-    </body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    USERNAME:
+    <p id="username"></p>
+    <script>
+      var params = new URLSearchParams(window.location.search);
+      console.log(params.get("user"));
+    </script>
+  </body>
 </html>

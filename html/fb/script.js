@@ -1,4 +1,4 @@
-const passwords = {
+var accounts = {
   aa: "aa",
   ss: "ss",
   dd: "dd",
@@ -6,32 +6,35 @@ const passwords = {
 };
 
 function signup() {
-  // var un = username.value;
-  // var pass = password.value;
-  // var dob = dob.value;
-  // var email = email.value;
   if (!username.value.match(/^\w+$/)) {
     window.alert("username can only contain alphanumeric charecters");
     return;
   }
-  if (password.value.length < 4) {
-    window.alert("pass is too short");
+  if ((!username.value) in accounts) {
+    window.alert("username is already taken");
     return;
   }
-  window.location = `user?user=${username.value}.html`;
+  if (password.value.length < 4) {
+    window.alert("password is too short");
+    return;
+  }
+  accounts[username.values] = password.value;
+
+  let url = new URL("/fb/", window.location.origin);
+  url.pathname = `/fb/user.html`;
+  url.searchParams.set("user", username.value);
+  window.location.href = url.href;
+  // window.location = `user.html?user=${username.value}`;
 }
 
 function login() {
-  var un = username.value;
-  var pass = password.value;
-
-  if (un in passwords) {
-    if (passwords[un] == pass) {
-      window.location = `user0?user={un}.html`;
+  if (username.value in accounts) {
+    if (accounts[username.value] == password.value) {
+      window.location = `user.html?user=${username.value}`;
     } else {
-      window.alert("wrong password!!");
+      window.alert("wrong password");
     }
   } else {
-    window.alert(`username ${un} not found!!`);
+    window.alert(`username ${username.value} does not exist`);
   }
 }

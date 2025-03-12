@@ -8,6 +8,8 @@ a.out
 *.jpg
 *.svg
 package*.json
+node_modules/
+node_modules/*
 
 javascript/node_modules/
 javascript/node_modules/*

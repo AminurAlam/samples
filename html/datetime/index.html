@@ -1,17 +1,14 @@
 <html>
-  <body>
-    <div id="box"></div>
-    <script>
-      setInterval(() => {
-        box.innerHTML = Date();
-      }, 500);
-    </script>
-    <style>
-      #face {
-        text-align: center;
-        font-size: 2em;
-        font-family: "sans serif";
-      }
-    </style>
+  <style>
+    button {
+      margin: 15%;
+      padding: 2%;
+      font-size: 2.5em;
+      border-radius: 30px;
+    }
+  </style>
+
+  <body style="text-align: center">
+    <button onclick="this.innerHTML = Date()">show time</button>
   </body>
 </html>
