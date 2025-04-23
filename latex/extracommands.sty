@@ -1,40 +1,46 @@
 \usepackage{graphicx}
+\usepackage{xstring}
 
-\newcommand{\generatetitlepage}[7]{
-    \begin{titlepage}
-        \centering
-        \vspace*{4\baselineskip}
-        \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
-        \rule{\textwidth}{0.4pt}\\[\baselineskip]
-        {\huge #1 \\ [0.3\baselineskip]}
-        \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
-        \rule{\textwidth}{1.6pt}\\[\baselineskip]
-        \scshape
-        \vfill
-        \raggedright
-        Submitted by: {\Large #2\par}
-        Roll No: {\Large #3\par}
-        Semester: {\Large #4\par}
-        Department: {\Large #5\par}
-        Course: {\Large #6\par}
-        \vfill
-        \raggedleft
-        #7 \the\year{}-\the\numexpr \the\year + 1 \relax
-    \end{titlepage}
+% create a title page for your assignment
+\newcommand{\generatetitlepage}[7]{%
+  \begin{titlepage}
+    \centering
+    \vspace*{4\baselineskip}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}\\[\baselineskip]
+    {\huge #1 \\ [0.3\baselineskip]}
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{\textwidth}{1.6pt}\\[\baselineskip]
+    \scshape
+    \vfill
+    \raggedright
+    Submitted by: {\Large #2\par}
+    Roll No: {\Large #3\par}
+    Semester: {\Large #4\par}
+    Department: {\Large #5\par}
+    Course: {\Large #6\par}
+    \vfill
+    \raggedleft
+    #7 \the\year{}-\the\numexpr \the\year + 1 \relax
+  \end{titlepage}
 }
 
-\newcommand{\codequest}[2]{
-    {\Large \raggedleft #1}
-    \texttt {\lstinputlisting{#2}}
+\newcommand{\codequest}[2]{%
+  {\Large \raggedleft #1}
+  \IfBeginWith{#2}{~}
+  {\texttt {\lstinputlisting{#2}}}
+  {\texttt {\lstinputlisting{~/repos/samples/#2}}}
 }
 
-\newcommand{\gloss}[3]{
-    \textbf{#1}: #2 \\
-    \indent\indent \verb*|#3 \\
+\newcommand{\gloss}[3]{%
+  \textbf{#1}: #2 \\
+  \indent\indent \verb*|#3 \\
 }
 
-\newcommand{\shot}[2]{
-    \begin{center}
-        \fbox{\includegraphics[totalheight=#2]{attachments/#1}}
-    \end{center}
+\newcommand{\shot}[2]{%
+  \begin{center}
+    \IfBeginWith{#1}{~}
+    { \fbox{\includegraphics[totalheight=#2]{#1}} }
+    { \fbox{\includegraphics[totalheight=#2]{attachments/#1}} }
+  \end{center}
 }

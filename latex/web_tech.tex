@@ -1,5 +1,4 @@
 \documentclass[12pt]{article}
-% \documentclass[12pt,oneside]{book}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{./extracommands}
@@ -27,47 +26,70 @@
 
 \LARGE
 \begin{tabular}{|m{8.5cm}|m{2.2cm}|m{3cm}|}
-\hline
-PROJECT & DATE & SIGN \\
-\hline
-\hline
-HTML tags overview & 06 Feb & \\
-Turning a bulb on and off & 20 Feb & \\
-Date and time & 20 Feb & \\
-Facebook login page & 27 Feb & \\
-Form validation & 06 Mar & \\
-Frame animation & 13 Mar & \\
-Chatbox & 20 Mar & \\
-& & \\
-\hline
+  \hline
+  PROJECT & DATE & SIGN \\
+  \hline
+  \hline
+  HTML tags overview & 06 Feb & \\
+  Turning a bulb on and off & 20 Feb & \\
+  Date and time & 20 Feb & \\
+  Facebook login page & 27 Feb & \\
+  Form validation & 06 Mar & \\
+  Frame animation & 13 Mar & \\
+  Chatbox & 20 Mar & \\
+  & & \\
+  \hline
 \end{tabular}
 \newpage
 \restoregeometry
 \normalsize
 
 \section{HTML tags overview}
-\texttt {\lstinputlisting{~/repos/samples/html/tags/index.html}}
+\codequest{}{html/tags/index.html}
 \shot{tags.png}{9cm}
-\vspace*{6\baselineskip}
+\newpage
 
 \section{Turning a bulb on and off}
-\texttt {\lstinputlisting{~/repos/samples/html/bulb/index.html}}
-\shot{bulb_off.png}{9cm}
-\shot{bulb_on.png}{9cm}
+\codequest{}{html/bulb/index.html}
+\shot{bulb_off.png}{7cm}
+\shot{bulb_on.png}{7cm}
 \newpage
 
 \section{Date and Time}
-\texttt {\lstinputlisting{~/repos/samples/html/datetime/index.html}}
+\codequest{}{html/datetime/index.html}
 \shot{datetime_before.png}{6.8cm}
 \shot{datetime_after.png}{6.8cm}
 
-\section{Facebook Clone}
-\subsection{Login page}
-\texttt {\lstinputlisting{~/repos/samples/html/fb/index.html}}
-\shot{datetime_before.png}{6.8cm}
+\section{Facebook login page}
+\codequest{}{html/fb/index.html}
+\shot{fb_login.png}{7.4cm}
+\newpage
+
+\section{Facebook form validation}
+\codequest{}{html/fb/signup.html}
+\shot{fb_signup.png}{9cm}
+
+\section{Frame animation}
+\codequest{}{html/animation/index.html}
+\newpage
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/1.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/12.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/21.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/30.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/40.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/40.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/70.jpg}}
+\fbox{\includegraphics[totalheight=4.4cm]{~/repos/samples/html/animation/bounce/100.jpg}}
+\newpage
+
+\section{Chatbox}
+\codequest{}{html/chat/index.html}
+\shot{chat.png}{9cm}
+\newpage
+\codequest{}{html/chat/script.js}
 
 % \newgeometry{left=1in,right=0.4in,top=0.5in,bottom=0.5in}
-% \texttt {\lstinputlisting{~/repos/samples/shell/assignment5.sh}}
+% \codequest{}{shell/assignment5.sh}
 % \fbox{\includegraphics[totalheight=8cm]{attachments/rr.png}}
 % \vspace*{6\baselineskip}
 \end{document}

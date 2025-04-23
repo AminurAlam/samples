@@ -13,13 +13,13 @@
 
 % options
 \lstset{
-    language=c,
-    numbers=left,
-    numberstyle=\tiny,
-    tabsize=4,
-    showstringspaces=false,
-    showtabs=false,
-    frame=l,
+  language=c,
+  numbers=left,
+  numberstyle=\tiny,
+  tabsize=4,
+  showstringspaces=false,
+  showtabs=false,
+  frame=l,
 }
 \pagestyle{plain}
 
@@ -44,123 +44,123 @@ Writing this documentation was possible thanks to the following projects: the \L
 \chapter{Introduction}
 In this part we will learn about things like:
 \begin{itemize}
-    \item What is Android
-    \item How to make apps for Android
-    \item Building user interfaces with compose layouts
-    \item Drawing objects on screen
-    \item Handling button events
-    \item Testing and debugging your apps
+  \item What is Android
+  \item How to make apps for Android
+  \item Building user interfaces with compose layouts
+  \item Drawing objects on screen
+  \item Handling button events
+  \item Testing and debugging your apps
 \end{itemize}
 What are the prerequisites for this documentation? \\
 You should have some programming experience. In particular, you should understand java/kotlin and object oriented programming.
 
-    \section{What is Android?}
+\section{What is Android?}
 Android is a operating system for mobile devices based on a modified version of the Linux kernel and other open-source software, designed primarily for touchscreen-based mobile devices such as smartphones and tablets. Android's most widely used version is primarily developed by Google. First released in 2008, Android is currently the world's most widely used operating system. The latest stable version of it is Android 15.
 
 \begin{figure}
-    \centering
-    \includegraphics[totalheight=8.0cm]{attachments/android-stack.png}
-    \caption{AOSP software stack architecture.}
+  \centering
+  \includegraphics[totalheight=8.0cm]{attachments/android-stack.png}
+  \caption{AOSP software stack architecture.}
 \end{figure}
 
-    \section{What is Gradle?}
+\section{What is Gradle?}
 Gradle is build system tool that simplifies the development process for JVM projects. It provides simple way to run tasks for building Android applications, it can also handle dependency management between different libraries and modules in your project, automatically downloading and resolving them.
 
 Gradle uses parallel execution to speed up building and incremental builds to make subsequent builds faster. By using Gradle we can reduce app building complexity to just a single click.
 
-    \section{How to write code?\label{ide}}
+\section{How to write code?\label{ide}}
 To edit and write code we require an IDE, Android Studio is one of the most popular IDE for this job. Android Studio is the official IDE for Android app development. It was developed by IntelliJ IDEA, the same people behind the kotlin programming language. It offers a comprehensive suite of tools for creating, testing, and deploying Android applications. Android Studio also provides code templates and extensive testing tools to get you started as soon as possible.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=0.80\textwidth]{attachments/ide_new_project.png}
-    \caption{Creating a new project in your IDE}
+  \centering
+  \includegraphics[width=0.80\textwidth]{attachments/ide_new_project.png}
+  \caption{Creating a new project in your IDE}
 \end{figure}
 
 Although the most popular Android Studio is not the only choice android app. You can use any text editor to write your code and then use gradle to build it, which will give you same output as Android Studio.
 
-    \section{What is NDK?}
+\section{What is NDK?}
 NDK stands for Native Development Kit. The NDK is a set of tools that allows you to use C and C++ code with Android, and provides platform libraries you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps.
 
 However, the NDK can be useful for cases in which you need to do one or more of the following:
 \begin{itemize}
-    \item Performance-Critical Code: For performance-sensitive tasks like image processing, game engines, or machine learning, native code can often offer significant speed improvements.
-    \item Reusing Existing Code: If you have existing C/C++ libraries or codebases, the NDK allows you to integrate them into your Android app.
-    \item Low-Level System Access: For tasks that require direct hardware access or system-level optimizations, the NDK provides a way to interact with the underlying system.
+  \item Performance-Critical Code: For performance-sensitive tasks like image processing, game engines, or machine learning, native code can often offer significant speed improvements.
+  \item Reusing Existing Code: If you have existing C/C++ libraries or codebases, the NDK allows you to integrate them into your Android app.
+  \item Low-Level System Access: For tasks that require direct hardware access or system-level optimizations, the NDK provides a way to interact with the underlying system.
 \end{itemize}
 
 Key Components of the NDK:
 \begin{itemize}
-    \item Cross-Compiler: This tool compiles your C/C++ code into machine code that can run on Android devices.
-    \item Standard Libraries: The NDK includes standard C and C++ libraries, allowing you to use familiar functions and data structures.
-    \item Platform Libraries: You can access platform-specific libraries like OpenGL ES for graphics, OpenSL ES for audio, and the Android Native Development Kit APIs for system-level features.
-    \item Build Systems: The NDK supports CMake and ndk-build, two build systems for managing your native code projects.
+  \item Cross-Compiler: This tool compiles your C/C++ code into machine code that can run on Android devices.
+  \item Standard Libraries: The NDK includes standard C and C++ libraries, allowing you to use familiar functions and data structures.
+  \item Platform Libraries: You can access platform-specific libraries like OpenGL ES for graphics, OpenSL ES for audio, and the Android Native Development Kit APIs for system-level features.
+  \item Build Systems: The NDK supports CMake and ndk-build, two build systems for managing your native code projects.
 \end{itemize}
 
 In conclusion, the Android NDK is a powerful tool for optimizing specific parts of your Android app. However, it should be used carefully, as it adds complexity to your development process. Carefully evaluate the trade-offs between performance gains and development effort before deciding to use the NDK.
 
-    \section{apk files}
+\section{apk files}
 An Android package, which is an archive file with an .apk suffix, contains the contents of an Android app required at run it, and it is the file that Android devices use to install the app. A file using this format can be built from source code written in either Java or Kotlin.
 
 AAPT2 (Android Asset Packaging Tool) is a build tool that Android Studio and Android Gradle Plugin use to compile and package your app's resources. AAPT2 parses, indexes, and compiles the resources into a binary format that is optimized for the Android platform.
 \vfill
 
-    \section*{refs} \addcontentsline{toc}{section}{refs}
-    \url{https://source.android.com/} \\
-    \url{https://developer.android.com/ndk/guides/} \\
-    \url{https://elinux.org/Android_aapt/}
+\section*{refs} \addcontentsline{toc}{section}{refs}
+\url{https://source.android.com/} \\
+\url{https://developer.android.com/ndk/guides/} \\
+\url{https://elinux.org/Android_aapt/}
 \rule{\textwidth}{0.4pt}
 
 \chapter{Tech Stack}
-    \section{Kotlin}
+\section{Kotlin}
 Kotlin is an open-source, statically-typed programming language that supports both object-oriented and functional programming. Kotlin provides similar syntax and concepts from other languages, including C\#, Java, and Scala, among many others. Kotlin does not aim to be unique—instead, it draws inspiration from decades of language development. It exists in variants that target the JVM (Kotlin/JVM), JavaScript (Kotlin/JS), and native code (Kotlin/Native).
 Kotlin is managed by the Kotlin Foundation, a group created by JetBrains and Google, that is tasked with advancing and continuing development of the language. Kotlin is officially supported by Google for Android development, meaning that Android documentation and tooling is designed with Kotlin in mind.
 
 \begin{figure}
-    \centering
-    \fbox{\includegraphics[totalheight=8cm]{attachments/kotlin_code.png}}
-    \caption{an example of what the code looks like}
+  \centering
+  \fbox{\includegraphics[totalheight=8cm]{attachments/kotlin_code.png}}
+  \caption{an example of what the code looks like}
 \end{figure}
 
 \begin{itemize}
-    \item Expressive and concise: You can do more with less. Express your ideas and reduce the amount of boilerplate code. 67\% of professional developers who use Kotlin say Kotlin has increased their productivity.
-    \item Safer code: Kotlin has many language features to help you avoid common programming mistakes such as null pointer exceptions. Android apps that contain Kotlin code are 20\% less likely to crash.
+  \item Expressive and concise: You can do more with less. Express your ideas and reduce the amount of boilerplate code. 67\% of professional developers who use Kotlin say Kotlin has increased their productivity.
+  \item Safer code: Kotlin has many language features to help you avoid common programming mistakes such as null pointer exceptions. Android apps that contain Kotlin code are 20\% less likely to crash.
     \newpage
-    \item Interoperable: Call Java-based code from Kotlin, or call Kotlin from Java-based code. Kotlin is 100\% interoperable with the Java programming language, so you can have as little or as much of Kotlin in your project as you want.
-    \item Structured Concurrency: Kotlin coroutines make asynchronous code as easy to work with as blocking code. Coroutines dramatically simplify background task management for everything from network calls to accessing local data.
+  \item Interoperable: Call Java-based code from Kotlin, or call Kotlin from Java-based code. Kotlin is 100\% interoperable with the Java programming language, so you can have as little or as much of Kotlin in your project as you want.
+  \item Structured Concurrency: Kotlin coroutines make asynchronous code as easy to work with as blocking code. Coroutines dramatically simplify background task management for everything from network calls to accessing local data.
 
-    \item Less code combined with greater readability. Spend less time writing your code and working to understand the code of others.
-    \item Fewer common errors. Apps built with Kotlin are 20\% less likely to crash based on Google's internal data.
-    \item Kotlin support in Jetpack libraries. Jetpack Compose is Android's recommended modern toolkit for building native UI in Kotlin. KTX extensions add Kotlin language features, like coroutines, extension functions, lambdas, and named parameters to existing Android libraries.
-    \item Support for multiplatform development. Kotlin Multiplatform allows development for not only Android but also iOS, backend, and web applications. Some Jetpack libraries are already multiplatform. Compose Multiplatform, JetBrains' declarative UI framework based on Kotlin and Jetpack Compose, makes it possible to share UIs across platforms – iOS, Android, desktop, and web.
-    \item Mature language and environment. Since its creation in 2011, Kotlin has developed continuously, not only as a language but as a whole ecosystem with robust tooling. Now it's seamlessly integrated into Android Studio and is actively used by many companies for developing Android applications.
-    \item Interoperability with Java. You can use Kotlin along with the Java programming language in your applications without needing to migrate all your code to Kotlin.
-    \item Easy learning. Kotlin is very easy to learn, especially for Java developers.
-    \item Big community. Kotlin has great support and many contributions from the community, which is growing all over the world. Over 95\% of the top thousand Android apps use Kotlin.
+  \item Less code combined with greater readability. Spend less time writing your code and working to understand the code of others.
+  \item Fewer common errors. Apps built with Kotlin are 20\% less likely to crash based on Google's internal data.
+  \item Kotlin support in Jetpack libraries. Jetpack Compose is Android's recommended modern toolkit for building native UI in Kotlin. KTX extensions add Kotlin language features, like coroutines, extension functions, lambdas, and named parameters to existing Android libraries.
+  \item Support for multiplatform development. Kotlin Multiplatform allows development for not only Android but also iOS, backend, and web applications. Some Jetpack libraries are already multiplatform. Compose Multiplatform, JetBrains' declarative UI framework based on Kotlin and Jetpack Compose, makes it possible to share UIs across platforms – iOS, Android, desktop, and web.
+  \item Mature language and environment. Since its creation in 2011, Kotlin has developed continuously, not only as a language but as a whole ecosystem with robust tooling. Now it's seamlessly integrated into Android Studio and is actively used by many companies for developing Android applications.
+  \item Interoperability with Java. You can use Kotlin along with the Java programming language in your applications without needing to migrate all your code to Kotlin.
+  \item Easy learning. Kotlin is very easy to learn, especially for Java developers.
+  \item Big community. Kotlin has great support and many contributions from the community, which is growing all over the world. Over 95\% of the top thousand Android apps use Kotlin.
 \end{itemize}
 
-    \section{Jetpack Compose}
+\section{Jetpack Compose}
 Jetpack Compose is Android’s recommended toolkit for building native UI. It simplifies UI development on Android using Kotlin APIs. You no longer have to deal with the UI and logic seperated into two files. \\
 
 Jetpack Compose is built around composable functions. These functions let you define your app's UI programmatically by describing how it should look and providing data dependencies, rather than focusing on the process of the UI's construction (initializing an element, attaching it to a parent, etc.). To create a composable function, just add the \texttt{@Composable} annotation to the function name.
 
 \begin{figure}
-    \centering
-        \includegraphics[width=0.85\textwidth]{attachments/compose_layout.png}
-    \caption{Basic layouts of compose}
+  \centering
+  \includegraphics[width=0.85\textwidth]{attachments/compose_layout.png}
+  \caption{Basic layouts of compose}
 \end{figure}
 
-        \subsection{Drawing a Column and Row}
+\subsection{Drawing a Column and Row}
 UI elements are hierarchical, with elements contained in other elements. In Compose, you build a UI hierarchy by calling composable functions from other composable functions. The Column function lets you arrange elements vertically. You can also use Row to arrange items horizontally and Box to stack elements.
 
-        \subsection{Modifier}
+\subsection{Modifier}
 You'll sometimes notice that your layout doesn't have the right structure and its elements aren't well spaced. To decorate or configure a composable, Compose uses modifiers. They allow you to change the composable's size, layout, appearance or make an element clickable. You'll use some of them to improve the layout like:
 \begin{itemize}
-    \item Background Color
-    \item Padding
-    \item Width, Height and Size
-    \item Fill Max Width, Fill Max Height
-    \item Weight, Border
+  \item Background Color
+  \item Padding
+  \item Width, Height and Size
+  \item Fill Max Width, Fill Max Height
+  \item Weight, Border
 \end{itemize}
 Multiple modifiers can be chained together to decorate or augment a composable. This chain is created via the \texttt{Modifier} interface which represents an ordered, immutable list of single \texttt{Modifier.Elements}.
 
@@ -169,14 +169,14 @@ Each \texttt{Modifier.Element} represents an individual behavior, like layout, d
 Sometimes it can be beneficial to reuse the same modifier chain instances in multiple composables, by extracting them into variables and hoisting them into higher scopes. It can improve code readability or help improve your app's performance.
 
 \vfill
-    \section*{refs} \addcontentsline{toc}{section}{refs}
-    \url{https://developer.android.com/kotlin/overview/} \\
-    \url{https://developer.android.com/develop/ui/compose/tutorial/} \\
-    \url{https://developer.android.com/develop/ui/compose/modifiers/}
+\section*{refs} \addcontentsline{toc}{section}{refs}
+\url{https://developer.android.com/kotlin/overview/} \\
+\url{https://developer.android.com/develop/ui/compose/tutorial/} \\
+\url{https://developer.android.com/develop/ui/compose/modifiers/}
 \rule{\textwidth}{0.4pt}
 
 \chapter{Building the App}
-    \section{Hello World}
+\section{Hello World}
 in Section~\ref{ide} we learned how to setup the project now lets start adding code to it. Open the file under \texttt{app/src/main/java/com/example/date/MainActivity.kt} this is where you will write all of your code. Start with a simple hello world as shown below:
 \codequest{}{code/1.kt}
 \shot{kt_hello_world.png}{3.5cm}
@@ -184,13 +184,13 @@ in Section~\ref{ide} we learned how to setup the project now lets start adding c
 In an Android app, the main activity is the first screen that appears when the user launches the app. It's the starting point of the user's interaction with the app. The Activity class is a crucial component of an Android app, and the way activities are launched and put together is a fundamental part of the platform's application model. Unlike programming paradigms in which apps are launched with a main() method, the Android system initiates code in an Activity instance by invoking specific callback methods that correspond to specific stages of its lifecycle.
 
 \begin{figure}
-    \centering
-    \includegraphics[totalheight=8cm]{attachments/studio_run.png}
-    \caption{UI of android studio}
+  \centering
+  \includegraphics[totalheight=8cm]{attachments/studio_run.png}
+  \caption{UI of android studio}
 \end{figure}
 \newpage
 
-    \section{App Header}
+\section{App Header}
 Now lets draw the header for the app which shows current month and year on top. Here's the code to achieve that:
 \codequest{}{code/head1.kt}
 \shot{head1.png}{4.0cm}
@@ -201,28 +201,28 @@ For a calendar we'll need to add a way to change the current month and view othe
 \shot{head2.png}{4.0cm}
 \newpage
 
-    \section{App Body}
-        \subsection{Row of Weeks}
+\section{App Body}
+\subsection{Row of Weeks}
 Next we will add a row of 7 weekdays in a month. For this we can simply iterate over a list and draw them one by one.
 \codequest{}{code/body1.kt}
 \shot{body1.png}{6.0cm}
 
-        \subsection{Grid of days}
+\subsection{Grid of days}
 To add days in the calendar we simply loop over how many days there are in that month and beak at every seventh month to look like a grid of days.
 \codequest{}{code/body2.kt}
 \shot{body2.png}{8.0cm}
 
-        \subsection{Fixing the Grid}
+\subsection{Fixing the Grid}
 You'll notice that we have a few problems with this current grid.
 \begin{itemize}
-    \item Every month starts on Monday, which is incorrect
-    \item Last row of days aren't properly left aligned
+  \item Every month starts on Monday, which is incorrect
+  \item Last row of days aren't properly left aligned
 \end{itemize}
 To solve this issue we can add more loops at begining and ending of the grid which will draw empty boxes where we want.
 \codequest{}{code/body3.kt}
 \shot{body3.png}{8.5cm}
 
-        \subsection{Highlighting weekends}
+\subsection{Highlighting weekends}
 As a feature we are going to highlight the weekends as red. This can be done by changing the text color property of last two days to red. And while at it also add condition to make it work on both light and dark themes.
 \codequest{}{code/body4.kt}
 \shot{body4.png}{8.5cm}
@@ -248,15 +248,15 @@ We are now done and have a fully working calendar Android App.
 \vfill \rule{\textwidth}{0.4pt}
 
 \chapter{References}
-    \url{https://source.android.com/} \\
-    \url{https://developer.android.com/ndk/guides/} \\
-    \url{https://elinux.org/Android_aapt/} \\
-    \url{https://kotlinlang.org/docs/home.html} \\
-    \url{https://developer.android.com/kotlin/overview/} \\
-    \url{https://developer.android.com/develop/ui/compose/tutorial/} \\
-    \url{https://developer.android.com/develop/ui/compose/modifiers/} \\
-    \url{http://jetpackcompose.net/post/jetpack-compose-modifiers/} \\
-    \url{https://docs.androidide.com/}
+\url{https://source.android.com/} \\
+\url{https://developer.android.com/ndk/guides/} \\
+\url{https://elinux.org/Android_aapt/} \\
+\url{https://kotlinlang.org/docs/home.html} \\
+\url{https://developer.android.com/kotlin/overview/} \\
+\url{https://developer.android.com/develop/ui/compose/tutorial/} \\
+\url{https://developer.android.com/develop/ui/compose/modifiers/} \\
+\url{http://jetpackcompose.net/post/jetpack-compose-modifiers/} \\
+\url{https://docs.androidide.com/}
 \vfill \rule{\textwidth}{0.4pt}
 
 \end{document}
