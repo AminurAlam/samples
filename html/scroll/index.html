@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <style>
+      a {
+        background: cyan;
+        font-size: 3em;
+        min-height: 80px;
+        min-width: 300px;
+        border-radius: 30px;
+        position: fixed;
+        padding: 1%;
+        text-align: center;
+        bottom: 5%;
+        right: 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" style="font-size: 2em"></div>
+    <a href="#top">^ goto top</a>
+    <script>
+      box.innerHTML =
+        "<h1>HEADING</h1>" +
+        `Lorem ipsum dolor sit amet, officia excepteur.<br>
+Nisi anim cupidatat excepteur officia.<br>
+Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.<br>
+Voluptate laboris sint cupidatat ullamco ut ea.<br><br>`.repeat(10);
+    </script>
+  </body>
+</html>
