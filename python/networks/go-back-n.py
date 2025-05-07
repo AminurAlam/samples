@@ -1,9 +1,9 @@
 import socket
 
 with socket.socket(2, 2) as s:
-    msg = list(input(f" > "))
+    msg = list(input(" > "))
     while msg:
-        print(f"sending frames {''.join(msg[0:4])}")
+        print("sending frames", "".join(msg[0:4]))
         for frame in msg[0:4]:
             count = 0
             s.sendto(frame.encode("utf-8"), ("127.0.0.1", 8093))
@@ -12,6 +12,6 @@ with socket.socket(2, 2) as s:
                 s.recvfrom(1024)
                 msg.pop(count)
             except socket.timeout:
-                print(f"{frame}: Timeout")
+                print(frame, "Timeout")
                 break
             count += 1
