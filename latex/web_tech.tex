@@ -115,4 +115,39 @@
 \shot{size_half.png}{9.1cm}
 \newpage
 
+\section{Flashcard UI}
+{\Large \raggedright
+  Anki is a flashcard program used to help you remember things. \\
+  It also lets you build your own UI using tools like handlebars.js and ruby text. \\
+}
+\vspace*{3\baselineskip}
+
+% FRONT
+\codequest{}{~/repos/dotfiles/anki/front.html}
+\shot{anki_front.png}{9.1cm}
+{\Large \raggedright
+  This is the front side of the flashcard, here haldelbars is used to fetch the value of \verb|Word| and \verb|Sentence| we would like to remember. \\
+}
+\newpage
+
+% BACK
+\codequest{}{~/repos/dotfiles/anki/back.html}
+\shot{anki_back.png}{9.1cm}
+{\Large \raggedright
+  This is the back side of the flashcard, in addition to \verb|Word| and \verb|Sentence| we now also render their meanings. \\
+  \vspace*{1\baselineskip}
+  The \verb|furigana:| prefix is used in handlebars to render pronunciation as ruby text above, and the \verb|{{#foo}}...{{/foo}}| syntax tells handlebars to only render the content inside if \verb|foo| is defined. \\
+  \vspace*{1\baselineskip}
+  \verb|<details>| and \verb|<summary>| are used to create a dropdown that hide additional metadata that can be important but can also be annoying if its always visible. Clicking on the \verb|+| button reveals this data. \\
+  \vspace*{1\baselineskip}
+  The javascript here is used to make numbers more human readable (\verb|28531 -> 28k|) \\
+}
+\newpage
+
+% STYLE
+\codequest{}{~/repos/dotfiles/anki/style.css}
+\vspace*{1\baselineskip}
+{\Large \raggedright
+  This stylesheet uses tricks like setting custom font only for certain unicode ranges and responsive UI depending on orientation \\
+}
 \end{document}

@@ -44,3 +44,38 @@
     { \fbox{\includegraphics[totalheight=#2]{attachments/#1}} }
   \end{center}
 }
+
+% Use \punckern to overlap periods, commas, and footnote markers
+% for a tighter look.
+% Care should be taken to not make it too tight - f" and the like can overlap
+% if you're not careful.
+\newcommand{\punckern}{\kern-0.2ex}
+
+% For placing commas close to, or under, quotes they follow.
+% We're programmers, and we blatantly disregard American typographical norms
+% to put the quotes inside, but we can at least make it look a bit nicer.
+\newcommand{\quotekern}{\kern-0.6ex}
+
+% Create an unbreakable string of text in a monospaced font.
+% Useful for `command --line --args`
+\newcommand{\monobox}[1]{\mbox{\texttt{#1}}}
+
+\newcommand{\otffrac}[2]{\mbox{%
+    {\addfontfeature{VerticalPosition=Superior}#1}%
+    ^^^^2044% Unicode fraction slash
+    {\addfontfeature{VerticalPosition=Inferior}#2}%
+}}
+\newcommand{\otford}[2]{\mbox{%
+    {\addfontfeature{Numbers=LowercaseOff}#1}%
+    {\addfontfeature{VerticalPosition=Superior}#2}%
+}}
+
+% Letterspace acronyms a bit.
+\newcommand{\acronym}[1]{\textsc{\addfontfeature{LetterSpace=5}#1}}
+
+% "Chapter <num>" references
+\newcommand{\chapref}[1]{chapter~\ref{#1}}
+
+% monospace URLs (without setting the http://...)
+\newcommand{\http}[1]{\href{http://#1}{\texttt{#1}}}
+\newcommand{\https}[1]{\href{https://#1}{\texttt{#1}}}
