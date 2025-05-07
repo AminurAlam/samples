@@ -16,15 +16,16 @@
     </style>
   </head>
   <body>
-    <div id="box" style="font-size: 2em"></div>
+    <h1>HEADING</h1>
+    <div id="box" style="font-size: 1.5em">
+      Lorem ipsum dolor sit amet, officia excepteur.<br />
+      Nisi anim cupidatat excepteur officia.<br />
+      Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.<br />
+      Voluptate laboris sint cupidatat ullamco ut ea.<br /><br />
+    </div>
     <a href="#top">^ goto top</a>
     <script>
-      box.innerHTML =
-        "<h1>HEADING</h1>" +
-        `Lorem ipsum dolor sit amet, officia excepteur.<br>
-Nisi anim cupidatat excepteur officia.<br>
-Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.<br>
-Voluptate laboris sint cupidatat ullamco ut ea.<br><br>`.repeat(10);
+      box.innerHTML = box.innerHTML.repeat(10);
     </script>
   </body>
 </html>

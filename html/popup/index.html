@@ -4,14 +4,7 @@
     <script>
       window.alert("This is an important alert, Please pay attention!");
       var agree = window.confirm("Allow cookies?");
-      var reason = "";
-      if (agree) {
-        reason = window.prompt("Why did you agree?");
-      } else {
-        reason = window.prompt("Why did you disagree?");
-      }
-
-      box.innerText = `User ${agree ? "agreed" : "disagreed"}.\n Because ${reason}.`;
+      box.innerText = `User ${agree ? "agreed" : "disagreed"}.\n Because ${window.prompt(agree ? "Why did you agree?" : "Why did you disagree?")}.`;
     </script>
   </body>
 </html>
