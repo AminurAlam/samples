@@ -6,4 +6,4 @@
 # 3 = pdf from dvi
 # 4 = lualatex
 # 5 = xelatex
-$pdf_mode = 5;
+# $pdf_mode = 5;
