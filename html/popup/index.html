@@ -2,9 +2,11 @@
   <body>
     <div id="box"></div>
     <script>
-      window.alert("This is an important alert, Please pay attention!");
-      var agree = window.confirm("Allow cookies?");
-      box.innerText = `User ${agree ? "agreed" : "disagreed"}.\n Because ${window.prompt(agree ? "Why did you agree?" : "Why did you disagree?")}.`;
+      alert("This is an alert, Please pay attention!");
+      var agree = confirm("Allow cookies?");
+      var reason = prompt(`Why did you ${agree ? "" : "dis"}agree?`);
+
+      box.innerText = `User ${agree ? "" : "dis"}agreed.\n Because ${reason}.`;
     </script>
   </body>
 </html>
