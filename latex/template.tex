@@ -11,9 +11,32 @@
 \usepackage{lineno}
 \usepackage{listings}
 \usepackage{url}
+\usepackage{array}
 
 \begin{document}
 \generatetitlepage{subject}{name}{roll}{$n^{th}$}{dept}{course}{institution}
+{ % INDEX
+  \newgeometry{left=2cm,right=2cm,top=1in,bottom=1in}
+  \centering
+  \underline{\Huge \bfseries INDEX}
+  \vspace*{3\baselineskip}
+
+  \setlength{\arrayrulewidth}{0.4mm}
+  \renewcommand{\arraystretch}{1.8}
+  \setlength{\tabcolsep}{10pt}
+
+  \LARGE
+  \begin{tabular}{|m{8.5cm}|m{2.2cm}|m{3cm}|}
+    \hline
+    NAME & DATE & SIGN \\
+    \hline
+    \hline
+    & & \\
+    & & \\
+    & & \\
+    \hline
+  \end{tabular}
+}
 \lhead{}
 \chead{}
 \rhead{}
