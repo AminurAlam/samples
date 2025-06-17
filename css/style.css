@@ -2,6 +2,8 @@
 tag {}
 #id {}
 .class {}
+div.class {}
+span#id {}
 
 .color {
   color: #000fff;
@@ -31,5 +33,6 @@ tag {}
 }
 
 .space {
-
+  padding: 2px;
+  margin: 4px;
 }

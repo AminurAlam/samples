@@ -184,11 +184,10 @@ add(5,7);
 
 // anonymous function
 
-anon = function () {
-    console.log("hello anon");
-}
+anon = function (x) { console.log("hello " + x); }
+anon = (x) => console.log(`hello ${x}`)
 
-anon();
+anon("world");
 
 
 
@@ -196,7 +195,7 @@ anon();
 //// statements ////
 
 // if-else
-if (1>0) {
+if (1 > 0) {
     console.log("true");
 } else {
     console.log("false");
@@ -234,7 +233,7 @@ console.log(
 
 
 ////launching html pages on localhost
-/* const express = require("express");    //importing
+/* const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {

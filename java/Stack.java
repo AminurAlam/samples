@@ -1,4 +1,3 @@
-
 class Stack {
     int n = 0; int[] array = new int[5];
 
