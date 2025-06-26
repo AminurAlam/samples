@@ -4,11 +4,11 @@
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_LINES);
-    float r,g,b, x, X;
+    float r, g, b, x, X;
 
-    for (float rgb = 0; rgb < 1; rgb += (float)1/19200) {
-        x = rgb*2 - 1;
-        X = (rgb+(float)1/19200)*2 - 1;
+    for (float rgb = 0; rgb < 1; rgb += (float)1 / 19200) {
+        x = rgb * 2 - 1;
+        X = (rgb + (float)1 / 19200) * 2 - 1;
 
         glColor3f(
             (0.00f <= rgb && rgb < 0.50f) ? 1-rgb*2 : 0,
@@ -34,10 +34,13 @@ void display() {
     glFlush();
 }
 
-int main(int argc, char** argv) {
+void keyboard(unsigned char key, int x, int y) { glutLeaveMainLoop(); }
+
+int main(int argc, char **argv) {
     glutInit(&argc, argv);
-    glutInitWindowSize(1920/2, 1080/3);
+    glutInitWindowSize(1920 / 2, 1080 / 3);
     glutCreateWindow("rgb3x3");
     glutDisplayFunc(display);
+    glutKeyboardFunc(keyboard);
     glutMainLoop();
 }
