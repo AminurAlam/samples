@@ -1,0 +1,189 @@
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{lineno}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{array}
+
+\pagenumbering{gobble}
+\newcommand*{\C}[2]{{}^{#1}C_{#2}}%
+
+\begin{document}
+\section{stuff}
+\subsection{central tendenceis}
+{\large mean ($\mu$):}
+\begin{itemize}
+  \item direct: $\displaystyle \frac{\sum{f_ix_i}}{n}$
+  \item assumed: $\displaystyle a + \frac{\sum{f_id_i}}{n} \\ d_i = x_i - a $
+  \item step deviation: $\displaystyle a + \frac{\sum{f_iu_i}}{n}h \\ u_i = \frac{x_i - a}{h} $
+\end{itemize}
+\vspace*{1\baselineskip}
+{\large median: \\ } \\
+$\displaystyle l + \frac{h}{f}(\frac{n}{2}-cf) $ \\
+l = lower limit of median class \\
+h = width of median class \\
+f = frequency of median class \\
+n = $\sum{f}$ \\
+cf = cumulative frequency of pre-median class \\
+median class = class with highest frequency \\
+\vspace*{1\baselineskip} \\
+{\large mode: \\ } \\
+$\displaystyle l + \frac{f_1 - f_0}{2f_1 - f_0 - f_2}h $ \\
+l = lower limit of modal class \\
+h = width of modal class \\
+$f_0$ = frequency of pre-modal class \\
+$f_1$ = frequency of modal class \\
+$f_2$ = frequency of post-modal class \\
+\vspace*{1\baselineskip} \\
+{\large standard deviation: \\ } \\
+$\displaystyle \frac{\sum{(x_i - \mu)^2}}{n}$
+\vspace*{1\baselineskip} \\
+
+\subsection{probablity}
+$P(A \cap B) = P(A|B) P(B) = P(B|A) P(A)$
+
+\subsection{mean}
+AM = $\displaystyle \frac{(x_1 + x_2 + ... + x_n)}{n}$ \\ \\
+GM = $\displaystyle {}^n\sqrt{x_1\ x_2\ ...\ x_n}$ \\ \\
+HM = $\displaystyle \frac{n}{(1/x_1)+(2/x_2)+...+(1/x_n)}$ \\ \\ \\
+$GM^2 = AM \times HM$
+
+\subsection{integration}
+$\displaystyle
+\int{x^ndx} = \frac{x^{n+1}}{n+1} \\
+\int{e^ndx} = e^n \\
+\int{a^xdx} = \frac{a^x}{\log{a}} \\
+\int{\frac{1}{x}dx} = \log{x} \\
+\int{uvdx} = u\int{vdx} - \int{(\frac{d}{dx}u \int{vdx})dx} \\
+$
+\newpage
+
+\section{discrete}
+$\displaystyle
+mean (\mu)
+= E(x)
+= \sum_{i=1}^n{f_ix_i} \\
+variance (\sigma^2)
+= Var(x)
+= E(x^2) - \mu^2
+= \sum_{i=1}^n{f_ix_i^2} - (\sum_{i=1}^n{f_ix_i})^2  \\
+standard deviation (\sigma)
+= \sqrt{Var(x)}
+$
+
+\subsection{binomial (bernauli)}
+\begin{itemize}
+  \item n is small
+  \item two outcomes: success (p) or fail (q)
+\end{itemize}
+$
+pmf = f(X=x) = \C{n}{x} p^x q^{n-x} \\ \\
+mean (\mu) = np \\
+variance (\sigma^2) = npq \\
+standard deviation (\sigma) = \sqrt{npq}
+$
+
+\subsection{poisson}
+\begin{itemize}
+  \item n is large
+  \item p is very small
+\end{itemize}
+$
+pmf = f(X=x, \lambda = np) = \displaystyle\frac{e^{-\lambda}\lambda^x}{x!} \\ \\
+mean (\mu) = \lambda = np \\
+variance (\sigma^2) = \lambda = np \\
+standard deviation (\sigma) = \sqrt\lambda = \sqrt{np}
+$
+\newpage
+
+\section{continuous}
+\subsection{uniform}
+$\displaystyle
+pdf = f(\alpha < x < \beta) = \frac{1}{\beta - \alpha} \\ \\
+mean (\mu) = E(x) = \frac{\alpha + \beta}{2} \\
+variance (\sigma^2) = Var(x) = \frac{(\beta - \alpha)^2}{12} \\
+standard deviation (\sigma) =\frac{\beta - \alpha}{\sqrt{12}}
+$
+
+\subsection{exponential}
+$\displaystyle
+pdf = f(0 \leq x < \infty) = \lambda e^{-\lambda x} \\
+pdf = f(0 \leq x < a) = 1 - e^{-\lambda a} \\ \\
+mean (\mu) = E(x) = \frac{1}{\lambda} \\
+variance (\sigma^2) = Var(x) = \frac{1}{\lambda^2} \\
+standard deviation (\sigma) = \sqrt\lambda = \sqrt{np}
+$
+
+\subsection{normal}
+$\displaystyle
+pdf = f(-\infty < x < \infty, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2} \\ \\
+mean (\mu) = E(x) = \int_{-\infty}^{\infty}{xf(x)dx} \\
+variance (\sigma^2) = Var(x) = \int_{-\infty}^{\infty}{(x-\mu)^2f(x)dx} \\
+standard deviation (\sigma) = \sqrt\lambda = \sqrt{np}
+$
+
+\subsection{log normal}
+\subsection{standard normal}
+$\displaystyle
+pdf = f(\frac{x-\mu_1}{\sigma} < z < \frac{x-\mu_2}{\sigma}) = f(z < \frac{x-\mu_2}{\sigma}) - f(z < \frac{x-\mu_1}{\sigma})\\ \\
+\mu = n \pm m
+$
+
+\subsection{gamma}
+$\displaystyle
+pdf = f(X=x, \lambda, r) = \frac{\lambda^r x^{r-1} e ^{-\lambda x}}{\Gamma r} \\
+\Gamma r = \int_{0}^{\infty}{x^{r-1}e^{-x}dx} \\
+0 < x,r \\ \\ \\
+mean (\mu) = E(x) = \frac{r}{\lambda} \\
+variance (\sigma^2) = Var(x) = \frac{r}{\lambda^2} \\
+$
+
+\section{joint distribution}
+$\displaystyle P(a<x<b, c<y<d) = \int_a^b{\int_c^d{f(x,y) dx}}$
+
+\section{skewness}
+$\displaystyle \frac{(mean - mode)}{std\ dev}$
+\subsection{Karl Pearson's measure of skewness}
+$\displaystyle \frac{3(mean - median)}{std\ dev}$
+
+\subsection{Bowley's measure of skewness}
+$\displaystyle \frac{Q_3 - 2 median + Q_1}{Q_3 - Q_1}$ \\ \\
+$Q_1$ = find median with median class as $N/4$ \\
+$Q_2$ = find median with median class as $N/2$ \\
+$Q_2$ = find median with median class as $3N/4$
+
+\subsection{Moment's measure of skewness}
+$\displaystyle \mu_r = \frac{1}{n} \sum{f_i(x_i -  \bar{x})^r}$ \\ \\
+$\displaystyle \mu_r = \frac{h^r}{n} \sum{f_i\ x_i^r}$\ \ \ (for assumed mean) \\ \\
+$\displaystyle \beta_1 = \frac{{\mu_3}^2}{{\mu_2}^3}$ \\ \\
+$\displaystyle \gamma_1 = \pm \sqrt{\beta_1} = \frac{\mu_3}{\sigma^3} = \alpha_3$
+\newpage
+
+\subsection{kurtosis}
+$\displaystyle \beta_2 = \frac{\mu_4}{{\mu_2}^2}$ \\ \\
+$\displaystyle \gamma_2 = \beta_2 - 3$ \\ \\
+$\beta_2 = 3$, meso kurtic \\
+$\beta_2 < 3$, platy kurtic \\
+$\beta_2 > 3$, lepto kurtic
+
+\section{correlation}
+\subsection{Karl Pearson's coefficient of correlation}
+$\displaystyle r = \frac{ n \sum{xy} - \sum{x}\sum{y} }{
+\sqrt{n\sum{x^2} - {(\sum{x})}^2 } \sqrt{n\sum{y^2} - {(\sum{y})}^2 } }$ \\ \\ \\
+$\displaystyle r = \frac{Cov(x, y)}{\sigma_x\ \sigma_y}$
+
+\subsection{Spearmann's rank correlation}
+$\displaystyle \rho = 1 - \frac{6\sum{d^2}}{n(n^2 - 1)} \\ \\
+d_i = Rx_i - Ry_i $
+\subsection{concurrent deviations}
+$\displaystyle rc = \sqrt{\frac{2C-N}{N}} \\ \\
+C: +ve\ \ \delta_x \delta_y$
+
+% \vspace*{6\baselineskip}
+\end{document}
