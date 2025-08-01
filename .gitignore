@@ -29,3 +29,5 @@ rust/target/
 rust/target/*
 rust/Cargo.lock
 rust/Cargo.toml
+
+typst/*.pdf

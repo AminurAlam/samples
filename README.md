@@ -7,17 +7,18 @@
   - [data processing](python/numerical_methods/)
   - [dbms](sql/quick.sql)
 - also for tracking how well i know a language
-  - (80%) bash
+  - [x] bash
   - (65%) c
   - [x] fish
-  - (30%) html
-  - (20%) java
-  - (10%) javascript
+  - (40%) html
+  - (15%) java
+  - (20%) javascript
   - (05%) kotlin
-  - (15%) latex
+  - (30%) latex
   - (05%) lisp
   - [x] lua
-  - (40%) make
+  - (50%) make
   - [x] python
   - (05%) rust
   - (30%) sql
+  - (05%) typst
