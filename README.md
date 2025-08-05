@@ -21,4 +21,4 @@
   - [x] python
   - (05%) rust
   - (30%) sql
-  - (05%) typst
+  - (40%) typst
