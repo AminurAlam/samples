@@ -1,10 +1,10 @@
-def bubble(array: list[int]) -> list[int]:
-    for i in range(len(array) - 1, 0, -1):
-        for j in range(0, i):
-            if array[j] > array[j + 1]:
-                array[j], array[j + 1] = array[j + 1], array[j]
-
-    return array
+def quick(arr: list[int]) -> list[int]:
+    if len(arr) <= 1:
+        return arr
+    else:
+        left = [x for x in arr[1:] if x < arr[0]]
+        right = [x for x in arr[1:] if x >= arr[0]]
+        return quick(left) + [arr[0]] + quick(right)
 
 
 for test in [
@@ -23,4 +23,4 @@ for test in [
     [0, 5, 9, 9, 3, 4, 9, 1, 7, 8],
     [5, 8, 5, 1, 10, 5, 7, 6, 10, 8],
 ]:
-    assert bubble(test) == sorted(test), test
+    assert quick(test) == sorted(test), test
