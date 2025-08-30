@@ -1,17 +1,17 @@
-def linear(array: list[int], query: int) -> bool:
-    for item in array:
+def linear(arr: list[int], query: int) -> bool:
+    for item in arr:
         if item == query:
             return True
 
     return False
 
 
-for test in [
-    [-1, 0, 1],
-    [1, 2, 3],
-    [1, 3, 5, 7],
-    [0, 2, 4, 6],
-    [9, 6, 8, 3, 9, 4, 1]
-]:
+l=lambda a,q:sum(map(lambda x:x==q,a))
+
+
+import random
+
+for _ in range(100):
+    test = random.sample(range(-10, 20), random.choice(range(1, 10)))
     for i in range(-2, 10):
-        assert linear(test, i) == (i in test), test
+        assert linear(test, i) == (i in test), (test, i)

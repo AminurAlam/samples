@@ -1,34 +1,29 @@
-def binary(array: list[int], query: int) -> bool:
-    a, b = 0, len(array) - 1
+def binary(arr: list[int], q: int) -> bool:
+    a, b = 0, len(arr) - 1
 
     while a <= b:
-        mid = int((a + b) / 2)
-        val = array[mid]
+        mid = (a + b) // 2
+        val = arr[mid]
 
-        if query == val:
+        if q == val:
             return True
-        elif query > val:
+        elif q > val:
             a = mid + 1
-        elif query < val:
+        elif q < val:
             b = mid - 1
 
     return False
 
 
-for test in [
-    [],
-    [0],
-    [1, 2],
-    [-1, 1],
-    [1, 2, 3],
-    [0, 1, 2, 3],
-    [1, 2, 3, 4],
-    [0, 1, 2, 3, 4],
-    [1, 2, 3, 4, 5],
-    [0, 2, 4, 6, 8],
-    [1, 3, 5, 7, 9],
-    [1, 3, 5, 7, 9],
-    [2, 5, 8, 11, 14],
-]:
+def b(A,q):
+ if len(A)<2:return A==[q]
+ m=len(A)//2
+ return b(A[m:],q)if q>=A[m]else b(A[:m],q)
+
+
+import random
+
+for _ in range(100):
+    test = random.sample(range(-10, 20), random.choice(range(1, 10)))
     for i in range(-2, 10):
-        assert binary(test, i) == (i in test), (test, i)
+        assert binary(sorted(test), i) == (i in test), (test, i)

@@ -1,22 +1,17 @@
-def biggest(array: list[int]) -> int:
-    if not array:
-        raise ValueError
+def biggest(arr: list[int]) -> int:
+    result: int = arr[0]
 
-    result: int = array[0]
-
-    for i in array[1:]:
+    for i in arr:
         result = max(result, i)
 
     return result
 
 
-for test in [
-    [-1],
-    [0],
-    [1],
-    [-1, 0, 1],
-    [-1, -1, -1],
-    [0, 20, 0],
-    [99, 2, 14],
-]:
-    assert biggest(test) == max(test), test
+b=lambda a:a[0]if len(a)<2 else b(list(map(max,zip(a,a[1:]))))
+
+
+import random
+
+for _ in range(100):
+    test = random.sample(range(-10, 20), random.choice(range(1, 10)))
+    assert biggest(test) == max(test), (test, b(test))
