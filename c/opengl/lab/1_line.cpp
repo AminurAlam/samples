@@ -1,8 +1,17 @@
 #include "./graphics.h"
+#include <math.h>
 
 void display() {
-    line(100, 540, 1800, 540); // horizontal line
-    line(960, 100, 960, 1000); // vertical line
+    float x0 = 100, y0 = 100;
+    float dx = 1800 - x0, dy = 900 - y0;
+
+    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+
+    for (int i = 0; i <= steps; i++) {
+        putpixel(x0, y0, RED);
+        x0 += dx / steps;
+        y0 += dy / steps;
+    }
 }
 
 void keyboard(unsigned char key, int x, int y) {

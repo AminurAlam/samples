@@ -1,34 +1,19 @@
-#include <math.h>
 #include "./graphics.h"
+#include <math.h>
 
 void display() {
     // drawgrid();
 
-    int xc, yc = 540;
-    // tri
-    xc = 540;
-    int len = 100;
-    // int x1 = sin(xc+100)
-    // int tri[] = {100,100, 100,500, 500,100};
-    // drawpoly(3, tri);
-    glBegin(GL_POINTS);
-    for (float i = 0; i <= M_PI/2; i += M_PI/4) {
-        glVertex2i(len * -sin(i) + xc, len * cos(i) + yc); // BL
-        glVertex2i(len * sin(i) + xc, len * -cos(i) + yc); // TR
-        glVertex2i(len * sin(i) + xc, len * cos(i) + yc); // BR
-        glVertex2i(len * -sin(i) + xc, len * -cos(i) + yc); // TL
-    }
-    glEnd();
-    glFlush();
-    glBegin(GL_LINES);
-    for (float i = 0; i <= M_PI/2; i += M_PI/4) {
-        glVertex2i(len * -sin(i) + xc, len * cos(i) + yc); // BL
-        glVertex2i(len * sin(i) + xc, len * -cos(i) + yc); // TR
-        glVertex2i(len * sin(i) + xc, len * cos(i) + yc); // BR
-        glVertex2i(len * -sin(i) + xc, len * -cos(i) + yc); // TL
-    }
-    glEnd();
-    glFlush();
+    int top = 350;
+    int tri[] = {top, top, top + top / 2, top * 2, top / 2, top * 2};
+    drawpoly(3, tri);
+
+    int side = 300;
+    int sqx = 1920 / 2 - side / 2, sqy = 1080 / 2 - side / 2;
+    int quad[] = {sqx,        sqy,        sqx + side, sqy,
+                  sqx + side, sqy + side, sqx,        sqy + side};
+    drawpoly(4, quad);
+
 }
 
 void keyboard(unsigned char key, int x, int y) {

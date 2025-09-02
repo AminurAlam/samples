@@ -3,6 +3,9 @@
 #include <math.h>
 
 #define DETECT 0
+#define RED 1
+#define BLUE 2
+#define GREEN 3
 
 // Drawing Functions
 void arc(int x, int y, int stangle, int endangle, int radius);
@@ -31,7 +34,17 @@ inline void initgraph(int *a, int *b) {
     glutCreateWindow("graphics");
     gluOrtho2D(0, 1920, 1080, 0);
 }
+inline void putpixel(int x, int y, int color) {
+    glBegin(GL_POINTS);
 
+    if (color == RED) glColor3f(1, 0, 0);
+    else if (color == BLUE) glColor3f(0, 1, 0);
+    else if (color == GREEN) glColor3f(0, 0, 1);
+
+    glVertex2i(x, y);
+    glEnd();
+    glFlush();
+}
 inline void line(int x1, int y1, int x2, int y2) {
     glBegin(GL_LINES);
     glVertex2i(x1, y1);
@@ -68,8 +81,7 @@ inline void drawpoly(int n_points, int points[]) {
 inline void drawgrid() {
     glBegin(GL_POINTS);
     for (int x = 0; x < 1920; x += 100) {
-        for (int y = 0; y < 1080; y += 100)
-            glVertex2i(x, y);
+        for (int y = 0; y < 1080; y += 100) glVertex2i(x, y);
     }
     glEnd();
     glFlush();
