@@ -28,21 +28,17 @@ def sel_chromosome(pop: list[list[int]]):
 
 def crossover(p1: list[int], p2: list[int]):
     cross = random.randint(0, len(items) - 1)
-    return p1[0:cross] + p2[cross:], p2[0:cross] + p1[cross:]
+    return p1[:cross] + p2[cross:], p2[:cross] + p1[cross:]
 
 
 def mutate(chromo: list[int]):
     point = random.randint(0, len(items) - 1)
-    chromo[point] = int(not chromo[point])
+    chromo[point] = chromo[point] ^ (random.random() < 0.2)
     return chromo
 
 
 for _ in range(generations):
-    c1, c2 = crossover(*sel_chromosome(pop))
-    if random.random() < mut_prob: c1 = mutate(c1)
-    if random.random() < mut_prob: c2 = mutate(c2)
-
-    pop[0], pop[1] = c1, c2
+    pop[0:2] = list(map(mutate, crossover(*sel_chromosome(pop))))
 
 fit_vals = [calc_fit(chromo) for chromo in pop]
 best = pop[fit_vals.index(max(fit_vals))]
