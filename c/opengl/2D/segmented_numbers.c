@@ -1,3 +1,4 @@
+#include <GL/freeglut.h>
 #include <GL/glut.h>
 
 // TODO: read from user input
@@ -51,7 +52,7 @@ void keyboard(unsigned char key, int x, int y) { glutLeaveMainLoop(); }
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(1920 / 2, 1080);
-    glutCreateWindow("7 segment");
+    glutCreateWindow("graphics");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
     glutMainLoop();

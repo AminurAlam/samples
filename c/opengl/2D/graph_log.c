@@ -1,3 +1,4 @@
+#include <GL/freeglut.h>
 #include <GL/glut.h>
 #include <math.h>
 
@@ -25,7 +26,7 @@ void keyboard(unsigned char key, int x, int y) { glutLeaveMainLoop(); }
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(1920 / 2, 1080 / 2);
-    glutCreateWindow("circle");
+    glutCreateWindow("graphics");
     gluOrtho2D(-300, 300, -30, 30);
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);

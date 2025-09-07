@@ -1,4 +1,4 @@
-#include "./graphics.h"
+#include "graphics.h"
 
 void display() {
     // square
@@ -9,7 +9,7 @@ void display() {
     circle(850, 550, 200);
     circle(850, 550, 199);
 
-    // rectangels
+    // rectangle
     left = 1200, top = 400;
     rectangle(left, top, left+550, top+300);
 }

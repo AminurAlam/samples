@@ -3,6 +3,7 @@
 #include <math.h>
 
 #define DETECT 0
+#define WHITE 0
 #define RED 1
 #define BLUE 2
 #define GREEN 3
@@ -37,7 +38,8 @@ inline void initgraph(int *a, int *b) {
 inline void putpixel(int x, int y, int color) {
     glBegin(GL_POINTS);
 
-    if (color == RED) glColor3f(1, 0, 0);
+    if (color == WHITE) glColor3f(1, 1, 1);
+    else if (color == RED) glColor3f(1, 0, 0);
     else if (color == BLUE) glColor3f(0, 1, 0);
     else if (color == GREEN) glColor3f(0, 0, 1);
 
