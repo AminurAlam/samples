@@ -13,7 +13,7 @@ void symmetry(int x, int y, int xc, int yc) {
 }
 
 void display() {
-    int xc = 600, yc = 600, rad = 400;
+    int xc = getmaxx()/2, yc = getmaxy()/2, rad = 400;
     int x = 0;
     int y = rad;
     int p = 1 - rad;

@@ -40,8 +40,8 @@ inline void putpixel(int x, int y, int color) {
 
     if (color == WHITE) glColor3f(1, 1, 1);
     else if (color == RED) glColor3f(1, 0, 0);
-    else if (color == BLUE) glColor3f(0, 1, 0);
-    else if (color == GREEN) glColor3f(0, 0, 1);
+    else if (color == GREEN) glColor3f(0, 1, 0);
+    else if (color == BLUE) glColor3f(0, 0, 1);
 
     glVertex2i(x, y);
     glEnd();
