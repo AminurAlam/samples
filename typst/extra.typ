@@ -1,4 +1,13 @@
-#let starter(subject, name, roll_no, semester, department, course, institute, index: false) = [
+#let starter(
+  subject: "",
+  name: "Aminur Alam",
+  roll_no: "",
+  semester: $n^"th"$,
+  department: "",
+  course: "",
+  institute: "",
+  index: false,
+) = [
   // TITLEPAGE
   #set align(center)
   #let year = datetime.today().year()
