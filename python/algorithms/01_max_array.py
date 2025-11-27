@@ -7,7 +7,7 @@ def biggest(arr: list[int]) -> int:
     return result
 
 
-b=lambda a:a[0]if len(a)<2 else b(list(map(max,zip(a,a[1:]))))
+b=lambda a:a[0]if len(a)<2 else b(list(map(max,zip(a,a[1:]))))  # fmt: skip
 
 
 import random

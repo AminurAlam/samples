@@ -15,10 +15,12 @@ def binary(arr: list[int], q: int) -> bool:
     return False
 
 
+# fmt: off
 def b(A,q):
  if len(A)<2:return A==[q]
  m=len(A)//2
  return b(A[m:],q)if q>=A[m]else b(A[:m],q)
+# fmt: on
 
 
 import random

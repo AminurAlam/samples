@@ -1,21 +1,22 @@
-def not_safe(vertex: int, c: int) -> bool:
+def safe(lvl: int, c: int) -> int:
     for i in range(len(graph)):
-        if graph[vertex][i] and color[i] == c:
-            return True
-    return False
+        if graph[lvl][i] and color[i] == c:
+            return False
+    return True
 
 
-def graph_col(num_colors: int, vertex: int) -> int:
-    if vertex == len(graph):
+def graph_col(n_col: int, lvl: int) -> int:
+    if lvl == len(graph):
         return 1
 
     count = 0
-    for c in range(1, num_colors + 1):
-        if not_safe(vertex, c):
+    for c in range(1, n_col + 1):
+        # if sum([1 for i in range(len(graph)) if graph[vertex][i] and color[i] == c]): continue
+        if not safe(lvl, c):
             continue
-        color[vertex] = c
-        count += graph_col(num_colors, vertex + 1)
-        color[vertex] = 0
+        color[lvl] = c
+        count += graph_col(n_col, lvl + 1)
+        color[lvl] = 0
     return count
 
 

@@ -6,7 +6,7 @@ def linear(arr: list[int], query: int) -> bool:
     return False
 
 
-l=lambda a,q:sum(map(lambda x:x==q,a))
+l=lambda a,q:sum(map(lambda x:x==q,a))  # fmt: skip
 
 
 import random

@@ -6,7 +6,8 @@ def quick(arr: list[int]) -> list[int]:
     R = [x for x in arr[1:] if x >= arr[0]]
     return quick(L) + [arr[0]] + quick(R)
 
-q=lambda a:a if len(a)<=1 else q([x for x in a[1:]if x<a[0]])+[a[0]]+q([x for x in a[1:]if x>=a[0]])
+
+q=lambda a:a if len(a)<=1 else q([x for x in a[1:]if x<a[0]])+[a[0]]+q([x for x in a[1:]if x>=a[0]])  # fmt: skip
 
 import random
 
