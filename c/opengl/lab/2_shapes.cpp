@@ -11,7 +11,7 @@ void display() {
 
     // rectangle
     left = 1200, top = 400;
-    rectangle(left, top, left+550, top+300);
+    rectangle(left, top, left + 550, top + 300);
 }
 
 void keyboard(unsigned char key, int x, int y) {

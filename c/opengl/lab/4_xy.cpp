@@ -9,7 +9,7 @@ void display() {
     int pad = 100, min = (x < y) ? x : y;
     circle(x / 4, y / 4, min / 4 - pad);
     rectangle(x / 2 + pad, pad, x - pad, y / 2 - pad);
-    // ellipse(x*3/4, y*3/4, 0,0, x/4-pad, y/4-pad);
+    ellipse(x * 3 / 4, y * 3 / 4, 0, 360, x / 4 - pad * 2, y / 4);
     rectangle(
         x / 4 - min / 4 + pad, y * 3 / 4 - min / 4 + pad, x / 4 + min / 4 - pad,
         y * 3 / 4 + min / 4 - pad

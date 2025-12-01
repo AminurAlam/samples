@@ -28,11 +28,12 @@ void putpixel(int x, int y, int color);
 void rectangle(int left, int top, int right, int bottom);
 void sector(int x, int y, int stangle, int endangle, int xradius, int yradius);
 
+inline void cleardevice() { glClear(GL_COLOR_BUFFER_BIT); }
 inline int getmaxx() { return 1920; }
 inline int getmaxy() { return 1080; }
 inline void initgraph(int *a, int *b) {
     glutInitWindowSize(1920, 1080);
-    glutCreateWindow("graphics");
+    glutCreateWindow("2d");
     gluOrtho2D(0, 1920, 1080, 0);
 }
 inline void putpixel(int x, int y, int color) {
@@ -69,6 +70,20 @@ inline void circle(int x, int y, int radius) {
     glEnd();
     glFlush();
 }
+inline void
+ellipse(int x, int y, int stangle, int endangle, int xradius, int yradius) {
+    glBegin(GL_POINTS);
+    for (float i = 0; i < M_PI / 2; i += .01) {
+        // if (((float)stangle / 180 > i) || (i > (float)endangle / 180))
+        // continue;
+        glVertex2i(xradius * -sin(i) + x, yradius * cos(i) / 2 + y);
+        glVertex2i(xradius * sin(i) + x, yradius * -cos(i) / 2 + y);
+        glVertex2i(xradius * sin(i) + x, yradius * cos(i) / 2 + y);
+        glVertex2i(xradius * -sin(i) + x, yradius * -cos(i) / 2 + y);
+    }
+    glEnd();
+    glFlush();
+};
 inline void drawpoly(int n_points, int points[]) {
     glBegin(GL_LINES);
     for (int i = 0; i <= n_points; i = i + 2)
@@ -157,7 +172,7 @@ void setgraphmode(int mode);
 void showerrorbox(const char *msg = NULL);
 
 // User Interaction
-int getch();
+// int getch();
 int kbhit();
 
 // User-Controlled Window Functions (winbgi.cpp)
