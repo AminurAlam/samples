@@ -2,18 +2,15 @@
 #include <math.h>
 
 void display() {
-    float x0 = 100, y0 = 100;
-    float dx = 1800 - x0, dy = 900 - y0;
-
-    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-
-    for (int i = 0; i <= steps; i++) {
-        putpixel(x0, y0, RED);
-        x0 += dx / steps;
-        y0 += dy / steps;
+    int mask[] = {400, 300, 800, 600};
+    for (int x = 0; x < getmaxx(); x += 10) {
+        for (int y = 0; y < getmaxy(); y += 10) {
+            if (mask[0] < x && x < mask[2] && mask[1] < y && y < mask[3])
+                continue;
+            putpixel(x, y, RED);
+        }
+        glFlush();
     }
-
-    glFlush();
 }
 
 void keyboard(unsigned char key, int x, int y) {

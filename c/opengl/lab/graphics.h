@@ -33,7 +33,7 @@ inline int getmaxx() { return 1920; }
 inline int getmaxy() { return 1080; }
 inline void initgraph(int *a, int *b) {
     glutInitWindowSize(1920, 1080);
-    glutCreateWindow("2d");
+    glutCreateWindow("graphics");
     gluOrtho2D(0, 1920, 1080, 0);
 }
 inline void putpixel(int x, int y, int color) {
@@ -46,7 +46,7 @@ inline void putpixel(int x, int y, int color) {
 
     glVertex2i(x, y);
     glEnd();
-    glFlush();
+    // glFlush();
 }
 inline void line(int x1, int y1, int x2, int y2) {
     glBegin(GL_LINES);
