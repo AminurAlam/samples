@@ -2,7 +2,7 @@
   subject: "",
   name: "Aminur Alam",
   roll_no: "",
-  semester: $n^"th"$,
+  semester: [n#super("th")],
   department: "",
   course: "",
   institute: "",

@@ -1,41 +1,10 @@
-#let starter(
-  subject: [
-    Comparison of different \
-    regression models on \
-    "Youth Tobacco Usage" data
-  ],
-  name: "",
-  roll_no: "",
-  semester: "",
-  department: "",
-  course: "",
-  institute: "",
-  index: false,
-) = [
-  // TITLEPAGE
-  #set align(center)
-  #set par(justify: false)
-  #let year = datetime.today().year()
+#import "extra.typ": *
 
-  #v(12%)
-  #line(length: 100%, stroke: 1.6pt) #v(-6pt) #line(length: 100%, stroke: 0.4pt)
-  #text(weight: "bold", 2.5em)[#upper[#subject]]
-  #line(length: 100%, stroke: 0.4pt) #v(-6pt) #line(length: 100%, stroke: 1.6pt)
-
-  #v(23%)
-  #align(left)[
-    #for (key, value) in (
-      "SUBMITTED BY": name,
-      "ROLL NO": roll_no,
-      "SEMESTER": semester,
-      "DEPARTMENT": department,
-      "COURSE": course,
-    ) [#text(1.2em)[#key:] #h(10pt) #text(1.8em)[#value] \ #v(2pt) ]
-  ]
-  #align(bottom)[#text(1.4em)[#institute #{ year }-#{ year - 1999 }]]
-]
-
-#starter()
+#starter(subject: [
+  Comparison of different \
+  regression models on \
+  "Youth Tobacco Usage" data
+])
 #pagebreak()
 #text(1.2em)[#align(center)[#outline()]]
 #pagebreak()
