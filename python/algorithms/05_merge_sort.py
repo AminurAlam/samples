@@ -13,11 +13,11 @@ def merge(L: list[int], R: list[int]) -> list[int]:
     return res + L[i:] + R[j:]
 
 
-def sort(arr: list[int]) -> list[int]:
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    return merge(sort(arr[:mid]), sort(arr[mid:]))
+def sort(A: list[int]) -> list[int]:
+    if len(A) <= 1:
+        return A
+    mid = len(A) // 2
+    return merge(sort(A[:mid]), sort(A[mid:]))
 
 
 import random

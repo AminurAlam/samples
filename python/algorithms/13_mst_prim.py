@@ -1,19 +1,20 @@
-def prim(graph: list[list[int]]) -> list[str]:
-    n = len(graph)
+def prim(G: list[list[int]]) -> list[str]:
+    n = len(G)
     parent = [-1] * n  # Array to store constructed MST
     visited = [False] * n
-    key = [9999] * n  # Key values used to pick minimum weight edge in cut
+    key = [int(1e9)] * n  # Key values used to pick minimum weight edge in cut
 
     for _ in range(n):
         u = key.index(min([x[0] for x in zip(key, visited) if not x[1]]))
         visited[u] = True
 
         for v in range(n):
-            if not graph[u][v] or visited[v] or key[v] <= graph[u][v]: continue
-            key[v] = graph[u][v]
+            if not G[u][v] or visited[v] or key[v] <= G[u][v]:
+                continue
+            key[v] = G[u][v]
             parent[v] = u
 
-    return [f"{parent[i]}-{i}: {graph[parent[i]][i]}" for i in range(1, n)]
+    return [f"{parent[i]}-{i}: {G[parent[i]][i]}" for i in range(1, n)]
 
 
 assert prim(

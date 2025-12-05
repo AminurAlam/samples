@@ -1,12 +1,12 @@
-def linear(arr: list[int], query: int) -> bool:
-    for item in arr:
-        if item == query:
+def linear(A: list[int], q: int) -> bool:
+    for item in A:
+        if item == q:
             return True
 
     return False
 
 
-l=lambda a,q:sum(map(lambda x:x==q,a))  # fmt: skip
+l=lambda A,q:sum(map(lambda x:x==q,A))  # fmt: skip
 
 
 import random

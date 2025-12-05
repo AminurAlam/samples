@@ -1,9 +1,9 @@
-def binary(arr: list[int], q: int) -> bool:
-    a, b = 0, len(arr) - 1
+def binary(A: list[int], q: int) -> bool:
+    a, b = 0, len(A) - 1
 
     while a <= b:
         mid = (a + b) // 2
-        val = arr[mid]
+        val = A[mid]
 
         if q == val:
             return True

@@ -1,13 +1,13 @@
-def biggest(arr: list[int]) -> int:
-    result: int = arr[0]
+def biggest(A: list[int]) -> int:
+    result: int = A[0]
 
-    for i in arr:
+    for i in A:
         result = max(result, i)
 
     return result
 
 
-b=lambda a:a[0]if len(a)<2 else b(list(map(max,zip(a,a[1:]))))  # fmt: skip
+b=lambda A:A[0]if len(A)<2 else b(list(map(max,zip(A,A[1:]))))  # fmt: skip
 
 
 import random

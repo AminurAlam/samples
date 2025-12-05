@@ -1,13 +1,13 @@
-def quick(arr: list[int]) -> list[int]:
-    if len(arr) <= 1:
-        return arr
+def quick(A: list[int]) -> list[int]:
+    if len(A) <= 1:
+        return A
 
-    L = [x for x in arr[1:] if x < arr[0]]
-    R = [x for x in arr[1:] if x >= arr[0]]
-    return quick(L) + [arr[0]] + quick(R)
+    L = [x for x in A[1:] if x < A[0]]
+    R = [x for x in A[1:] if x >= A[0]]
+    return quick(L) + [A[0]] + quick(R)
 
 
-q=lambda a:a if len(a)<=1 else q([x for x in a[1:]if x<a[0]])+[a[0]]+q([x for x in a[1:]if x>=a[0]])  # fmt: skip
+q=lambda A:A if len(A)<=1 else q([x for x in A[1:]if x<A[0]])+[A[0]]+q([x for x in A[1:]if x>=A[0]])  # fmt: skip
 
 import random
 
