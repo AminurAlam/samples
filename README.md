@@ -12,13 +12,13 @@
   - [x] fish
   - (40%) html
   - (15%) java
-  - (20%) javascript
+  - (25%) javascript
   - (05%) kotlin
   - (35%) latex
   - (05%) lisp
   - [x] lua
   - (50%) make
   - [x] python
-  - (05%) rust
+  - (10%) rust
   - (30%) sql
-  - (40%) typst
+  - (50%) typst

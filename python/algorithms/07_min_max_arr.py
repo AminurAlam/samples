@@ -2,10 +2,6 @@ def min_max(arr: list[int]) -> tuple[int, int]:
     if len(arr) == 1:
         return arr[0], arr[0]
 
-    if len(arr) == 2:
-        a, b = arr[0], arr[1]
-        return (a, b) if a < b else (b, a)
-
     mid = len(arr) // 2
     a, A = min_max(arr[:mid])
     b, B = min_max(arr[mid:])
