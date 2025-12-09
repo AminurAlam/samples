@@ -1,11 +1,14 @@
 # what is this repository for?
 
 - samples of code in different languages for quick reference
-- some of my homework
+- some of my homework on:
   - [dsa](c/dsa/)
-  - [search](c/search/), [sort](c/sort/), [scheduling](c/scheduling/) algos
+  - [search](c/search/), [sort](c/sort/), [scheduling](c/scheduling/) algos in c
+  - [more algos](python/algorithms/) in py
+  - [ai/ml](python/ai/)
   - [data processing](python/numerical_methods/)
-  - [dbms](sql/quick.sql)
+  - [opengl graphics](c/opengl/)
+  - [assignments](typst/) i have written
 - also for tracking how well i know a language
   - [x] bash
   - (65%) c
