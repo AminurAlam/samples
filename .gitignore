@@ -31,4 +31,4 @@ rust/Cargo.lock
 rust/Cargo.toml
 
 typst/*.pdf
-typst/swe.typ
+typst/assets
