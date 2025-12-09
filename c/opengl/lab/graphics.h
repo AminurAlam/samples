@@ -33,7 +33,7 @@ inline int getmaxx() { return 1920; }
 inline int getmaxy() { return 1080; }
 inline void initgraph(int *a, int *b) {
     glutInitWindowSize(1920, 1080);
-    glutCreateWindow("graphics");
+    glutCreateWindow("2d");
     gluOrtho2D(0, 1920, 1080, 0);
 }
 inline void putpixel(int x, int y, int color) {
@@ -94,6 +94,16 @@ inline void drawpoly(int n_points, int points[]) {
     );
     glEnd();
     glFlush();
+};
+
+inline void
+bar3d(int left, int top, int right, int bottom, int depth, int topflag) {
+    rectangle(left, top, right, bottom);
+    rectangle(left + depth, top + depth, right + depth, bottom + depth);
+    line(left, top, left + depth, top + depth);
+    line(right, top, right + depth, top + depth);
+    line(left, bottom, left + depth, bottom + depth);
+    line(right, bottom, right + depth, bottom + depth);
 };
 inline void drawgrid() {
     glBegin(GL_POINTS);

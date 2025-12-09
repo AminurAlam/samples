@@ -85,6 +85,8 @@ class Triangle {
         y2 = (y - y2);
         y3 = (y - y3);
     }
+
+    void sheer(double factor) { x1 += y1 * factor; }
 };
 
 void display() {
@@ -102,6 +104,8 @@ void display() {
         case '.': t.rotate(30); break;
         case 'x': t.refx(); break;
         case 'y': t.refy(); break;
+        case 'd': t.sheer(-0.1); break;
+        case 'f': t.sheer(0.1); break;
         }
         t.draw();
     }
