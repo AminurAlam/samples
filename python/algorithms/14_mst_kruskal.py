@@ -13,7 +13,9 @@ def mst(G: list[tuple[int, int, int]]):
         if x == y:
             continue
         parent[max(x, y)] = min(x, y)
+        print(edges)
         result.add(edges)
+    print(result)
     return result
 
 

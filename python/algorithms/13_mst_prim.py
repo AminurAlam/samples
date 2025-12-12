@@ -1,19 +1,18 @@
 def prim(G: list[list[int]]) -> list[str]:
     n = len(G)
-    parent = [-1] * n
-    kv: list[list[int | bool]] = [[int(1e9), False] for _ in G]
+    p, k, v = [-1] * n, [int(1e9)] * n, [False] * n
 
     for _ in range(n):
-        u = kv.index(min(filter(lambda x: not x[1], kv)))
-        kv[u][1] = True
+        x = k.index(min(filter(lambda x: not x[1], zip(k, v)))[0])
+        v[x] = True
 
-        for v in range(n):
-            if kv[v][1] or not G[u][v] or kv[v][0] <= G[u][v]:
+        for y in range(n):
+            if v[y] or not G[x][y] or k[y] <= G[x][y]:
                 continue
-            kv[v][0] = G[u][v]
-            parent[v] = u
+            k[y] = G[x][y]
+            p[y] = x
 
-    return [f"{parent[i]}-{i}: {G[parent[i]][i]}" for i in range(1, n)]
+    return [f"{p[i]}-{i}: {G[p[i]][i]}" for i in range(1, n)]
 
 
 assert prim(

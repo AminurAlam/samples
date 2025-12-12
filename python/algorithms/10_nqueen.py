@@ -1,23 +1,3 @@
-def safe2(G: list[list[int]], x: int, y: int) -> int:
-    for i in range(x):
-        if G[i][y]:
-            return 0
-
-    i, j = x, y
-    while i and j:
-        i, j = i - 1, j - 1
-        if G[i][j]:
-            return 0
-
-    i, j = x, y
-    while i and j < n - 1:
-        i, j = i - 1, j + 1
-        if G[i][j]:
-            return 0
-
-    return 1
-
-
 def taken(x: int, y: int) -> bool:
     i, jl, jr = x, y, y
     while i:

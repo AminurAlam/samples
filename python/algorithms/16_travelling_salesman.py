@@ -1,6 +1,11 @@
+def b(num: int, n: int):
+    print(f"{num:0{n}b}")
+
+
 def tsp(G: list[list[int]], mask: int, pos: int) -> int:
     n = len(G)
     if mask == (1 << n) - 1:
+        # mask = 1111
         return G[pos][0]
 
     ans: int = int(1e9)

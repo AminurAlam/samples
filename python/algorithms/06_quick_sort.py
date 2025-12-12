@@ -3,7 +3,7 @@ def quick(A: list[int]) -> list[int]:
         return A
 
     L = [x for x in A[1:] if x < A[0]]
-    R = [x for x in A[1:] if x >= A[0]]
+    R = [x for x in A[1:] if x > A[0]]
     return quick(L) + [A[0]] + quick(R)
 
 

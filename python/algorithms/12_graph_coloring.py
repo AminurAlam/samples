@@ -1,30 +1,30 @@
-def safe(lvl: int, c: int) -> int:
-    for i in range(len(graph)):
-        if graph[lvl][i] and color[i] == c:
+def safe(lvl: int, c: int) -> bool:
+    for i in range(len(G)):
+        if G[lvl][i] and colors[i] == c:
             return False
     return True
 
 
-def graph_col(n_col: int, lvl: int) -> int:
-    if lvl == len(graph):
-        return 1
+def graph_col(lvl: int):
+    if lvl == len(G):
+        print(colors)
+        return
 
-    count = 0
     for c in range(1, n_col + 1):
-        # if sum([1 for i in range(len(graph)) if graph[vertex][i] and color[i] == c]): continue
-        if not safe(lvl, c):
+        if sum([G[lvl][i] and colors[i] == c for i in range(len(G))]):
             continue
-        color[lvl] = c
-        count += graph_col(n_col, lvl + 1)
-        color[lvl] = 0
-    return count
+        colors[lvl] = c
+        graph_col(lvl + 1)
+        colors[lvl] = 0
 
 
-graph: list[list[int]] = [  #
+G: list[list[int]] = [
     [0, 1, 0, 1],
     [1, 0, 1, 0],
     [0, 1, 0, 1],
     [1, 0, 1, 0],
 ]
-color: list[int] = [0] * len(graph)
-assert graph_col(3, 0) == 18
+
+colors: list[int] = [0] * len(G)
+n_col: int = 2
+graph_col(0)
