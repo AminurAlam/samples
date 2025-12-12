@@ -2,8 +2,6 @@ def apsp(G: list[list[int]]):
     for k in range(len(G)):
         for i in range(len(G)):
             for j in range(len(G)):
-                if G[i][k] == I and G[k][j] == I:
-                    continue
                 G[i][j] = min(G[i][j], G[i][k] + G[k][j])
     return G
 

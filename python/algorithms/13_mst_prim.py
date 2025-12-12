@@ -1,17 +1,16 @@
 def prim(G: list[list[int]]) -> list[str]:
     n = len(G)
-    parent = [-1] * n  # Array to store constructed MST
-    visited = [False] * n
-    key = [int(1e9)] * n  # Key values used to pick minimum weight edge in cut
+    parent = [-1] * n
+    kv: list[list[int | bool]] = [[int(1e9), False] for _ in G]
 
     for _ in range(n):
-        u = key.index(min([x[0] for x in zip(key, visited) if not x[1]]))
-        visited[u] = True
+        u = kv.index(min(filter(lambda x: not x[1], kv)))
+        kv[u][1] = True
 
         for v in range(n):
-            if not G[u][v] or visited[v] or key[v] <= G[u][v]:
+            if kv[v][1] or not G[u][v] or kv[v][0] <= G[u][v]:
                 continue
-            key[v] = G[u][v]
+            kv[v][0] = G[u][v]
             parent[v] = u
 
     return [f"{parent[i]}-{i}: {G[parent[i]][i]}" for i in range(1, n)]
