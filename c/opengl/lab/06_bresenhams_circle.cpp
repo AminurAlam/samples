@@ -2,14 +2,14 @@
 #include <math.h>
 
 void symmetry(int x, int y, int xc, int yc) {
-    putpixel(xc + x, yc - y, GREEN); // For pixel (x,y)
-    putpixel(xc + y, yc - x, GREEN); // For pixel (y,x)
-    putpixel(xc + y, yc + x, GREEN); // For pixel (y,-x)
-    putpixel(xc + x, yc + y, GREEN); // For pixel (x,-y)
-    putpixel(xc - x, yc + y, GREEN); // For pixel (-x,-y)
-    putpixel(xc - y, yc + x, GREEN); // For pixel (-y,-x)
-    putpixel(xc - y, yc - x, GREEN); // For pixel (-y,x)
-    putpixel(xc - x, yc - y, GREEN); // For pixel (-x,y)
+    putpixel(xc + x, yc - y, RED); // For pixel (x,y)
+    putpixel(xc + y, yc - x, RED); // For pixel (y,x)
+    putpixel(xc + y, yc + x, RED); // For pixel (y,-x)
+    putpixel(xc + x, yc + y, RED); // For pixel (x,-y)
+    putpixel(xc - x, yc + y, RED); // For pixel (-x,-y)
+    putpixel(xc - y, yc + x, RED); // For pixel (-y,-x)
+    putpixel(xc - y, yc - x, RED); // For pixel (-y,x)
+    putpixel(xc - x, yc - y, RED); // For pixel (-x,y)
 }
 
 void display() {
@@ -23,6 +23,7 @@ void display() {
         else { p += 2 * (x - y--) + 5; }
         symmetry(x, y, xc, yc);
     }
+    glFlush();
 }
 
 void keyboard(unsigned char key, int x, int y) {

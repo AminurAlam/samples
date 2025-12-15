@@ -102,6 +102,8 @@ void display() {
         case 's': t.scale(-10); break;
         case ',': t.rotate(-30); break;
         case '.': t.rotate(30); break;
+        case '<': t.rotate(-30); break;
+        case '>': t.rotate(30); break;
         case 'x': t.refx(); break;
         case 'y': t.refy(); break;
         case 'd': t.sheer(-0.1); break;
