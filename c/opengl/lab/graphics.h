@@ -1,6 +1,8 @@
 #include <GL/freeglut.h>
 #include <GL/glut.h>
+#include <chrono>
 #include <math.h>
+#include <thread>
 
 #define DETECT 0
 #define WHITE 0
@@ -31,18 +33,23 @@ void sector(int x, int y, int stangle, int endangle, int xradius, int yradius);
 inline void cleardevice() { glClear(GL_COLOR_BUFFER_BIT); }
 inline int getmaxx() { return 1920; }
 inline int getmaxy() { return 1080; }
+inline void delay(int msec) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(msec));
+}
 inline void initgraph(int *a, int *b) {
     glutInitWindowSize(1920, 1080);
-    glutCreateWindow("2d");
+    glutCreateWindow("graphics");
     gluOrtho2D(0, 1920, 1080, 0);
 }
 inline void putpixel(int x, int y, int color) {
     glBegin(GL_POINTS);
 
-    if (color == WHITE) glColor3f(1, 1, 1);
-    else if (color == RED) glColor3f(1, 0, 0);
-    else if (color == GREEN) glColor3f(0, 1, 0);
-    else if (color == BLUE) glColor3f(0, 0, 1);
+    switch (color) {
+    case WHITE: glColor3f(1, 1, 1); break;
+    case RED: glColor3f(1, 0, 0); break;
+    case GREEN: glColor3f(0, 1, 0); break;
+    case BLUE: glColor3f(0, 0, 1); break;
+    }
 
     glVertex2i(x, y);
     glEnd();
@@ -105,134 +112,146 @@ bar3d(int left, int top, int right, int bottom, int depth, int topflag) {
     line(left, bottom, left + depth, bottom + depth);
     line(right, bottom, right + depth, bottom + depth);
 };
+
 inline void drawgrid() {
     glBegin(GL_POINTS);
     for (int x = 0; x < 1920; x += 100) {
         for (int y = 0; y < 1080; y += 100) glVertex2i(x, y);
     }
     glEnd();
-    glFlush();
+
     int x = getmaxx(), y = getmaxy();
-    line(x / 2, 0, x / 2, y);
-    line(0, y / 2, x, y / 2);
+
+    glBegin(GL_LINES);
+    {
+        glVertex2i(x / 2, 0);
+        glVertex2i(x / 2, y);
+        glVertex2i(0, y / 2);
+        glVertex2i(x, y / 2);
+    }
+    glEnd();
+
+    glFlush();
 }
 
 // https://raw.githubusercontent.com/SagarGaniga/Graphics-Library/refs/heads/master/graphics.h
 
+/*
 // Miscellaneous Functions
-int getdisplaycolor(int color);
-int converttorgb(int color);
-void delay(int msec);
+// int getdisplaycolor(int color);
+// int converttorgb(int color);
+// void delay(int msec);
 // void getarccoords(arccoordstype *arccoords);
-int getbkcolor();
-int getcolor();
-void getfillpattern(char *pattern);
+// int getbkcolor();
+// int getcolor();
+// void getfillpattern(char *pattern);
 // void getfillsettings(fillsettingstype *fillinfo);
 // void getlinesettings(linesettingstype *lineinfo);
-int getmaxcolor();
-int getmaxheight();
-int getmaxwidth();
+// int getmaxcolor();
+// int getmaxheight();
+// int getmaxwidth();
 // int getmaxx();
 // int getmaxy();
-bool getrefreshingbgi();
-int getwindowheight();
-int getwindowwidth();
-int getpixel(int x, int y);
+// bool getrefreshingbgi();
+// int getwindowheight();
+// int getwindowwidth();
+// int getpixel(int x, int y);
 // void getviewsettings(viewporttype *viewport);
-int getx();
-int gety();
-void moverel(int dx, int dy);
-void moveto(int x, int y);
-void refreshbgi(int left, int top, int right, int bottom);
-void refreshallbgi();
-void setbkcolor(int color);
-void setcolor(int color);
-void setfillpattern(char *upattern, int color);
-void setfillstyle(int pattern, int color);
-void setlinestyle(int linestyle, unsigned upattern, int thickness);
-void setrefreshingbgi(bool value);
-void setviewport(int left, int top, int right, int bottom, int clip);
-void setwritemode(int mode);
+// int getx();
+// int gety();
+// void moverel(int dx, int dy);
+// void moveto(int x, int y);
+// void refreshbgi(int left, int top, int right, int bottom);
+// void refreshallbgi();
+// void setbkcolor(int color);
+// void setcolor(int color);
+// void setfillpattern(char *upattern, int color);
+// void setfillstyle(int pattern, int color);
+// void setlinestyle(int linestyle, unsigned upattern, int thickness);
+// void setrefreshingbgi(bool value);
+// void setviewport(int left, int top, int right, int bottom, int clip);
+// void setwritemode(int mode);
 
 // Window Creation / Graphics Manipulation
 // void closegraph(int wid = ALL_WINDOWS);
-void detectgraph(int *graphdriver, int *graphmode);
-void getaspectratio(int *xasp, int *yasp);
-char *getdrivername();
-int getgraphmode();
-int getmaxmode();
-char *getmodename(int mode_number);
-void getmoderange(int graphdriver, int *lomode, int *himode);
-void graphdefaults();
-char *grapherrormsg(int errorcode);
-int graphresult();
-void initgraph(int *graphdriver, int *graphmode, char *pathtodriver);
-int initwindow(
-    int width, int height, const char *title = "Windows BGI", int left = 0,
-    int top = 0, bool dbflag = false, bool closeflag = true
-);
-int installuserdriver(char *name, int *fp); // Not available in WinBGI
-int installuserfont(char *name);            // Not available in WinBGI
-int registerbgidriver(void *driver);        // Not available in WinBGI
-int registerbgifont(void *font);            // Not available in WinBGI
-void restorecrtmode();
-void setaspectratio(int xasp, int yasp);
-unsigned setgraphbufsize(unsigned bufsize); // Not available in WinBGI
-void setgraphmode(int mode);
-void showerrorbox(const char *msg = NULL);
+// void detectgraph(int *graphdriver, int *graphmode);
+// void getaspectratio(int *xasp, int *yasp);
+// char *getdrivername();
+// int getgraphmode();
+// int getmaxmode();
+// char *getmodename(int mode_number);
+// void getmoderange(int graphdriver, int *lomode, int *himode);
+// void graphdefaults();
+// char *grapherrormsg(int errorcode);
+// int graphresult();
+// void initgraph(int *graphdriver, int *graphmode, char *pathtodriver);
+// int initwindow(
+//     int width, int height, const char *title = "Windows BGI", int left = 0,
+//     int top = 0, bool dbflag = false, bool closeflag = true
+// );
+// int installuserdriver(char *name, int *fp); // Not available in WinBGI
+// int installuserfont(char *name);            // Not available in WinBGI
+// int registerbgidriver(void *driver);        // Not available in WinBGI
+// int registerbgifont(void *font);            // Not available in WinBGI
+// void restorecrtmode();
+// void setaspectratio(int xasp, int yasp);
+// unsigned setgraphbufsize(unsigned bufsize); // Not available in WinBGI
+// void setgraphmode(int mode);
+// void showerrorbox(const char *msg = NULL);
 
 // User Interaction
 // int getch();
-int kbhit();
+// int kbhit();
 
 // User-Controlled Window Functions (winbgi.cpp)
-int getcurrentwindow();
-void setcurrentwindow(int window);
+// int getcurrentwindow();
+// void setcurrentwindow(int window);
 
 // Double buffering support (winbgi.cpp)
-int getactivepage();
-int getvisualpage();
-void setactivepage(int page);
-void setvisualpage(int page);
-void swapbuffers();
+// int getactivepage();
+// int getvisualpage();
+// void setactivepage(int page);
+// void setvisualpage(int page);
+// void swapbuffers();
 
 // Text Functions (text.cpp)
-void gettextsettings(struct textsettingstype *texttypeinfo);
-void outtext(char *textstring);
-void outtextxy(int x, int y, char *textstring);
-void settextjustify(int horiz, int vert);
-void settextstyle(int font, int direction, int charsize);
-void setusercharsize(int multx, int divx, int multy, int divy);
-int textheight(char *textstring);
-int textwidth(char *textstring);
+// void gettextsettings(struct textsettingstype *texttypeinfo);
+// void outtext(char *textstring);
+// void outtextxy(int x, int y, char *textstring);
+// void settextjustify(int horiz, int vert);
+// void settextstyle(int font, int direction, int charsize);
+// void setusercharsize(int multx, int divx, int multy, int divy);
+// int textheight(char *textstring);
+// int textwidth(char *textstring);
 // extern std::ostringstream bgiout;
 // void outstream(std::ostringstream &out = bgiout);
 // void outstreamxy(int x, int y, std::ostringstream &out = bgiout);
 
 // Mouse Functions (mouse.cpp)
-void clearmouseclick(int kind);
-void clearresizeevent();
-void getmouseclick(int kind, int &x, int &y);
-bool ismouseclick(int kind);
-bool isresizeevent();
-int mousex();
-int mousey();
-void registermousehandler(int kind, void h(int, int));
-void setmousequeuestatus(int kind, bool status = true);
+// void clearmouseclick(int kind);
+// void clearresizeevent();
+// void getmouseclick(int kind, int &x, int &y);
+// bool ismouseclick(int kind);
+// bool isresizeevent();
+// int mousex();
+// int mousey();
+// void registermousehandler(int kind, void h(int, int));
+// void setmousequeuestatus(int kind, bool status = true);
 
 // Palette Functions
 // palettetype *getdefaultpalette();
 // void getpalette(palettetype *palette);
-int getpalettesize();
+// int getpalettesize();
 // void setallpalette(palettetype *palette);
-void setpalette(int colornum, int color);
-void setrgbpalette(int colornum, int red, int green, int blue);
+// void setpalette(int colornum, int color);
+// void setrgbpalette(int colornum, int red, int green, int blue);
 
 // Color Macros
-#define IS_BGI_COLOR(v) (((v) >= 0) && ((v) < 16))
-#define IS_RGB_COLOR(v) ((v) & 0x03000000)
-#define RED_VALUE(v) int(GetRValue(converttorgb(v)))
-#define GREEN_VALUE(v) int(GetGValue(converttorgb(v)))
-#define BLUE_VALUE(v) int(GetBValue(converttorgb(v)))
-#undef COLOR
-int COLOR(int r, int g, int b); // No longer a macro
+// #define IS_BGI_COLOR(v) (((v) >= 0) && ((v) < 16))
+// #define IS_RGB_COLOR(v) ((v) & 0x03000000)
+// #define RED_VALUE(v) int(GetRValue(converttorgb(v)))
+// #define GREEN_VALUE(v) int(GetGValue(converttorgb(v)))
+// #define BLUE_VALUE(v) int(GetBValue(converttorgb(v)))
+// #undef COLOR
+// int COLOR(int r, int g, int b); // No longer a macro
+*/

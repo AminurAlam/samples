@@ -1,7 +1,9 @@
 #include "conio.h"
 #include "graphics.h"
+#include <chrono>
 #include <math.h>
 #include <stdio.h>
+#include <thread>
 
 class Cube {
   public:
@@ -19,6 +21,7 @@ class Cube {
         cleardevice();
         // drawgrid();
         bar3d(l, t, r, b, w, 0);
+        delay(1000);
     }
 
     void movx(double len) {
@@ -56,7 +59,34 @@ class Cube {
 
 void display() {
     Cube t = Cube(600, 350, 800, 450, 50);
+
     t.draw();
+    t.movx(-100);
+    t.draw();
+    t.movy(100);
+    t.draw();
+    t.movy(-100);
+    t.draw();
+    t.scale(20);
+    t.draw();
+    t.scale(20);
+    t.draw();
+    t.scale(-30);
+    t.draw();
+    t.rotatetr();
+    t.draw();
+    delay(500);
+    t.rotatebl();
+    t.draw();
+    delay(500);
+    t.rotatetr();
+    t.draw();
+    delay(500);
+    t.rotatebl();
+    t.draw();
+    delay(500);
+
+    /*
     while (1) {
         switch (getch()) {
         case 'h': t.movx(-40); break;
@@ -69,7 +99,7 @@ void display() {
         case '.': t.rotatetr(); break;
         }
         t.draw();
-    }
+    } */
 }
 
 void keyboard(unsigned char key, int x, int y) {

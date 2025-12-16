@@ -19,8 +19,8 @@ void display() {
     int p = 1 - rad;
     // symmetry(x, y, xc, yc);
     for (x = 0; y > x; x++) {
-        if (p < 0) p += 2 * x + 3;
-        else { p += 2 * (x - y--) + 5; }
+        if (p < 0) p += 4 * x + 6;
+        else { p += 4 * (x - y--) + 10; }
         symmetry(x, y, xc, yc);
     }
     glFlush();

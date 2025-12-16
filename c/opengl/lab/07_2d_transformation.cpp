@@ -23,6 +23,7 @@ class Triangle {
         line(x1, y1, x2, y2);
         line(x2, y2, x3, y3);
         line(x3, y3, x1, y1);
+        delay(1000);
     }
 
     void mov(double xlen, double ylen) {
@@ -91,7 +92,42 @@ class Triangle {
 
 void display() {
     Triangle t = Triangle(960, 470, 910, 570, 1010, 570);
+
     t.draw();
+    t.mov(-200, 0);
+    t.draw();
+    t.mov(0, -200);
+    t.draw();
+    t.scale(100);
+    t.draw();
+    t.scale(100);
+    t.draw();
+    t.scale(-100);
+    t.draw();
+    t.rotate(-30);
+    t.draw();
+    t.rotate(30);
+    t.draw();
+    t.rotate(30);
+    t.draw();
+    t.rotate(-30);
+    t.draw();
+    t.refx();
+    t.draw();
+    t.refy();
+    t.draw();
+    t.refy();
+    t.draw();
+    t.sheer(-1);
+    t.draw();
+    t.sheer(1);
+    t.draw();
+    t.sheer(1);
+    t.draw();
+    t.sheer(-1);
+    t.draw();
+
+    /*
     while (1) {
         switch (getch()) {
         case 'h': t.mov(-10, 0); break;
@@ -110,7 +146,7 @@ void display() {
         case 'f': t.sheer(0.1); break;
         }
         t.draw();
-    }
+    } */
 }
 
 void keyboard(unsigned char key, int x, int y) {
