@@ -19,7 +19,7 @@ class Triangle {
     void draw() {
         // printf("(%f, %f, %f, %f, %f, %f)\n", x1, y1, x2, y2, x3, y3);
         cleardevice();
-        drawgrid();
+        // drawgrid();
         line(x1, y1, x2, y2);
         line(x2, y2, x3, y3);
         line(x3, y3, x1, y1);
@@ -87,7 +87,17 @@ class Triangle {
         y3 = (y - y3);
     }
 
-    void sheer(double factor) { x1 += y1 * factor; }
+    void sheerx(double factor) {
+        x1 += y1 * factor;
+        x2 += y2 * factor;
+        x3 += y3 * factor;
+    }
+
+    void sheery(double factor) {
+        y1 += x1 * factor;
+        y2 += x2 * factor;
+        y3 += x3 * factor;
+    }
 };
 
 void display() {
@@ -100,10 +110,6 @@ void display() {
     t.draw();
     t.scale(100);
     t.draw();
-    t.scale(100);
-    t.draw();
-    t.scale(-100);
-    t.draw();
     t.rotate(-30);
     t.draw();
     t.rotate(30);
@@ -115,38 +121,10 @@ void display() {
     t.refx();
     t.draw();
     t.refy();
+    t.sheerx(0.5);
     t.draw();
-    t.refy();
+    t.sheerx(-0.5);
     t.draw();
-    t.sheer(-1);
-    t.draw();
-    t.sheer(1);
-    t.draw();
-    t.sheer(1);
-    t.draw();
-    t.sheer(-1);
-    t.draw();
-
-    /*
-    while (1) {
-        switch (getch()) {
-        case 'h': t.mov(-10, 0); break;
-        case 'j': t.mov(0, 10); break;
-        case 'k': t.mov(0, -10); break;
-        case 'l': t.mov(10, 0); break;
-        case 'a': t.scale(10); break;
-        case 's': t.scale(-10); break;
-        case ',': t.rotate(-30); break;
-        case '.': t.rotate(30); break;
-        case '<': t.rotate(-30); break;
-        case '>': t.rotate(30); break;
-        case 'x': t.refx(); break;
-        case 'y': t.refy(); break;
-        case 'd': t.sheer(-0.1); break;
-        case 'f': t.sheer(0.1); break;
-        }
-        t.draw();
-    } */
 }
 
 void keyboard(unsigned char key, int x, int y) {

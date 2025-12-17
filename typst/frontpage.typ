@@ -1,4 +1,10 @@
 // used to quickly generate frontpages for any subject
 #import "extra.typ": *
 
-#starter(index: true)[BORING SUBJECT]
+#starter(
+  index: true,
+  subject: [
+    boring subject \
+    is boring
+  ],
+)

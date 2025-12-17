@@ -411,28 +411,36 @@ navigation. Upon initialization, it is immediately assigned two Waypoints: a sta
 point (`52.51, 13.395`) and a destination (`52.52, 13.396`). These coordinates are
 hardcoded to initialize the map with a pre-calculated route visible immediately
 when the page loads, ensuring the user doesn't see an empty interface. This control
-also automatically generates a text-based itinerary container (usually a box in the
-top-right corner) listing the distance, time, and specific turns required to travel
+also automatically generates a text-based container, usually a box in the
+top-right corner listing the distance, time, and specific turns required to travel
 between these points.
 
-2. Custom Routing Backend Configuration
-A critical configuration line here is `serviceUrl: document.baseURI + "route/v1"`. By default, Leaflet Routing Machine connects to a public demonstration server (OSRM). However, this line overrides that behavior to point to a local or custom-hosted routing service.
-- `document.baseURI` fetches the current address of the website.
-- It appends `"route/v1"`, which implies that the application is talking to its own backend API to get directions.
-This suggests the application is self-contained, likely running its own instance of the OSRM (Open Source Routing Machine) engine, giving the developers control over the routing algorithm (e.g., customizing it specifically for bike paths or restricted service roads).
+A critical configuration line here is `serviceUrl: document.baseURI + "route/v1"`. By
+default, Leaflet Routing Machine connects to a public demo server to fetch data. However,
+this line overrides that behavior to point to a local or custom-hosted routing service
+we are running. `document.baseURI` fetches the current address of the website, it
+then appends `"route/v1"`, which implies that the application is talking to its own
+backend API to get directions.  This suggests the application is self-contained, likely
+running its own instance of the OSRM (Open Source Routing Machine) engine, giving the
+developers control over the routing algorithm like customizing it specifically for
+bike paths or restricted service roads.
 
-3. Interactive User Experience (UX)
-The settings `routeWhileDragging: true` and `routeDragInterval: 100` are designed to make the map feel responsive and modern.
-- routeWhileDragging: Allows the user to grab the blue path line or a marker on the map and drag it to a different road. As they drag, the route recalculates visually in real-time, rather than waiting for them to drop the pin.
-- routeDragInterval: This is a performance optimization. It creates a "debounce" effect, ensuring the application only requests a new route calculation every 100 milliseconds during a drag action. This prevents the browser and the server from crashing due to thousands of requests being fired instantly while the user moves the mouse.
+The settings `routeWhileDragging: true` and `routeDragInterval: 100` are designed to make
+the map feel responsive and modern. `routeWhileDragging` Allows the user to grab the
+blue path line or a marker on the map and drag it to a different road. As they drag, the
+route recalculates visually in real-time, rather than waiting for them to drop the pin.
+`routeDragInterval` is a performance optimization. It creates a "debounce" effect,
+ensuring the application only requests a new route calculation every 100 milliseconds
+during a drag action. This prevents the browser and the server from crashing due to
+thousands of requests being fired instantly while the user moves the mouse.
 
-4. Click-to-Update Logic
-The final block, `map.on("click", ...)` adds an event listener that fundamentally changes how the user interacts with the destination.
+The final block, `map.on("click", ...)` adds an event listener that changes how the user interacts with the destination.
 - When the user clicks anywhere on the map, the function executes `control.spliceWaypoints`.
 - It targets the last waypoint in the list (`length - 1`).
 - It removes 1 item (the current destination).
 - It inserts `e.latlng` (the coordinates of the mouse click).
-- The Result: Instead of adding a new stop to a multi-stop journey, this logic updates the destination. If the user clicks a new spot on the map, the route automatically recalculates from the original start point to this new clicked location.
+- The Result is that instead of adding a new stop to a multi-stop journey, this logic updates the destination.
+- If the user clicks a new spot on the map, the route automatically recalculates from the original start point to this new clicked location.
 
 = Features
 
@@ -447,31 +455,96 @@ The final block, `map.on("click", ...)` adds an event listener that fundamentall
 #figure(image("assets/map feat 1 waypoint.png"), caption: [Navigating through another point])
 #figure(image("assets/map feat 5 waypoint.png"), caption: [Navigating through multiple points])
 
+= Conclusion
+
+The development of this open-source navigation software demonstrates that building a
+high-performance, cost-effective, and user-friendly routing alternative is not only
+feasible but achievable through the strategic integration of existing community-driven
+technologies. By conducting a thorough feasibility study and requirement analysis,
+the project successfully transitioned from a theoretical concept to a functional
+prototype capable of handling real-world routing scenarios within the Berlin region.
+
+An important factor in the success of this project was the adoption of the Agile
+development model. Given the dynamic nature of mapping data and the necessity for
+continuous iteration in open-source software, the rigid structure of the Waterfall model
+would have proven detrimental. Agile allowed for a flexible development lifecycle where
+user feedback and evolving technical constraints such as data processing needs could
+be addressed in real-time. This approach ensured that the software remained adaptable
+to changes in the OpenStreetMap ecosystem, facilitating a development environment
+that encourages ongoing community contribution and maintenance.
+
+Technically, the project validates the efficacy of a decoupled architecture. By
+isolating the backend "heavy lifting" from the frontend user interface, the system
+achieves both high performance and maintainability.
+
+- / The Backend: The implementation of the Open Source Routing Machine within a
+    Dockerized environment proved to be a robust solution for pathfinding. By
+    automating the data pipeline extracting, partitioning, and customizing raw
+    `.osm.pbf` data the system efficiently transforms massive geographic datasets
+    into routable graphs. This self-hosted approach mitigates the financial risks
+    associated with expensive third-party routing APIs while maintaining full control
+    over the routing algorithms and profiles.
+
+- / The Frontend: The utilization of Leaflet.js and the Leaflet Routing
+    Machine provided a responsive and intuitive user interface. The integration of
+    features such as "route-while-dragging," mobile responsiveness, and multi-point
+    navigation ensures that the user experience rivals that of proprietary navigation
+    services. The modular code structure allows for easy switching between map tiles
+    (Satellite, OSM, Stadia), catering to different user preferences.
+
+Ultimately, this project serves as a basis for scalable open-source navigation. It
+addresses the critical challenges of maintainability by relying on industry-standard
+tools and clear documentation. The result is a self-contained application that not only
+solves the immediate problem of calculating optimal routes between coordinates but also
+empowers a decentralized community of developers to expand its capabilities. Whether
+for expanding into new geographic regions, optimizing for different travel modes like
+cycling or hiking, or integrating complex traffic data, the architecture established
+here provides the stability and flexibility required for future innovation. The software
+stands as a proof of the power of open data and modular software design in solving
+complex geospatial problems.
+
 #pagebreak()
 
-#heading(numbering: none)[References]
+// #heading(numbering: none)[References]
+= References
 
-[1] *OSRM*, https://project-osrm.org/
+#v(20pt)
 
-Modern C++ routing engine for shortest paths in road networks.
+#let indent = 20pt
+#let bibs = (
+  (
+    name: "OSRM",
+    url: "https://project-osrm.org/",
+    desc: "Modern C++ routing engine for shortest paths in road networks.",
+  ),
+  (
+    name: "Leaflet",
+    url: "https://leafletjs.com/",
+    desc: "Leaflet is the open-source JavaScript library for interactive maps.",
+  ),
+  (
+    name: "Leaflet Routing Machine",
+    url: "https://www.liedman.net/leaflet-routing-machine/",
+    desc: "Leaflet Routing Machine is an easy, flexible and extensible way to add routing to a Leaflet map.",
+  ),
+  (
+    name: "OpenStreetMap",
+    url: "https://www.openstreetmap.org/about",
+    desc: "OpenStreetMap is built by a community of mappers that contribute and maintain data about roads, trails, cafés, railway stations, and much more, all over the world.",
+  ),
+  (
+    name: "OpenStreetMap Wiki",
+    url: "https://wiki.openstreetmap.org/wiki/Main_Page",
+    desc: "The OpenStreetMap Wiki is a place for help documentation, technical documentation and promotional material on everything related to the OpenStreetMap project.",
+  ),
+  (
+    name: "Geofabrik",
+    url: "https://www.geofabrik.de/",
+    desc: "Free, community-maintained map data like that produced by the OpenStreetMap project.",
+  ),
+)
 
-[2] *Leaflet*, https://leafletjs.com/
-
-Leaflet is the open-source JavaScript library for interactive maps.
-
-[3] *Leaflet Routing Machine*, https://www.liedman.net/leaflet-routing-machine/
-
-Leaflet Routing Machine is an easy, flexible and extensible way to add
-routing to a Leaflet map.
-
-[4] *OpenStreetMap*, https://www.openstreetmap.org/about
-
-OpenStreetMap is built by a community of mappers that contribute and maintain
-data about roads, trails, cafés, railway stations, and much more, all over
-the world.
-
-[5] *OpenStreetMap Wiki*, https://wiki.openstreetmap.org/wiki/Main_Page
-
-The OpenStreetMap Wiki is a place for help documentation, technical
-documentation and promotional material on everything related to the
-OpenStreetMap project.
+#for (i, bib) in bibs.enumerate(start: 1) [
+  [#i] *#bib.name*, #bib.url \
+  #par(first-line-indent: indent, hanging-indent: indent, bib.desc) \
+]
