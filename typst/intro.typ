@@ -124,12 +124,17 @@ https://typst.app/universe/package/zebraw/ \
 #zebraw(
   lang: false,
   numbering-separator: true,
-  raw("
+  raw(
+    "
 def main():
   print('hello world')
 
 main()
-", lang: "python", block: true, tab-size: 2),
+",
+    lang: "python",
+    block: true,
+    tab-size: 2,
+  ),
 )
 
 == math
