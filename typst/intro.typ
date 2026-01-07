@@ -1,33 +1,32 @@
-== syntax
+= SYNTAX
+
 - *bold*, _italic_, `raw!@#$%`
 - enum
   + aaa
   + bbb
-- 'qou' "ute"
 - / Term: meaning
 
-== functions
-#outline()
+
+= COMMON FUNCTIONS
+
+#outline() // INDEX
+
 #v(20pt)
 #h(20pt)
+
 #line(length: 100%, stroke: 1.6pt)
-#upper[text]
-#pagebreak()
-#heading(numbering: none)[Abstract]
-
-#figure(
-  // image("svg/01.svg", height: auto),
-  box(width: 7cm, height: 7cm, fill: orange),
-  caption: [some text],
-)
-
+#heading(numbering: none)[Abstract Heading without numbering]
+#upper[lowercase to uppercase text]
+#figure(box(width: 7cm, height: 4cm, fill: orange), caption: [orange box])
 #grid(
   columns: (auto, auto),
   rows: (auto, auto),
+  align: (center, center),
   gutter: 10pt,
-  [one], [two],
-  [three], [four],
+  [grid one], [grid two],
+  [grid three], [grid four],
 )
+#pagebreak()
 
 #columns()[
   Pros:
@@ -42,28 +41,34 @@
 ]
 
 
-== scripting
+= SCRIPTING
+
+// IMPORTING
 #import "extra.typ": *
+
+// STYLING
 #set terms(separator: ":  ")
 #set align(left)
 #set par(justify: false)
 #set page(margin: 50pt, numbering: "1", columns: 1)
+#set text(1.35em)
 
+#show table: set block(breakable: false)
+#show raw: set block(breakable: false)
+
+// DEFINING
 #let year = datetime.today().year()
 #let func(a, b) = [swapped: #b, #a. in #year]
 
+// LOOPS
 #for (key, val) in (
   "foo": "bar",
   "marco": "polo",
   "something": "nothing",
 ) [#text(1.2em)[#key:] #h(10pt) #text(1.8em)[#val] \ #v(2pt) ]
 
-#starter(course: "not a subject", index: false)
-#pagebreak()
 
-
-== packages
-
+= PACKAGES
 
 https://typst.app/universe/package/meander/ \
 https://github.com/Vanille-N/meander.typ/releases/download/v0.3.0/docs.pdf \
@@ -91,11 +96,6 @@ https://github.com/Vanille-N/meander.typ/releases/download/v0.3.0/docs.pdf \
 https://typst.app/universe/package/oxdraw \
 https://github.com/RohanAdwankar/oxdraw \
 #import "@preview/oxdraw:0.1.0": *
-
-#oxdraw("
-graph TD
-    A[Start] --> B[End]
-")
 
 #oxdraw(
   ```
@@ -137,14 +137,15 @@ main()
   ),
 )
 
-== math
+
+= MATH
 $sin(pi) = y$ \
 $sum(sin(pi)/x) = y$ \
 $display(sum(sin(pi)/x = y))$ \
 $ sin(pi) = y $
 
 
-== table
+= TABLE
 #table(columns: 4)[No.][Topic][Date][Sign][][][][]
 #table(
   columns: 10,
