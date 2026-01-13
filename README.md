@@ -8,7 +8,7 @@
   - [ai/ml](python/ai/)
   - [data processing](python/numerical_methods/)
   - [opengl graphics](c/opengl/)
-  - [assignments](typst/) i have written
+  - [assignments & notes](typst/) i have written
 - also for tracking how well i know a language
   - [x] bash
   - (65%) c
