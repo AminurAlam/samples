@@ -8,6 +8,7 @@ a.out
 *.png
 *.jpg
 *.svg
+*.pdf
 package*.json
 node_modules/
 node_modules/*
@@ -30,6 +31,5 @@ rust/target/*
 rust/Cargo.lock
 rust/Cargo.toml
 
-typst/*.pdf
 typst/assets/*
 !/typst/assets/*.mmd

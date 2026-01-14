@@ -14,4 +14,12 @@
 #pagebreak()
 
 = HEADING
+
+#lorem(50)
+
 == Sub Heading
+
+#lorem(50)
+
+/ Term: \
+  #lorem(10)
