@@ -1,3 +1,4 @@
+https://typst.app/universe/package/fletcher
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import fletcher.shapes: hexagon, house
 
