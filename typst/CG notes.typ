@@ -14,6 +14,20 @@
 #let s2 = $sin theta_2$
 #let c1 = $cos theta_1$
 #let c2 = $cos theta_2$
+#let img(path, ..args) = context {
+  let path-label = label(path)
+  let first-time = query((context {}).func()).len() == 0
+  if first-time or query(path-label).len() > 0 {
+    [#image(path, ..args)#path-label]
+  } else {
+    rect(
+      stroke: 1pt,
+      width: args.at("width", default: 50%),
+      height: args.at("height", default: 30%),
+      args.at("alt", default: align(center + horizon, "404 not found")),
+    )
+  }
+}
 
 #outline()
 
@@ -106,7 +120,7 @@ the edge of the screen.
 
 == Joints
 
-#figure(image("assets/joints.jpg", width: 85%))
+#figure(img("assets/joints.jpg", width: 85%))
 
 #pagebreak()
 
@@ -114,7 +128,7 @@ the edge of the screen.
 
 == CRT
 
-#figure(image("assets/crt.png", width: 60%))
+#figure(img("assets/crt.png", width: 60%))
 
 #grid(
   column-gutter: 10pt,
@@ -134,7 +148,7 @@ the edge of the screen.
     - has maximum size (weight)
     - power hungry
   ],
-  figure(image("assets/mag.png", width: auto)),
+  figure(img("assets/mag.png", width: auto)),
 )
 
 == Plasma Panel Display
@@ -193,7 +207,7 @@ applied.
     - backlight bleeding
     - slow response time
   ],
-  figure(image("assets/lcd.png", width: 65%)),
+  figure(img("assets/lcd.png", width: 65%)),
 )
 
 == OLED
@@ -227,7 +241,7 @@ than pure LED panels.
     - dim
     - short lifespan
   ],
-  figure(image("assets/oled.png", width: 72%)),
+  figure(img("assets/oled.png", width: 72%)),
 )
 
 #pagebreak()
@@ -335,19 +349,19 @@ $
   x_"min" <= x <= x_"max" "  " and "  " y_"min" <= y <= y_"max"
 $
 
-#figure(image("assets/pointclip.svg", width: 50%))
+#figure(img("assets/pointclip.svg", width: 50%))
 
 == Line Clipping (Cohen–Sutherland)
 #grid(
   columns: 2,
-  figure(image("assets/lc1.svg", width: auto)),
-  figure(image("assets/lc2.svg", width: auto)),
+  figure(img("assets/lc1.svg", width: auto)),
+  figure(img("assets/lc2.svg", width: auto)),
 
-  figure(image("assets/lc3.svg", width: auto)),
-  figure(image("assets/lc4.svg", width: auto)),
+  figure(img("assets/lc3.svg", width: auto)),
+  figure(img("assets/lc4.svg", width: auto)),
 
-  figure(image("assets/lc5.svg", width: auto)),
-  figure(image("assets/lc6.svg", width: auto)),
+  figure(img("assets/lc5.svg", width: auto)),
+  figure(img("assets/lc6.svg", width: auto)),
 )
 
 To find intersect coordinate where line is cutoff
@@ -376,7 +390,7 @@ ALGORITHM:
 
 == Polygon Clipping (Sutherland-Hodgman)
 
-#figure(image("assets/pc1.svg", width: auto))
+#figure(img("assets/pc1.svg", width: auto))
 
 After understanding the concept of line clipping and its algorithms, we can now
 extend the concept of line clipping to polygon clipping, because polygon is a surface
@@ -445,7 +459,7 @@ $
 
 = TRANSFORMATIONS // https://pravin-hub-rgb.github.io/BCA/resources/sem6/cg/unit4/index.html
 
-#figure(image("assets/trans.svg"))
+#figure(img("assets/trans.svg"))
 
 == 2D
 
@@ -670,7 +684,7 @@ where the goal is to create an immersive and realistic virtual environment.
   ),
 )
 
-#figure(image("assets/projection.jpg", width: 90%))
+#figure(img("assets/projection.jpg", width: 90%))
 
 == Raster Scan vs Random Scan
 

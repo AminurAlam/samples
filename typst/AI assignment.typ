@@ -1,13 +1,51 @@
-#import "extra.typ": *
+#{
+  set align(center)
+  let year = datetime.today().year()
 
-#starter(subject: [
-  Comparison of different \
-  regression models on \
-  "Youth Tobacco Usage" data
-])
+  v(12%)
+  line(length: 100%, stroke: 1.6pt)
+  v(-6pt)
+  line(length: 100%, stroke: 0.4pt)
+  text(weight: "bold", 2.5em)[#upper[
+    Comparison of different \
+    regression models on \
+    "Youth Tobacco Usage" data
+  ]]
+  line(length: 100%, stroke: 0.4pt)
+  v(-6pt)
+  line(length: 100%, stroke: 1.6pt)
+
+  v(23%)
+  align(left)[
+    #for (key, value) in (
+      "SUBMITTED BY": "Aminur Alam",
+      "ROLL NO": "ROLL123",
+      "SEMESTER": [n#super("th")],
+      "DEPARTMENT": "DEPT",
+      "COURSE": "CORS",
+    ) [#text(1.2em)[#key:] #h(10pt) #text(1.8em)[#value] \ #v(2pt) ]
+  ]
+
+  align(bottom)[#text(1.4em)[INSTITUTE #{ year }-#{ year - 1999 }]]
+}
 #pagebreak()
 #text(1.2em)[#align(center)[#outline()]]
 #pagebreak()
+
+#let img(path, ..args) = context {
+  let path-label = label(path)
+  let first-time = query((context {}).func()).len() == 0
+  if first-time or query(path-label).len() > 0 {
+    [#image(path, ..args)#path-label]
+  } else {
+    rect(
+      stroke: 1pt,
+      width: args.at("width", default: 50%),
+      height: args.at("height", default: 30%),
+      args.at("alt", default: align(center + horizon, "404 not found")),
+    )
+  }
+}
 
 #set par(justify: true)
 #set text(size: 1.2em)
@@ -143,22 +181,22 @@ easy comparison across states and show clear geographic differences.
   columns: (auto, auto),
   gutter: 10pt,
   figure(
-    image("svg/01.svg", height: auto),
+    img("svg/01.svg", height: auto),
     caption: [Lifetime usage varies significantly between states],
   ),
   figure(
-    image("svg/02.svg", height: auto),
+    img("svg/02.svg", height: auto),
     caption: [Current trends suggest stable habits],
   ),
 
   figure(
-    image("svg/03.svg", height: auto),
+    img("svg/03.svg", height: auto),
     caption: [
       Chandigarh has a high quitting rate
     ],
   ),
   figure(
-    image("svg/04.svg", height: auto),
+    img("svg/04.svg", height: auto),
     caption: [Shows desire for people to quit],
   ),
 )
@@ -167,16 +205,16 @@ easy comparison across states and show clear geographic differences.
 == Popular Sources of Tobacco
 
 // #figure(
-//   image("svg/05.svg", height: 26%),
+//   img("svg/05.svg", height: 26%),
 //   caption: [Cigarettes and smokeless tobacco appear as the most commonly used products historically],
 // )
 // #figure(
-//   image("svg/06.svg", height: 26%),
+//   img("svg/06.svg", height: 26%),
 //   caption: [Present-day trends are similar to all-time trends, suggesting stable consumption habits],
 // )
 
 #figure(
-  image("svg/07.svg", height: 26%),
+  img("svg/07.svg", height: 26%),
   caption: [Bidi stores remain the primary source for all tobacco],
 )
 
@@ -193,9 +231,9 @@ Since the dataset contains too many numerical columns, the attributes were divid
 into three parts. For every group, a plot was created to visualize the minimum,
 maximum, and mean values of each attribute.
 
-#figure(image("svg/08.svg", height: 31%))
-#figure(image("svg/09.svg", height: 31%))
-#figure(image("svg/10.svg", height: 31%))
+#figure(img("svg/08.svg", height: 31%))
+#figure(img("svg/09.svg", height: 31%))
+#figure(img("svg/10.svg", height: 31%))
 
 The three distribution graphs reveal:
 - Attributes like people who tried to quit show large variation between states.
@@ -220,11 +258,9 @@ use and which factors support quitting behavior.
 #grid(
   columns: (auto, auto),
   gutter: 20pt,
-  figure(image("svg/11.svg", height: auto)),
-  figure(image("svg/12.svg", height: auto)),
+  figure(img("svg/11.svg", height: auto)), figure(img("svg/12.svg", height: auto)),
 
-  figure(image("svg/13.svg", height: auto)),
-  figure(image("svg/14.svg", height: auto)),
+  figure(img("svg/13.svg", height: auto)), figure(img("svg/14.svg", height: auto)),
 )
 
 #pagebreak()
@@ -236,11 +272,11 @@ identify attributes that show positive or negative relationships with quit attem
 and quit success.
 
 #figure(
-  image("svg/17.svg", height: auto),
+  img("svg/17.svg", height: auto),
   caption: [Positive Attributes (Help in Quitting)],
 )
 #figure(
-  image("svg/18.svg", height: auto),
+  img("svg/18.svg", height: auto),
   caption: [Negative Attributes (Make Quitting Difficult)],
 )
 
@@ -301,8 +337,8 @@ To visualize how variables interact at a broader scale, heatmaps were generated 
 selected important attributes. These heatmaps make it easy to identify clusters of
 variables that behave similarly.
 
-#figure(image("svg/15.svg", height: 37%))
-#figure(image("svg/16.svg", height: 37%))
+#figure(img("svg/15.svg", height: 37%))
+#figure(img("svg/16.svg", height: 37%))
 
 == Possible Causes for These Relationships
 
@@ -350,8 +386,8 @@ tuning guidelines.
 
 //https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 
-// https://scikit-learn.org/stable/_images/sphx_glr_plot_pcr_vs_pls_003.png
-// https://scikit-learn.org/stable/_images/sphx_glr_plot_ols_ridge_001.png
+// https://scikit-learn.org/stable/imgs/sphx_glr_plot_pcr_vs_pls_003.png
+// https://scikit-learn.org/stable/imgs/sphx_glr_plot_ols_ridge_001.png
 Linear Regression fits a straight line (or hyperplane) that minimizes the squared
 error between actual and predicted values. It serves as the baseline for all
 regression tasks.
@@ -382,7 +418,7 @@ regression tasks.
 == Linear Regression with PolynomialFeatures
 
 //https://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html
-// https://scikit-learn.org/stable/_images/sphx_glr_plot_polynomial_interpolation_001.png
+// https://scikit-learn.org/stable/imgs/sphx_glr_plot_polynomial_interpolation_001.png
 This is a preprocessing step for Linear Regression that expands features into
 higher-degree polynomial terms and then applies Linear Regression. It captures
 smooth, non-linear relationships.
@@ -410,7 +446,7 @@ smooth, non-linear relationships.
 ]
 
 #figure(
-  image("svg/21.svg", height: 30%),
+  img("svg/21.svg", height: 30%),
   caption: [Error is lowest at `degree=5`],
 )
 
@@ -442,7 +478,7 @@ multicollinearity.
 ]
 
 #figure(
-  image("svg/29.svg", height: 40%),
+  img("svg/29.svg", height: 40%),
   caption: [Error is lowest at `Ridge(alpha=50, solver='auto')`],
 )
 
@@ -474,7 +510,7 @@ important features.
 ]
 
 #figure(
-  image("svg/30.svg", height: 26%),
+  img("svg/30.svg", height: 26%),
   caption: [Error is lowest at `Lasso(alpha=33)`],
 )
 
@@ -500,14 +536,14 @@ feature selection.
 ]
 
 #figure(
-  image("svg/32.svg", height: 43%),
+  img("svg/32.svg", height: 43%),
   caption: [Error is lowest at `ElasticNet(alpha=14, l1_ratio=0.44)`],
 )
 
 == Quantile Regressor
 
 // https://scikit-learn.org/stable/modules/linear_model.html#quantile-regression
-// https://scikit-learn.org/stable/_images/sphx_glr_plot_quantile_regression_002.png
+// https://scikit-learn.org/stable/imgs/sphx_glr_plot_quantile_regression_002.png
 // https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.QuantileRegressor.html
 Quantile Regression predicts conditional quantiles (median), making it robust to
 outliers and skewed distributions.
@@ -534,15 +570,15 @@ outliers and skewed distributions.
 ]
 
 #figure(
-  image("svg/36.svg", height: 45%),
+  img("svg/36.svg", height: 45%),
   caption: [Error is lowest at `Quantile(alpha=14, quantile=0.44)`],
 )
 
 == Decision Tree Regressor
 
 // https://scikit-learn.org/stable/modules/tree.html#tree
-// https://scikit-learn.org/stable/_images/sphx_glr_plot_tree_regression_001.png
-// https://scikit-learn.org/stable/_images/sphx_glr_plot_adaboost_regression_001.png
+// https://scikit-learn.org/stable/imgs/sphx_glr_plot_tree_regression_001.png
+// https://scikit-learn.org/stable/imgs/sphx_glr_plot_adaboost_regression_001.png
 Decision Trees split the feature space into regions and predict based on the average
 target value in each leaf.
 
@@ -567,7 +603,7 @@ target value in each leaf.
 ]
 
 #figure(
-  image("svg/38.svg", height: 45%),
+  img("svg/38.svg", height: 45%),
   caption: [Error is lowest at `DecisionTree(min_samples_split=29, max_depth=1)`],
 )
 
@@ -600,7 +636,7 @@ accuracy and control over-fitting.
 ]
 
 #figure(
-  image("svg/40.svg", height: 45%),
+  img("svg/40.svg", height: 45%),
   caption: [Error is lowest at
     `RandomForest(n_estimators=100, min_samples_split=11)`],
 )
@@ -636,7 +672,7 @@ errors of previous trees.
 ]
 
 #figure(
-  image("svg/42.svg", height: 45%),
+  img("svg/42.svg", height: 45%),
   caption: [Error is lowest at `GradientBoosting(learning_rate=0, n_estimators=1)`],
 )
 
@@ -652,7 +688,7 @@ random and optimized parameter settings. Visual bar charts were generated for ea
 metric to enable clear comparison and interpretation.
 
 // == Mean Absolute Error (with random parameter values)
-// #figure(image("svg/43.svg", height: 28%), caption: [Error ranging from 8 to 14])
+// #figure(img("svg/43.svg", height: 28%), caption: [Error ranging from 8 to 14])
 
 == Mean Absolute Error
 MAE simply measures the difference between actual and predicted values. It reflects
@@ -665,7 +701,7 @@ Features:
 - Forms the foundation for MSE and RMSE
 - Useful for spotting models that produce occasional extreme errors
 
-#figure(image("svg/44.svg", height: 28%), caption: [Error ranging from 6 to 10])
+#figure(img("svg/44.svg", height: 28%), caption: [Error ranging from 6 to 10])
 
 == Mean Squared Error
 Mean Squared Error represents the average squared difference between predicted and
@@ -678,7 +714,7 @@ Features:
 - Useful for comparing models objectively
 - Commonly used in optimization and tuning
 
-#figure(image("svg/45.svg", height: 28%), caption: [Error ranging from 75 to 180])
+#figure(img("svg/45.svg", height: 28%), caption: [Error ranging from 75 to 180])
 
 == Root Mean Squared Error
 Root Mean Squared Error is derived by taking the square root of the MSE, providing an
@@ -692,7 +728,7 @@ Features:
 - Indicates magnitude of average prediction error
 - Sensitive to outliers
 
-#figure(image("svg/46.svg", height: 28%), caption: [Error ranging from 9 to 14])
+#figure(img("svg/46.svg", height: 28%), caption: [Error ranging from 9 to 14])
 
 == R-Squared
 The R² Score measures how much of the variation in the target variable is explained
@@ -709,7 +745,7 @@ Features:
 - Indicates how well predictions follow actual trends
 - Complements error-based metrics
 
-#figure(image("svg/47.svg", height: 28%), caption: [Score ranging from -0.5 to -0.4])
+#figure(img("svg/47.svg", height: 28%), caption: [Score ranging from -0.5 to -0.4])
 
 = Conclusion
 This project aimed to analyze the Youth Tobacco Survey dataset and develop predictive

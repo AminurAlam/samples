@@ -5,6 +5,20 @@
 #let sumin = $sum_(i=1)^n$
 #let argmax = $limits("argmax")_(w)$
 #let argmin = $limits("argmin")_(w)$
+#let img(path, ..args) = context {
+  let path-label = label(path)
+  let first-time = query((context {}).func()).len() == 0
+  if first-time or query(path-label).len() > 0 {
+    [#image(path, ..args)#path-label]
+  } else {
+    rect(
+      stroke: 1pt,
+      width: args.at("width", default: 50%),
+      height: args.at("height", default: 30%),
+      args.at("alt", default: align(center + horizon, "404 not found")),
+    )
+  }
+}
 
 #outline()
 
@@ -36,7 +50,7 @@ $
          & = 1/"2n" sumin (y - w^"T"x)^2 && "[MSE]" \
 $
 
-#figure(image("assets/linear.svg", width: auto))
+#figure(img("assets/linear.svg", width: auto))
 
 == Gradient Descent
 
@@ -54,7 +68,7 @@ $$
   & = w^(i-1)_j - alpha [ 1/n sumin -x (y - w_j ""^"T"x) ] "  (with learning rate)" \
 $
 
-#figure(image("assets/linear.webp", width: 80%))
+#figure(img("assets/linear.webp", width: 80%))
 
 #pagebreak()
 
@@ -126,7 +140,7 @@ regressors such as SVM and Logistic Regression.
 
 #grid(
   columns: 2,
-  image("assets/gd.png"), image("assets/sgd.png"),
+  img("assets/gd.png"), img("assets/sgd.png"),
 )
 
 #pagebreak()
@@ -210,8 +224,8 @@ STEPS:
 + take weighted voting of the neighbours
 + assign that class to the data point
 
-#figure(image("assets/knn.webp", width: 80%))
-#figure(image("assets/knn_frame.png", width: auto))
+#figure(img("assets/knn.webp", width: 80%))
+#figure(img("assets/knn_frame.png", width: auto))
 
 #pagebreak()
 
@@ -277,7 +291,7 @@ $
 
 = GENETIC ALGORITHM
 
-// #image("assets/genetic.svg", height: 50%)
+// #img("assets/genetic.svg", height: 50%)
 
 == 1. Population Initialization
 == 2. Fitness Assessment
@@ -309,8 +323,8 @@ $
 #align(center, grid(
   columns: 2,
   gutter: 0pt,
-  image("assets/OnePointCrossover.svg", width: 75%),
-  image("assets/TwoPointCrossover.svg", width: 75%),
+  img("assets/OnePointCrossover.svg", width: 75%),
+  img("assets/TwoPointCrossover.svg", width: 75%),
 ))
 
 
@@ -319,11 +333,11 @@ $
 
 // #grid(
 //   columns: 2,
-//   image("assets/singleCrossover.png", width: auto),
-//   image("assets/twopointCrossover.png", width: auto),
+//   img("assets/singleCrossover.png", width: auto),
+//   img("assets/twopointCrossover.png", width: auto),
 // )
 //
-// #align(center, image("assets/unifromCrossover.png", width: 60%))
+// #align(center, img("assets/unifromCrossover.png", width: 60%))
 
 #pagebreak()
 
@@ -369,7 +383,7 @@ $\
 "       ""else" "if" "rand"(0, 1) < e^(-Delta E slash T) "then" \
 "             "C = N$
 
-#figure(image("assets/sa.jpg", width: 60%))
+#figure(img("assets/sa.jpg", width: 60%))
 
 #pagebreak()
 
@@ -416,7 +430,7 @@ $
                      r_1, r_2: & "random" \
 $
 
-#figure(image("assets/pso_flow.png", width: 60%))
+#figure(img("assets/pso_flow.png", width: 60%))
 
 ALGORITHM:
 ```hs
@@ -436,11 +450,12 @@ RETURN gbest
 
 #grid(
   columns: 3,
-  image("assets/pso_0.png"), image("assets/pso_1.png"), image("assets/pso_2.png"),
-  image("assets/pso_3.png"), image("assets/pso_4.png"), image("assets/pso_5.png"),
+  img("assets/pso_0.png"), img("assets/pso_1.png"), img("assets/pso_2.png"),
+
+  img("assets/pso_3.png"), img("assets/pso_4.png"), img("assets/pso_5.png"),
   // align(horizon + center, text(2em, math.dots)),
   // align(horizon + center, text(2em, math.dots)),
-  // image("assets/pso_25.png"),
+  // img("assets/pso_25.png"),
 
   [],
 )
@@ -526,9 +541,9 @@ $
   C & = max {" "min{ mu_A (x), mu_B (y) }, " " 1 - mu_A (x) " "} \
 $
 
-#figure(image("assets/mamdani.png", width: 80%))
+#figure(img("assets/mamdani.png", width: 80%))
 
-#figure(image("assets/fuzzy_inference.png", width: auto))
+#figure(img("assets/fuzzy_inference.png", width: auto))
 
 #pagebreak()
 

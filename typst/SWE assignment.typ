@@ -1,9 +1,8 @@
-#import "extra.typ": *
 #import "@preview/oxdraw:0.1.0": *
 #import "@preview/meander:0.3.0"
 #import "@preview/zebraw:0.5.5": *
 
-#starter(subject: [software engineering])
+// #starter(subject: [software engineering])
 #set text(size: 1.2em)
 #set par(justify: true)
 #set heading(numbering: "1.1")
@@ -12,6 +11,19 @@
 #set terms(separator: ":  ")
 #set page(margin: auto, numbering: "1", columns: 1)
 #set align(left)
+
+#let img(path, ..args) = context {
+  let path-label = label(path)
+  let first-time = query((context {}).func()).len() == 0
+  if first-time or query(path-label).len() > 0 {
+    [#image(path, ..args)#path-label]
+  } else {
+    rect(width: 50%, height: 5em, fill: luma(235), stroke: 1pt)[
+      #set align(center + horizon)
+      Could not find #raw(path)
+    ]
+  }
+}
 
 = Model Selection
 
@@ -26,7 +38,7 @@ entire development process is divided into distinct, non-overlapping phases
 (Requirements, Design, Implementation, Verification, Maintenance). Each phase must be
 completed and signed off before the next phase can begin.
 
-#figure(image("assets/waterfall.svg", width: auto), caption: [Waterfall Model])
+#figure(img("assets/waterfall.svg", width: auto), caption: [Waterfall Model])
 
 Pros:
 - / Simplicity and Structure: It is easy to understand, manage, and define clear
@@ -56,7 +68,7 @@ collaboration, and the delivery of working software in short cycles (sprints). I
 prioritizes customer (user/community) feedback and welcomes changes throughout the
 development lifecycle.
 
-#figure(image("assets/agile.svg", width: 80%), caption: [Agile Model])
+#figure(img("assets/agile.svg", width: 80%), caption: [Agile Model])
 
 Pros:
 - / Adaptability and Flexibility: Agile embraces change and evolving requirements. It
@@ -221,7 +233,7 @@ document in more detail.
 
 = Routing Data
 
-#figure(image("assets/data.svg"), caption: [data processing pipeline])
+#figure(img("assets/data.svg"), caption: [data processing pipeline])
 
 == Extraction process
 
@@ -323,7 +335,7 @@ the generated graph files already exist. Finally, it mounts the processed data a
 starts the osrm-routed HTTP server on localhost port 5000, effectively rendering the
 Berlin map data ready for routing queries.
 
-#figure(image("assets/server start.png"), caption: [logs of server starting up])
+#figure(img("assets/server start.png"), caption: [logs of server starting up])
 
 == Response
 OSRM returns a JSON object containing waypoints (snapped to the nearest road) and
@@ -334,22 +346,22 @@ to the client.
 
 = Frontend
 
-#figure(image("assets/frontend.svg", width: 85%), caption: [application structure])
+#figure(img("assets/frontend.svg", width: 85%), caption: [application structure])
 
 #pagebreak()
 
 == HTML
 
-#zebraw(
-  lang: false,
-  numbering-separator: true,
-  raw(
-    read("assets/index.html", encoding: "utf8").slice(0, -1),
-    lang: "html",
-    block: true,
-    tab-size: 2,
-  ),
-)
+// #zebraw(
+//   lang: false,
+//   numbering-separator: true,
+//   raw(
+//     read("assets/index.html", encoding: "utf8").slice(0, -1),
+//     lang: "html",
+//     block: true,
+//     tab-size: 2,
+//   ),
+// )
 
 This HTML document serves as the frontend presentation layer or canvas for the
 navigation application. The file includes viewport configuration so the map renders
@@ -371,16 +383,16 @@ configured, and the routing control is done.
 
 == JavaScript
 
-#zebraw(
-  lang: false,
-  numbering-separator: true,
-  raw(
-    read("assets/routing.js", encoding: "utf8").slice(0, -1),
-    lang: "js",
-    block: true,
-    tab-size: 2,
-  ),
-)
+// #zebraw(
+//   lang: false,
+//   numbering-separator: true,
+//   raw(
+//     read("assets/routing.js", encoding: "utf8").slice(0, -1),
+//     lang: "js",
+//     block: true,
+//     tab-size: 2,
+//   ),
+// )
 
 This JavaScript code utilizes Leaflet, a popular open-source library for interactive
 maps, to initialize a web-based mapping interface specifically tailored for a routing
@@ -406,11 +418,11 @@ server to form the map background. The code defines four distinct base layers:
 #grid(
   columns: 2,
   gutter: 10pt,
-  figure(image("assets/map osm.png"), caption: [OSM]),
-  figure(image("assets/map hot.png"), caption: [OSM Humanitarian]),
+  figure(img("assets/map osm.png"), caption: [OSM]),
+  figure(img("assets/map hot.png"), caption: [OSM Humanitarian]),
 
-  figure(image("assets/map sat.png"), caption: [Satellite]),
-  figure(image("assets/map stadia.png"), caption: [Stadia Smooth]),
+  figure(img("assets/map sat.png"), caption: [Satellite]),
+  figure(img("assets/map stadia.png"), caption: [Stadia Smooth]),
 )
 
 The `L.Routing.control` introduces the actual engine of the application. While the
@@ -459,20 +471,19 @@ user interacts with the destination.
 
 = Features
 
-#figure(image("assets/map feat range.png"), caption: [Long distance routing])
+#figure(img("assets/map feat range.png"), caption: [Long distance routing])
 
 #grid(
   columns: 2,
-  figure(image("assets/map phone hot.png", width: 75%), caption: [Running on phone
-    1]),
-  figure(image("assets/map phone stadia.png", width: 75%), caption: [Running on phone
+  figure(img("assets/map phone hot.png", width: 75%), caption: [Running on phone 1]),
+  figure(img("assets/map phone stadia.png", width: 75%), caption: [Running on phone
     2]),
 )
 
-#figure(image("assets/map feat 1 waypoint.png"), caption: [Navigating through another
+#figure(img("assets/map feat 1 waypoint.png"), caption: [Navigating through another
   point])
-#figure(image("assets/map feat 5 waypoint.png"), caption: [Navigating through
-  multiple points])
+#figure(img("assets/map feat 5 waypoint.png"), caption: [Navigating through multiple
+  points])
 
 = Conclusion
 

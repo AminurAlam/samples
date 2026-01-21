@@ -5,6 +5,19 @@
 #show table: set block(breakable: false)
 #show raw: set block(breakable: false)
 
+#let img(path, ..args) = context {
+  let path-label = label(path)
+  let first-time = query((context {}).func()).len() == 0
+  if first-time or query(path-label).len() > 0 {
+    [#image(path, ..args)#path-label]
+  } else {
+    rect(width: 50%, height: 5em, fill: luma(235), stroke: 1pt)[
+      #set align(center + horizon)
+      Could not find #raw(path)
+    ]
+  }
+}
+
 #outline(depth: 2)
 
 #pagebreak()
@@ -61,15 +74,14 @@ these elements are interconnected and are classified into three orders:
   columns: 2,
 
   [COLOR], [TONE],
-  image("assets/colvar.png", width: auto), image("assets/tonevar.png", width: auto),
+  img("assets/colvar.png", width: auto), img("assets/tonevar.png", width: auto),
 )
 
 #table(
   columns: 2,
 
   [SHAPE], [SIZE],
-  image("assets/shapevis.png", width: auto),
-  image("assets/sizevis.png", width: auto),
+  img("assets/shapevis.png", width: auto), img("assets/sizevis.png", width: auto),
 
   [TEXTURE], [PATTERN],
   [], [],
@@ -245,7 +257,7 @@ eye.
 
 USAGE: see THERMAL SENSOR > APPLICATIONS for details
 
-#figure(image("assets/multi.png", width: auto))
+#figure(img("assets/multi.png", width: auto))
 
 A hyperspectral image is a highly detailed form of digital imagery that captures
 light data across hundreds of narrow spectral bands. While a multispectral sensor
@@ -285,7 +297,7 @@ and the high cost of the sensors, hyperspectral data is typically used for targe
 scientific research and high-stakes industrial applications rather than
 general-purpose mapping.
 
-#figure(image("assets/hyper.png", width: auto))
+#figure(img("assets/hyper.png", width: auto))
 
 #pagebreak()
 
@@ -304,21 +316,21 @@ ways to analyze geographic data and improve decision-making.
   columns: 2,
   align: bottom,
   gutter: 0pt,
-  figure(image("assets/Intersect-Tool.png", width: auto), caption: [intersection]),
-  figure(image("assets/Merge-Tool.png", width: auto), caption: [merge]),
+  figure(img("assets/Intersect-Tool.png", width: auto), caption: [intersection]),
+  figure(img("assets/Merge-Tool.png", width: auto), caption: [merge]),
 
-  figure(image("assets/Erase-Tool.jpg", width: auto), caption: [erase]),
-  figure(image("assets/Clip-Tool.png", width: auto), caption: [clip]),
+  figure(img("assets/Erase-Tool.jpg", width: auto), caption: [erase]),
+  figure(img("assets/Clip-Tool.png", width: auto), caption: [clip]),
 
-  figure(image("assets/Union-Tool.jpg", width: auto), caption: [union]),
-  figure(image("assets/Dissolve-Tool.png", width: auto), caption: [dissolve]),
+  figure(img("assets/Union-Tool.jpg", width: auto), caption: [union]),
+  figure(img("assets/Dissolve-Tool.png", width: auto), caption: [dissolve]),
 )
 
 #pagebreak()
 
 = DIGITAL IMAGE PROCESSING SYSTEM STEPS
 
-#figure(image("assets/imgproc.png", width: auto))
+#figure(img("assets/imgproc.png", width: auto))
 
 / Image Acquisition: In this step, the image is captured by a sensor (such as a
   monochrome or color camera) and digitized, if the output of the camera or sensor is

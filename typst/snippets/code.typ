@@ -1,4 +1,5 @@
-https://typst.app/universe/package/zebraw/
+// https://typst.app/universe/package/zebraw/
+
 #import "@preview/zebraw:0.5.5": *
 
 #zebraw(

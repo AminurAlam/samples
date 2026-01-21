@@ -3,6 +3,18 @@
 #set page(margin: 25pt)
 #show table: set block(breakable: false)
 #show raw: set block(breakable: false)
+#let img(path, ..args) = context {
+  let path-label = label(path)
+  let first-time = query((context {}).func()).len() == 0
+  if first-time or query(path-label).len() > 0 {
+    [#image(path, ..args)#path-label]
+  } else {
+    rect(width: 50%, height: 5em, fill: luma(235), stroke: 1pt)[
+      #set align(center + horizon)
+      Could not find #raw(path)
+    ]
+  }
+}
 
 #outline()
 
@@ -38,7 +50,7 @@ properties commonly recognized in modern computing.
 
 = TIME COMPLEXITIES
 
-#align(center, image("assets/time.png", width: 50%))
+#align(center, img("assets/time.png", width: 50%))
 
 == Summary of Notations
 - / Best Case ($Omega$): The absolute minimum number of steps required
@@ -177,7 +189,7 @@ $display(C_(i,j) = min_(i<k<=j) { C_(i,k-1) + C_(k,j) } + w(i, j))$
 #grid(
   columns: 2,
   gutter: 10pt,
-  image("assets/bst1.webp"), image("assets/bst2.webp"),
+  img("assets/bst1.webp"), img("assets/bst2.webp"),
 )
 
 == Binary Search
@@ -195,7 +207,7 @@ ALGORITHM:
 + This process is continued until the query is found or the total search space is
   exhausted.
 
-#align(center, image("assets/binary_search.webp", width: 60%))
+#align(center, img("assets/binary_search.webp", width: 60%))
 
 == Quick Sort
 
@@ -212,7 +224,7 @@ ALGORITHM:
 + / Base Case: The recursion stops when there is only one element left in the
     sub-array, as a single element is already sorted.
 
-#align(center, image("assets/quicksort.webp", width: 70%))
+#align(center, img("assets/quicksort.webp", width: 70%))
 
 #pagebreak()
 
@@ -270,10 +282,10 @@ ALGORITHM:
 #grid(
   columns: 2,
   gutter: 10pt,
-  image("assets/kmst1.webp"), image("assets/kmst2.webp"),
-  image("assets/kmst3.webp"), image("assets/kmst4.webp"),
+  img("assets/kmst1.webp"), img("assets/kmst2.webp"),
+  img("assets/kmst3.webp"), img("assets/kmst4.webp"),
 )
-#align(center, image("assets/kmst10.webp", width: 60%))
+#align(center, img("assets/kmst10.webp", width: 60%))
 
 == Prim's MST
 
@@ -288,10 +300,10 @@ ALGORITHM:
 #grid(
   columns: 2,
   gutter: 10pt,
-  image("assets/prim1.webp"), image("assets/prim2.webp"),
-  image("assets/prim3.webp"), image("assets/prim4.webp"),
+  img("assets/prim1.webp"), img("assets/prim2.webp"),
+  img("assets/prim3.webp"), img("assets/prim4.webp"),
 )
-#align(center, image("assets/prim11.webp", width: 60%))
+#align(center, img("assets/prim11.webp", width: 60%))
 
 #pagebreak()
 
@@ -326,7 +338,7 @@ $
   & j: "remaining weight"; j = m \
 $
 
-#align(center, image("assets/knapsack01.webp", width: 85%))
+#align(center, img("assets/knapsack01.webp", width: 85%))
 
 == All Pair Shortet Path
 
@@ -398,7 +410,7 @@ ALGORITHM:
 + travel back the starting node
 + pick the path with the smallest sum
 
-#align(center, image("assets/tsp.heic", width: 90%))
+#align(center, img("assets/tsp.heic", width: 90%))
 
 #pagebreak()
 
@@ -433,7 +445,7 @@ ALGORITHM:
 + repeat these steps for every row and then for every column
 + If successfully placed $N$ queens, store the current position as valid answer
 
-#align(center, image("assets/nqueen.heic", width: 63%))
+#align(center, img("assets/nqueen.heic", width: 63%))
 
 == Sum of Subset
 
@@ -459,7 +471,7 @@ ALGORITHM:
 + Now, move to the next element in the set and check for another solution until all
   combinations have been tried.
 
-#align(center, image("assets/subsum.heic", width: auto))
+#align(center, img("assets/subsum.heic", width: auto))
 
 == Graph Coloring
 
@@ -476,7 +488,7 @@ ALGORITHM:
     color that has not been used by any of its neighbors.
 + / Repeat: Continue until all vertices have been assigned a color.
 
-#align(center, image("assets/gcol.heic", width: auto))
+#align(center, img("assets/gcol.heic", width: auto))
 
 #pagebreak()
 
@@ -517,13 +529,13 @@ optimization problems include Boolean Satisfiability and Integer Linear Programm
   columns: (45%, 5%, 45%),
   align: (auto, horizon, auto),
   gutter: 0pt,
-  image("assets/fifo1.png"), sym.arrow, image("assets/fifo2.png"),
+  img("assets/fifo1.png"), sym.arrow, img("assets/fifo2.png"),
   [], sym.arrow.bl, [],
-  image("assets/fifo3.png"), sym.arrow, image("assets/fifo4.png"),
+  img("assets/fifo3.png"), sym.arrow, img("assets/fifo4.png"),
   [], sym.arrow.bl, [],
-  image("assets/fifo5.png"), sym.arrow, image("assets/fifo6.png"),
+  img("assets/fifo5.png"), sym.arrow, img("assets/fifo6.png"),
   [], sym.arrow.bl, [],
-  image("assets/fifo7.png"),
+  img("assets/fifo7.png"),
 )
 
 == LIFO Approach (Stack)
@@ -532,11 +544,11 @@ optimization problems include Boolean Satisfiability and Integer Linear Programm
   columns: (45%, 5%, 45%),
   align: (auto, horizon, auto),
   gutter: 0pt,
-  image("assets/lifo1.png"), sym.arrow, image("assets/lifo2.png"),
+  img("assets/lifo1.png"), sym.arrow, img("assets/lifo2.png"),
   [], sym.arrow.bl, [],
-  image("assets/lifo3.png"), sym.arrow, image("assets/lifo4.png"),
+  img("assets/lifo3.png"), sym.arrow, img("assets/lifo4.png"),
   [], sym.arrow.bl, [],
-  image("assets/lifo5.png"), sym.arrow, align(center + horizon, text(2em, sym.dots)),
+  img("assets/lifo5.png"), sym.arrow, align(center + horizon, text(2em, sym.dots)),
 )
 
 == Least Cost Branch and Bound Approach (LCBB)
@@ -555,7 +567,7 @@ more efficient for us.
 #grid(
   columns: (47%, 5%, 47%),
   align: (auto, horizon, auto),
-  image("assets/lcbb1.png"), sym.arrow, image("assets/lcbb2.png"),
+  img("assets/lcbb1.png"), sym.arrow, img("assets/lcbb2.png"),
 )
 
 == Job Sequencing With Deadline
@@ -596,7 +608,7 @@ $
     - Graph coloring problem
     - Sudoku
 
-#align(center, image("assets/complexity.svg", width: 70%))
+#align(center, img("assets/complexity.svg", width: 70%))
 
 == Deterministic vs Non-Deterministic Algorithm
 
