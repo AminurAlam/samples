@@ -134,8 +134,6 @@ $
 $
 
 
-== log normal
-
 == standard normal
 
 $

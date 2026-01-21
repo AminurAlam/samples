@@ -1,24 +1,5 @@
-#set text(1.35em)
-#set par(justify: false)
-#set page(margin: 25pt)
-
-#show table: set block(breakable: false)
-#show raw: set block(breakable: false)
-
-#let img(path, ..args) = context {
-  let path-label = label(path)
-  let first-time = query((context {}).func()).len() == 0
-  if first-time or query(path-label).len() > 0 {
-    [#image(path, ..args)#path-label]
-  } else {
-    rect(width: 50%, height: 5em, fill: luma(235), stroke: 1pt)[
-      #set align(center + horizon)
-      Could not find #raw(path)
-    ]
-  }
-}
-
-#outline(depth: 2)
+#import "snippets/note.typ": *
+#show: template.with("GIS")
 
 #pagebreak()
 
@@ -84,7 +65,7 @@ these elements are interconnected and are classified into three orders:
   img("assets/shapevis.png", width: auto), img("assets/sizevis.png", width: auto),
 
   [TEXTURE], [PATTERN],
-  [], [],
+  img("assets/texture.png", width: auto), img("assets/pattern.png", width: auto),
 )
 
 = 1.2 DATA VISUALIZATION [TODO]

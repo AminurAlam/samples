@@ -1,8 +1,9 @@
 #import "@preview/oxdraw:0.1.0": *
 #import "@preview/meander:0.3.0"
 #import "@preview/zebraw:0.5.5": *
+#import "snippets/frontpage.typ": index, starter
 
-// #starter(subject: [software engineering])
+#starter[software engineering]
 #set text(size: 1.2em)
 #set par(justify: true)
 #set heading(numbering: "1.1")

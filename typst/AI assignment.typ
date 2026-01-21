@@ -1,34 +1,11 @@
-#{
-  set align(center)
-  let year = datetime.today().year()
+#import "snippets/frontpage.typ": index, starter
 
-  v(12%)
-  line(length: 100%, stroke: 1.6pt)
-  v(-6pt)
-  line(length: 100%, stroke: 0.4pt)
-  text(weight: "bold", 2.5em)[#upper[
-    Comparison of different \
-    regression models on \
-    "Youth Tobacco Usage" data
-  ]]
-  line(length: 100%, stroke: 0.4pt)
-  v(-6pt)
-  line(length: 100%, stroke: 1.6pt)
+#starter[
+  Comparison of different \
+  regression models on \
+  "Youth Tobacco Usage" data
+]
 
-  v(23%)
-  align(left)[
-    #for (key, value) in (
-      "SUBMITTED BY": "Aminur Alam",
-      "ROLL NO": "ROLL123",
-      "SEMESTER": [n#super("th")],
-      "DEPARTMENT": "DEPT",
-      "COURSE": "CORS",
-    ) [#text(1.2em)[#key:] #h(10pt) #text(1.8em)[#value] \ #v(2pt) ]
-  ]
-
-  align(bottom)[#text(1.4em)[INSTITUTE #{ year }-#{ year - 1999 }]]
-}
-#pagebreak()
 #text(1.2em)[#align(center)[#outline()]]
 #pagebreak()
 

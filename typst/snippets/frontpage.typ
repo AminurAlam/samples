@@ -1,4 +1,6 @@
-#{
+// #import "snippets/frontpage.typ": starter, index
+
+#let starter(heading) = {
   set align(center)
   let year = datetime.today().year()
 
@@ -6,7 +8,7 @@
   line(length: 100%, stroke: 1.6pt)
   v(-6pt)
   line(length: 100%, stroke: 0.4pt)
-  text(weight: "bold", 2.5em)[#upper[subject name \ goes here]]
+  text(weight: "bold", 2.5em)[#upper[#heading]]
   line(length: 100%, stroke: 0.4pt)
   v(-6pt)
   line(length: 100%, stroke: 1.6pt)
@@ -27,7 +29,8 @@
   pagebreak()
 }
 
-#page(margin: (x: 50pt, y: 70pt))[
+#let index = [
+  #set page(margin: (x: 50pt, y: 70pt))
 
   #show table.cell.where(y: 0): it => {
     set text(1.6em)

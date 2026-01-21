@@ -1,35 +1,10 @@
-#set text(1.35em)
-#set par(justify: false)
-#set page(margin: 25pt)
-#set math.mat(delim: "[")
+#import "snippets/note.typ": *
+#show: template.with("Computer Graphics")
 
-#show table: set block(breakable: false)
-#show raw: set block(breakable: false)
-
-#let dx = $Delta x$
-#let dy = $Delta y$
-#let st = $sin theta$
-#let ct = $cos theta$
 #let s1 = $sin theta_1$
 #let s2 = $sin theta_2$
 #let c1 = $cos theta_1$
 #let c2 = $cos theta_2$
-#let img(path, ..args) = context {
-  let path-label = label(path)
-  let first-time = query((context {}).func()).len() == 0
-  if first-time or query(path-label).len() > 0 {
-    [#image(path, ..args)#path-label]
-  } else {
-    rect(
-      stroke: 1pt,
-      width: args.at("width", default: 50%),
-      height: args.at("height", default: 30%),
-      args.at("alt", default: align(center + horizon, "404 not found")),
-    )
-  }
-}
-
-#outline()
 
 #pagebreak()
 

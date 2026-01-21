@@ -1,26 +1,5 @@
-#set text(1.35em)
-#set par(justify: false)
-#set page(margin: 25pt)
-
-#let sumin = $sum_(i=1)^n$
-#let argmax = $limits("argmax")_(w)$
-#let argmin = $limits("argmin")_(w)$
-#let img(path, ..args) = context {
-  let path-label = label(path)
-  let first-time = query((context {}).func()).len() == 0
-  if first-time or query(path-label).len() > 0 {
-    [#image(path, ..args)#path-label]
-  } else {
-    rect(
-      stroke: 1pt,
-      width: args.at("width", default: 50%),
-      height: args.at("height", default: 30%),
-      args.at("alt", default: align(center + horizon, "404 not found")),
-    )
-  }
-}
-
-#outline()
+#import "snippets/note.typ": *
+#show: template.with("AI")
 
 #pagebreak()
 
